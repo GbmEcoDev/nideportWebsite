@@ -1,0 +1,17 @@
+{
+    "nav_home":"Home",
+    "nav_about":"About",
+    "nav_projects": "Projects",
+    "nav_blog": "Blog",
+    "nav_contact":"Contact",
+
+    "home_title" : "Nature -based solutions to protect and restore ecosystems",
+    "blog_title" : "Blog",
+    "about_title" : "About us",
+    "project_title" : "Selva Paranaense Vida Nativa - GS1 Project",
+    "contact_title" : "Contact Now",
+
+    "about":"about",
+    "blog": "blog"
+
+}

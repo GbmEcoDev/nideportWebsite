@@ -1,0 +1,101 @@
+:root {
+    --color-primary: 0 122 119;
+    --color-secondary: 0 122 119;
+    --color-green: 140 214 106;
+    --color-bg : 255 255 255; 
+    --color-border : 255 255 255; 
+    --color-box: 255 255 255;
+    --box-border: 229 231 235;
+    --box-sd: 226 232 240 / 0.5;
+}
+  
+.dark {
+    --color-bg: 17 24 39; /* gray-900 */
+    --color-box: 17 26 62; /* k    55 65 81 */
+    --box-border: 243 244 246/0.1;
+    --box-sd: transparent;
+}
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* main.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Nunito:wght@400;700&display=swap');
+html{
+    @apply scroll-smooth;
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+    scroll-snap-stop: always;
+}
+
+body{
+    font-family: 'Nunito', sans-serif;
+    @apply bg-body transition overflow-x-hidden;
+
+}
+.scroll-snap-y-soft {
+    scroll-snap-type: y proximity;
+    scroll-snap-stop: always;
+  }
+  
+  .scroll-snap-y-hard {
+    scroll-snap-type: y mandatory;
+    scroll-snap-stop: always;
+  }
+  
+  .scroll-snap-align-start {
+    scroll-snap-align: start;
+  }
+  
+
+section{
+    overflow-x: hidden;
+    
+}
+
+.invisible-scroll{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scroll-padding-left: 10px;
+    scroll-padding-right: 10px;
+}
+
+.invisible-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+article figure.aligncenter.size-full.is-resized{
+    width:100%;
+    margin:20px 0px;
+    text-align: center;
+}
+
+article figure.alignleft.size-full.is-resized{
+    float:left;
+    width:45%;
+    margin:2px;
+    
+}
+article figure.alignright.size-full.is-resized{
+    float:left;
+    width:100%;
+    margin:2px;
+    
+}
+article figure.alignleft.size-full.is-resized img{
+    width:100%;
+    aspect-ratio: 1 / 1;
+    
+}
+article figure.alignright.size-full.is-resized img{
+    width:100%;
+    aspect-ratio: 1 / 1;
+    
+}
+article p {
+    text-align: justify;
+}

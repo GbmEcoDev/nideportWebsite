@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "pois",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Name": "Panoramic", "video": "_torreF1" }, "geometry": { "type": "Point", "coordinates": [ -53.875168125136582, -26.51550932153976, 735.664871513292155 ] } },
+{ "type": "Feature", "properties": { "Name": "Waterfall", "video": "_cascadaCasco02" }, "geometry": { "type": "Point", "coordinates": [ -53.892786364503174, -26.556446767933231, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Morning fog", "video": "_NieblaExAserradero" }, "geometry": { "type": "Point", "coordinates": [ -53.929071539767776, -26.545614671884803, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Pinewood", "video": "_pinarCasco" }, "geometry": { "type": "Point", "coordinates": [ -53.896101173029578, -26.558220187882739, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Abuelo tree", "video": "_arbol_abuelo01" }, "geometry": { "type": "Point", "coordinates": [ -53.784010052192791, -26.4902254716751, 581.399514507824506 ] } }
+]
+}
