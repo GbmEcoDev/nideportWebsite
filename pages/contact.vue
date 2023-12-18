@@ -2,7 +2,6 @@
    <SectionsContactHeroContact/>
    <SectionsContactMoreInfoContact/>
    <SectionsContactFormInfo/>
-   <MapaMisiones/>
    <ScrollTop />
 </template>
 <script setup lang="ts">

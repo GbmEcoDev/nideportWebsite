@@ -15,6 +15,7 @@
 }
 </style>
 <script setup lang="ts">
+
 useSeoMeta({
   title: 'Nideport',
   ogTitle: 'Nideport',
