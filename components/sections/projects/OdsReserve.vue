@@ -3,7 +3,7 @@
     <AtomsContainer>
         <div class="flex flex-col items-center w-full">
             <img src="/images/logo-ods.svg" alt="" class=" text-center w-[100px] pb-10">
-            <AtomsTitleH2 texte="Objetivos de Desarrollo Sostenible del proyecto" alignTxt="center" colorTxt="secondary"/>
+            <AtomsTitleH2 texte="Objetivos de Desarrollo Sostenible del proyecto" alignTxt="center" colorTxt="secondary" weightTxt="normal"/>
 
         <div class="flex flex-wrap justify-center max-sm:justify-center gap-3 mt-20 mb-50">
             <div class="max-sm:w-5/12 w-40 mb-4"><img src="/images/ODS1.png" alt="" /></div>

@@ -1,5 +1,5 @@
 <template>
-    <h2 :class="`${spanClassTxt} ${sClass} ${cClass}`" class=" dark:text-white font-bold">
+    <h2 :class="`${spanClassTxt} ${sClass} ${cClass} ${wClass}`" class=" dark:text-white">
         {{ texte }}
     </h2>
 </template>
@@ -9,17 +9,19 @@ const { t } = useI18n();
 //const { texte } = defineProps<{texte:string}>()
 
 
-const { texte, alignTxt, sizeTxt = "", colorTxt = ""  } = defineProps<{
+const { texte, alignTxt, sizeTxt = "", colorTxt = "", weightTxt = ""   } = defineProps<{
     texte:string;
     alignTxt: "left" | "center" | "right";
-    colorTxt: "primary" | "secondary" | "white";
+    colorTxt: "primary" | "secondary" | "fivety" | "white";
     sizeTxt?: string;
-    
+    weightTxt: "normal" | "bold" | "italic"
 }>();
 
 let spanClassTxt: string = "";
 let cClass: string = "";
+let wClass: string = "";
 let sClass: string = "text-2xl  md:text-3xl";
+
 if (alignTxt === "left") {
     spanClassTxt = "text-left max-sm:text-center";
 } else if (alignTxt === "center") {
@@ -27,8 +29,7 @@ if (alignTxt === "left") {
 } else if (alignTxt === "right") {
     spanClassTxt = "text-right";
 }
-if (sizeTxt != "")
-{
+if (sizeTxt != "") {
     sClass= sizeTxt;
 }
 
@@ -36,8 +37,18 @@ if (colorTxt === "primary") {
     cClass = "text-primary";
 } else if (colorTxt === "secondary") {
     cClass = "text-secondary";
+} else if (colorTxt === "fivety") {
+    cClass = "text-[#016A81]";
 } else if (colorTxt === "white") {
     cClass = "text-white";
+}
+
+if (weightTxt === "normal") {
+    wClass = "font-normal";
+} else if (weightTxt === "bold") {
+    wClass = "font-bold";
+} else if (weightTxt === "italic") {
+    wClass = "font-italic";
 }
 </script>
 <style scoped>

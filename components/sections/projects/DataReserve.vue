@@ -7,7 +7,7 @@
                     <div class="w-full">
                         <img src="/images/objetive-1.svg" alt="" class="pb-5 mx-auto">
                     </div>
-                    <AtomsTitleH2 texte="Composición del bosque" alignTxt="center" colorTxt="secondary" sizeTxt="text-3xl" />
+                    <AtomsTitleH2 texte="Composición del bosque" alignTxt="center" colorTxt="secondary" sizeTxt="text-3xl" weightTxt="normal" />
                     <p class="text-sm text-center py-8 text-gray-500 dark:text-white">22,878 hectares of Atlantic Forest</p>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     <div class="w-full">
                         <img src="/images/objetive-2.svg" alt="" class="pb-5 mx-auto">
                     </div>
-                    <AtomsTitleH2 texte="Biodiversidad" alignTxt="center" colorTxt="secondary" />
+                    <AtomsTitleH2 texte="Biodiversidad" alignTxt="center" colorTxt="secondary" weightTxt="normal" />
                     <p class="text-sm text-center py-8 text-gray-500 dark:text-white">3,000 vascular species · 500 vertebrate species · 300 bird species · 116 mammal species</p>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="w-full">
                         <img src="/images/objetive-3.svg" alt="" class="pb-5 mx-auto">
                     </div>
-                    <AtomsTitleH2 texte="Sumidero de carbono" alignTxt="center" colorTxt="secondary" />
+                    <AtomsTitleH2 texte="Sumidero de carbono" alignTxt="center" colorTxt="secondary" weightTxt="normal" />
                     <p class="text-sm text-center py-8 text-gray-500 dark:text-white">2,455,977 tons of total Carboncaptured in forest biomass</p>
                 </div>
             </div>

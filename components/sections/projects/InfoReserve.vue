@@ -1,7 +1,7 @@
 <template>
     <section class="px-12 max-sm:px-3 scroll-snap-align-start">
     <AtomsContainer>
-        <AtomsTitleH2 texte=" OBJETIVOS DEL PROYECTO" alignTxt="center" colorTxt="secondary"/>
+        <AtomsTitleH2 texte=" OBJETIVOS DEL PROYECTO" alignTxt="center" colorTxt="secondary" weightTxt="normal"/>
         <p class="text-secondary my-8 text-center">Mediante la reforestación, el enriquecimiento de los bosques y la potenciación de la biodiversidad, restauramos los servicios ecosistémicos para las generaciones presentes y futuras, utilizando tecnología. Desarrollamos una solución basada en nueve pilares clave que abordan los retos que plantea la crisis climática actual:</p>
 
       <Carousel :items-to-show="carouselItemsToShow1" :wrap-around="true" :starting-from="1" :snap-align="'start'">
@@ -62,7 +62,7 @@
       <div class="flex justify-center items-center mb-24"><AtomsLinkBtn href="#" variant="primary"> Saber Mas </AtomsLinkBtn></div>
     </AtomsContainer>
     <AtomsContainer>
-        <AtomsTitleH2 texte=" Reportes del proyecto" alignTxt="center" colorTxt="primary"/>
+        <AtomsTitleH2 texte=" Reportes del proyecto" alignTxt="center" colorTxt="primary" weightTxt="normal"/>
         <div class="w-full flex justify-center">
             <div class="flex justify-between  gap-10 py-10 px-60 sm:px-10 w-11/12 max-sm:w-full max-sm:flex-col max-sm:px-2">
                 <AtomsLinkBtn href="#" variant="primary"> Forest management </AtomsLinkBtn>

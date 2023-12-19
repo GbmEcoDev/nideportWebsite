@@ -4,6 +4,7 @@
   </NuxtLayout>
 </template>
 <style>
+
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;
@@ -15,7 +16,6 @@
 }
 </style>
 <script setup lang="ts">
-
 useSeoMeta({
   title: 'Nideport',
   ogTitle: 'Nideport',

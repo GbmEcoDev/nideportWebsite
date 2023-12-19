@@ -1,38 +1,3 @@
-<!-- <script lang="ts" setup>
-const { href, variant, costumSpanClass="", costumTextColor="" } = defineProps<{
-    href:string,
-    variant:"primary"|"primary-outlined"|"secondary"|"secondary-outlined"|"costum",
-    costumSpanClass?:string,
-    costumTextColor?:string
-}>()
-
-let spanClass:string = "";
-let textCl:string = ""
-if (variant === "primary") {
-    spanClass = "bg-primary border-2 border-transparent"
-    textCl = "text-white"
-}else if(variant === "primary-outlined"){
-    spanClass = "border-2 border-primary"
-    textCl = "text-primary"
-}
-else if(variant === "secondary"){
-    spanClass = "bg-primary/5"
-    textCl = "text-primary"
-}
-else if(variant === "costum"){
-    spanClass=costumSpanClass
-    textCl = costumTextColor
-}
-
-</script>
-<template>
-    <NuxtLink :to="href" class="px-6 md:px-7 py-3 rounded relative group">
-        <span v-if="variant!=='costum'" class="absolute inset-0 rounded group-hover:scale-105 origin-center transition-all ease-in-out" :class="spanClass"></span>
-        <span class="relative flex items-center justify-center" :class="textCl">
-            <slot/>
-        </span>
-    </NuxtLink>
-</template> -->
 <script lang="ts" setup>
 const { href, variant, costumSpanClass = "", costumBorderColor = "", widthBtn = ""  } = defineProps<{
     href: string;
@@ -47,7 +12,7 @@ let wClass: string = "";
 let borderColor: string = "";
 if (variant === "primary") {
     spanClass = "bg-transparent border-2";
-    borderColor = "border-primary";
+    borderColor = "border-[#02A327]";
 } else if (variant === "primary-outlined") {
     spanClass = "bg-transparent border-2";
     borderColor = "border-primary";
@@ -67,7 +32,7 @@ if (widthBtn != "")
 <template>
     <NuxtLink :to="href" class="px-6 md:px-5 py-3 rounded relative group" :class="`${wClass}`">
         <span v-if="variant !== 'custom'" class="absolute inset-0 rounded-xl group-hover:scale-105 origin-center transition-all ease-in-out" :class="`${spanClass} ${borderColor}`"></span>
-        <span class="relative flex items-center justify-center" :class="borderColor">
+        <span class="relative text-[#02A327] flex items-center justify-center" :class="borderColor">
             <slot/>
         </span>
     </NuxtLink>

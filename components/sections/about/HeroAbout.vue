@@ -1,11 +1,11 @@
 <template>
-    <div class="relative overflow-hidden bg-cover bg-no-repeat h-screen" style="
+    <div class="relative overflow-hidden bg-cover bg-no-repeat h-[41.5rem]" style="
         background-position: 50%;
         background-image: url('/images/hero-about.webp');
         background-size: cover;
       ">
     <div
-      class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden bg-[hsla(0,0%,0%,0.35)] bg-fixed">
+      class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed">
         <div class="flex h-full items-center justify-center ">
           <AtomsContainer>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -22,3 +22,8 @@
 const { locale } = useI18n()
 const localePath = useLocalePath()
 </script>
+<style scoped>
+.hero{
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.80) 31.25%, rgba(0, 0, 0, 0.00) 100%);
+}
+</style>

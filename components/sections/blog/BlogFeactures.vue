@@ -1,6 +1,6 @@
 <template>
-    <div class="mx-24 h-36 relative max-sm:mx-5 max-sm:h-[900px]">
-      <div class="mt-20 h-24 absolute z-900 bottom-[40px] w-full flex items-center justify-center max-sm:h-[1150px]">
+    <div class="mx-24 h-24 relative max-sm:mx-5 max-sm:h-[900px]">
+      <div class="mt-20 h-24 absolute z-900 bottom-[40px] w-full flex items-center justify-center max-sm:h-[1090px]">
         <div v-if="pending" class="flex items-start justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 200 200">
           <circle fill="#0FAEA9" stroke="#0FAEA9" stroke-width="15" r="15" cx="40" cy="100">

@@ -1,26 +1,28 @@
 <template>
   <AtomsContainer class="scroll-snap-align-start">
-    <AtomsTitleH4 texte="Contactar a un representante"></AtomsTitleH4>
-    <p class="text-center text-base text-secondary my-4">Completa tus datos</p>
+    <div class="mx-32">
+      <AtomsTitleH4 texte="Contactar a un representante"></AtomsTitleH4>
+      <p class="text-left text-base text-secondary my-4">Completa tus datos</p>
+    </div>
     <div class="mx-32 mt-8 max-sm:mx-1">
       <form @submit.prevent="submitForm" class="px-8 pt-6 pb-8 mb-4 max-sm:px-0">
         <div class="mb-4">
-          <label for="nombre" class="block text-secondary text-sm mb-2">Nombre:</label>
+          <label for="nombre" class="block text-secondary text-sm mb-2">Tu nombre:</label>
           <input type="text" id="nombre" v-model="nombre" class="border-b border-secondary w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
         </div>
   
         <div class="mb-4">
-          <label for="empresa" class="block text-secondary text-sm mb-2">Empresa:</label>
+          <label for="empresa" class="block text-secondary text-sm mb-2">Tu empresa:</label>
           <input type="text" id="empresa" v-model="empresa" class="border-b border-secondary w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
         </div>
   
         <div class="mb-4">
-          <label for="telefono" class="block text-secondary text-sm mb-2">Teléfono:</label>
+          <label for="telefono" class="block text-secondary text-sm mb-2">Tu teléfono:</label>
           <input type="tel" id="telefono" v-model="telefono" class="border-b border-secondary w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
         </div>
   
         <div class="mb-4">
-          <label for="email" class="block text-secondary text-sm mb-2">Email:</label>
+          <label for="email" class="block text-secondary text-sm mb-2">Tu email:</label>
           <input type="email" id="email" v-model="email" class="border-b border-secondary w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
         </div>
   
@@ -99,3 +101,6 @@
     }
   };
   </script>
+  <style scoped>h2{
+    text-align: left;
+  }</style>
