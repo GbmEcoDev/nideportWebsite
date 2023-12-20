@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-32 md:pt-32 relative bg-white scroll-snap-align-start overflow-y-hidden">
+    <section class="pt-32 md:pt-32 relative bg-white dark:bg-transparent scroll-snap-align-start overflow-y-hidden">
       <AtomsContainer>
         <AtomsTitleH2 alignTxt="center" colorTxt="primary" weightTxt="normal" texte="Nos acompañan" />
 

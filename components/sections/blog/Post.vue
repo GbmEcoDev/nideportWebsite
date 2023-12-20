@@ -3,7 +3,7 @@
         <div class="rounded-lg transition-all hover:-translate-y-1 hover:scale-105">
             <nuxt-img :src="post.sourceUrl" alt="Cover image" width="1060" class="w-full aspect-square object-cover rounded-2xl h-full" />
             
-            <div class="absolute w-full rounded-lg bottom-0 h-36 flex flex-col justify-between inset-x-0 bg-gradient-to-t from-[#007A77] bg-opacity-95 backdrop-filter backdrop-blur-sm">
+            <div class="absolute w-full rounded-lg bottom-0 h-36 flex flex-col justify-between inset-x-0 bg-gradient-to-t from-[#007A77] bg-opacity-95">
 
                 <div class="text-white font-bold text-center line-clamp-2 p-4  h-full">
                     <div class="w-full h-full flex-col content-between relative">

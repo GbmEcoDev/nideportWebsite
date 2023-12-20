@@ -1,11 +1,11 @@
 <template>
     <section class="bg-gradient-to-b from-[rgb(1,106,129)] to-[rgb(15,95,57)] p-24 max-sm:px-1 scroll-snap-align-start">
         <AtomsContainer>
-            <AtomsTitleH2 texte="Conservación del Capital Natural" alignTxt="center" colorTxt="white" weightTxt="normal"/>
-            <div class="mb-6"><p class="text-white text-base pt-10 text-center">
+            <AtomsTitleH2 texte="Conservación del Capital Natural" alignTxt="center" colorTxt="white" weightTxt="normal" class="mb-6"/>
+<!--             <div class="mb-6"><p class="text-white text-base pt-10 text-center">
                 Transformamos nuestra tierra en un entorno digital mediante tecnologías satelitales y drones.
                 Desarrollamos un sistema de supervisión y control en colaboración con las autoridades regionales y locales, que nos permite prevenir incendios forestales, intrusiones, caza ilegal y tala descontrolada.
-            </p></div>
+            </p></div> -->
             <Carousel :items-to-show="carouselItemsToShow1" :wrap-around="true" :starting-from="1" :snap-align="'start'" :navigation="true">
                 <Slide  key="1" class=" overflow-hidden">
                     <!-- <nuxt-img :src="post.sourceUrl" alt="Cover image" width="1060" class="w-full aspect-square object-cover rounded-2xl" /> -->

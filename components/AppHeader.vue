@@ -1,6 +1,9 @@
 <template>
-  <header class="inset-x-0 top-0 py-0 dark:bg-body">
-      <AtomsContainer class-name="relative">
+  <header class="inset-x-0 top-0 py-0 dark:bg-body sticky bg-black-10 " :class="{
+                'scrollUp': scrollY > 0,
+                'scrollDown translate-y-0': scrollY === 0
+                }">
+      <AtomsContainer class="relative">
           <nav class="flex items-center justify-between w-full relative py-0 ">
               <!-- app logo -->
               <div class="inline-flex relative py-0 logo" :class="{
@@ -22,9 +25,7 @@
                        'scrollDown': scrollY === 0,
                        '!visible !opacity-100 !translate-y-0': navIsOpen
                        }">
-
-
-                  <ul class="text-gray-700 dark:text-gray-100 w-full flex lg:items-center gap-y-4 lg:gap-x-8 flex-col lg:flex-row lg:h-20">
+                  <ul class="text-white max-sm:text-secondary dark:text-gray-100 w-full flex lg:items-center gap-y-4 lg:gap-x-8 flex-col lg:flex-row lg:h-20">
                     <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg " :to="localePath({ name: 'index' })">{{ $t('nav_home') }}</NuxtLink></li> 
                     <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'about' })">{{ $t('nav_about') }}</NuxtLink></li>
                     <li class="border-b-4-hidden lg:h-20 flex items-center"><NuxtLink class="lg:inline-flex transition hover:text-primary ease-linear text-lg" :to="localePath({ name: 'projects' })">{{ $t('nav_projects') }}</NuxtLink></li>
@@ -37,7 +38,7 @@
                 'scrollUp': scrollY > 0,
                 'scrollDown': scrollY === 0
                 }">
-                     <AtomsLinkBtn href="#" variant="primary" class="max-[640px]:hidden">
+                      <AtomsLinkBtn href="#" variant="primary" class="max-[640px]:hidden">
                           Únete Ahora
                       </AtomsLinkBtn>
                   <ElementsLangSwitcher />
