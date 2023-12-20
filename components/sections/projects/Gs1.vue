@@ -5,10 +5,10 @@
                 <div class="flex md:h-full ">
                     <div
                         class="w-full md:h-full bg-white dark:bg-body pt-10">
-                       <AtomsTitleH2 sizeTxt="text-[28px]" alignTxt="left" colorTxt="primary" weightTxt="normal" class="tracking-tighter" texte="Durante los últimos 80 años, el Bosque Atlántico ha sufrido una intensiva tala de especies nativas, lo que ha llevado a una degradación severa y pérdidas significativas de biodiversidad y servicios ecosistémicos." />
+                       <AtomsTitleH2 sizeTxt="text-[28px]" alignTxt="left" colorTxt="secondary" weightTxt="bold" class="tracking-tighter" texte="Durante los últimos 80 años, el Bosque Atlántico ha sufrido una intensiva tala de especies nativas, lo que ha llevado a una degradación severa y pérdidas significativas de biodiversidad y servicios ecosistémicos." />
                     </div>
                 </div>
-                <div class="md:py-2 lg:py-4 relative col-span-1 h-full">
+                <div class="md:py-2 lg:py-4 relative col-span-1 h-full ">
                             <div class="flex justify-center align-middle p-3 relative h-full">
                                 <div class="absolute object-center mt-[120px] z-10 " @click="openModal()">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="88" height="63" viewBox="0 0 88 63" fill="none">
@@ -16,7 +16,7 @@
                                     <path d="M36.9033 45.6565V19.8081L59.5925 32.7323L36.9033 45.6565Z" fill="white"/>
                                     </svg>
                                 </div>
-                                <img src="/images/bg-home-panoramic.webp" class="w-full "/>
+                                <img src="/images/bg-home-panoramic.webp" class="w-full rounded-lg"/>
                             </div>
                 </div>
             </div>

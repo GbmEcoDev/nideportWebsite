@@ -64,6 +64,10 @@ export default defineNuxtConfig({
       contact: {
         en: '/contact', 
         es: '/contacto'     
+      },
+      map: {
+        en: '/map', 
+        es: '/mapa'     
       }
     },
     lazy: true,

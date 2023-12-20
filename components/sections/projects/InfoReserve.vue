@@ -1,33 +1,32 @@
 <template>
     <section class="px-12 max-sm:px-3 scroll-snap-align-start">
     <AtomsContainer>
-        <AtomsTitleH2 texte=" OBJETIVOS DEL PROYECTO" alignTxt="center" colorTxt="secondary" weightTxt="normal"/>
-        <p class="text-secondary my-8 text-center">Mediante la reforestación, el enriquecimiento de los bosques y la potenciación de la biodiversidad, restauramos los servicios ecosistémicos para las generaciones presentes y futuras, utilizando tecnología. Desarrollamos una solución basada en nueve pilares clave que abordan los retos que plantea la crisis climática actual:</p>
+        <AtomsTitleH2 texte="OBJETIVOS DEL PROYECTO" alignTxt="center" colorTxt="secondary" weightTxt="bold" class="mb-20"/>
 
       <Carousel :items-to-show="carouselItemsToShow1" :wrap-around="true" :starting-from="1" :snap-align="'start'">
         <Slide key="1">
           <div class="carousel__item">
-            <div class="flex-col justify- items-center w-full m-4"><div class="h-20"><img src="/images/vcs.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-base h-24">Verified Carbon Standard</p></div>
+            <div class="flex-col justify- items-center w-full m-4"><div class="h-20"><img src="/images/vcs.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">Verified Carbon Standard</p></div>
           </div>
         </Slide>
         <Slide key="2">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/ccb.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-base h-24">Climate, Community & Biodiversity Standard</p></div>
+            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/ccb.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">Climate, Community & Biodiversity Standard</p></div>
           </div>
         </Slide>
         <Slide key="3">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/ifm.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-base h-24">Improved Forest Management</p></div>
+            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/ifm.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">Improved Forest Management</p></div>
           </div>
         </Slide>
         <Slide key="4">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/perpetuity.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-base h-24">Perpetuity Strategy</p></div>
+            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/perpetuity.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">Perpetuity Strategy</p></div>
           </div>
         </Slide>
         <Slide key="5">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/surveillance.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-base h-24">Surveillance</p></div>
+            <div class="flex-col items-center w-full m-4"><div class="h-20"><img src="/images/surveillance.svg" class="mx-auto w-[58px]"/></div><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">Surveillance</p></div>
           </div>
         </Slide>  
       </Carousel>
@@ -35,31 +34,31 @@
       <Carousel :items-to-show="carouselItemsToShow2" :wrap-around="true" :starting-from="6" :snap-align="'start'">
         <Slide key="6">
           <div class="carousel__item ">
-            <div class="flex-col items-center justify-self-auto w-full m-4"><p class="font-bold text-center text-[#006980] text-6xl h-20 font-[Arial]">1500</p><hr class="mb-4 mx-auto"><p class="font-bold text-center text-[#006980] px-4 text-base h-24">Local beneficiaries</p></div>
+            <div class="flex-col items-center justify-self-auto w-full m-4"><p class="font-bold text-center text-[#006980] text-6xl h-20 font-[Arial]">1500</p><hr class="mb-4 mx-auto"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">Local beneficiaries</p></div>
           </div>
         </Slide>
         <Slide key="7">
           <div class="carousel__item">
-            <div class="flex-col items-center justify-self-auto w-full m-4"><p class="font-bold text-center text-[#006980] px-4 text-6xl h-20 font-[Arial]">100</p><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-base h-24">Years of ecological restoration</p></div>
+            <div class="flex-col items-center justify-self-auto w-full m-4"><p class="font-bold text-center text-[#006980] px-4 text-6xl h-20 font-[Arial]">100</p><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">Years of ecological restoration</p></div>
           </div>
         </Slide>
         <Slide key="8">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4"><p class="font-bold text-center text-[#006980] px-4 text-6xl h-20 font-[Arial]">66</p><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-base h-24">Endemic Species</p></div>
+            <div class="flex-col items-center w-full m-4"><p class="font-bold text-center text-[#006980] px-4 text-6xl h-20 font-[Arial]">66</p><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">Endemic Species</p></div>
           </div>
         </Slide> 
         <Slide key="9">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4"><p class="font-bold text-center text-[#006980] px-4 text-6xl h-20 font-[Arial]">10</p><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-base h-24">Global Endangered Species</p></div>
+            <div class="flex-col items-center w-full m-4"><p class="font-bold text-center text-[#006980] px-4 text-6xl h-20 font-[Arial]">10</p><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">Global Endangered Species</p></div>
           </div>
         </Slide>
         <Slide key="10">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4"><p class="font-bold text-center text-[#006980] px-4 text-6xl h-20 font-[Arial]">0</p><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-base h-24">Forest fires, poaching and illegal logging </p></div>
+            <div class="flex-col items-center w-full m-4"><p class="font-bold text-center text-[#006980] px-4 text-6xl h-20 font-[Arial]">0</p><hr class="mb-4"><p class="font-bold text-center text-[#006980] px-4 text-lg h-24">Forest fires, poaching and illegal logging </p></div>
           </div>
         </Slide>
       </Carousel>
-      <div class="flex justify-center items-center mb-24"><AtomsLinkBtn href="#" variant="primary"> Saber Mas </AtomsLinkBtn></div>
+     
     </AtomsContainer>
     <AtomsContainer>
         <AtomsTitleH2 texte=" Reportes del proyecto" alignTxt="center" colorTxt="primary" weightTxt="normal"/>
@@ -71,6 +70,7 @@
             </div>
         </div>
     </AtomsContainer>
+    
     </section>
   </template>
   

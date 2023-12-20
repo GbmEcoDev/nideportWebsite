@@ -1,24 +1,23 @@
 <template>
     <section class="bg-gradient-to-b from-[rgb(1,106,129)] to-[rgb(15,95,57)] p-24 max-sm:px-1 scroll-snap-align-start">
         <AtomsContainer>
-            <AtomsTitleH2 texte="Conservación del Capital Natural" alignTxt="center" colorTxt="white" weightTxt="normal" class="mb-6"/>
-<!--             <div class="mb-6"><p class="text-white text-base pt-10 text-center">
+            <AtomsTitleH2 texte="Conservación del Capital Natural" alignTxt="center" colorTxt="white" weightTxt="normal"/>
+             <div class="mb-6"><p class="text-white text-base pt-10 text-center">
                 Transformamos nuestra tierra en un entorno digital mediante tecnologías satelitales y drones.
                 Desarrollamos un sistema de supervisión y control en colaboración con las autoridades regionales y locales, que nos permite prevenir incendios forestales, intrusiones, caza ilegal y tala descontrolada.
-            </p></div> -->
+            </p></div> 
             <Carousel :items-to-show="carouselItemsToShow1" :wrap-around="true" :starting-from="1" :snap-align="'start'" :navigation="true">
-                <Slide  key="1" class=" overflow-hidden">
-                    <!-- <nuxt-img :src="post.sourceUrl" alt="Cover image" width="1060" class="w-full aspect-square object-cover rounded-2xl" /> -->
-                    <nuxt-img src="/images/obj-img-01.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slide  key="1" class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-01.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-01.jpg')" /> 
                 </Slide>
-                <Slide key="2" class=" overflow-hidden">
-                    <nuxt-img src="/images/obj-img-02.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slide key="2" class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-02.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-02.jpg')"/> 
                 </Slide>
-                <Slide key="3"  class=" overflow-hidden">
-                    <nuxt-img src="/images/obj-img-03.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slide key="3"  class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-03.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-03.jpg')"/> 
                 </Slide>
-                <Slide key="4" class=" overflow-hidden">
-                    <nuxt-img src="/images/obj-img-04.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slide key="4" class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-04.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-04.jpg')"/> 
                 </Slide>
             </Carousel>
         </AtomsContainer>
@@ -28,17 +27,17 @@
                 El proyecto está situado cerca de la comunidad indígena de Tekoa Alecrin. Realizamos una investigación exhaustiva para comprender su cultura y estructura social, asegurándonos de respetar sus formas de interacción. Implementamos una Consulta Gratuita, Previa e Informada (CGPI) para establecer una relación colaborativa y explorar maneras de mejorar sus condiciones de vida.
             </p></div>
             <Carousel :items-to-show="carouselItemsToShow2" :wrap-around="true" :starting-from="1" :snap-align="'start'">
-                <Slid key="5"  class=" overflow-hidden">
-                    <nuxt-img src="/images/obj-img-05.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slid key="5"  class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-05.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-05.jpg')"/> 
                 </Slid>
-                <Slide key="6" class=" overflow-hidden">
-                    <nuxt-img src="/images/obj-img-06.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slide key="6" class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-06.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-06.jpg')"/> 
                 </Slide>
-                <Slide key="7" class=" overflow-hidden">
-                    <nuxt-img src="/images/obj-img-07.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slide key="7" class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-07.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-07.jpg')" /> 
                 </Slide>
-                <Slide key="8" class=" overflow-hidden">
-                    <nuxt-img src="/images/obj-img-08.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slide key="8" class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-08.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-08.jpg')"/> 
                 </Slide>
             </Carousel>
         </AtomsContainer>
@@ -48,20 +47,34 @@
                 Llevamos a cabo inventarios de fauna para identificar diversas especies y poblaciones, priorizando aquellas que contribuyen a formar un hábitat propicio para la prosperidad de la fauna nativa. Nuestra amplia gama de actividades nos permite obtener la certificación Clima, Comunidad y Biodiversidad (CCB) más alta, evidenciando nuestro compromiso con la sostenibilidad y la preservación de la biodiversidad.
             </p></div>
             <Carousel :items-to-show="carouselItemsToShow3" :wrap-around="true" :starting-from="1" :snap-align="'start'">
-                <Slide key="9" class=" overflow-hidden">
-                    <nuxt-img src="/images/obj-img-09.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slide key="9" class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-09.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-09.jpg')"/> 
                 </Slide>
-                <Slide key="10" class=" overflow-hidden">
-                    <nuxt-img src="/images/obj-img-10.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slide key="10" class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-10.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-10.jpg')"/> 
                 </Slide>
-                <Slide key="11" class=" overflow-hidden">
-                    <nuxt-img src="/images/obj-img-11.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slide key="11" class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-11.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-11.jpg')" /> 
                 </Slide>
-                <Slide key="12" class=" overflow-hidden">
-                    <nuxt-img src="/images/obj-img-12.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" /> 
+                <Slide key="12" class="p-2 overflow-hidden">
+                    <nuxt-img src="/images/obj-img-12.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-12.jpg')"/> 
                 </Slide>
             </Carousel>
-        </AtomsContainer>                
+        </AtomsContainer>  
+            <!-- Modal -->
+    <div v-if="isModalOpen" @click="closeModal"  class="fixed top-0 bottom-0 left-0 right-0 inset-0 z-1070 bg-black bg-opacity-80 flex items-center justify-center" >
+      <div class=" p-4 h-full overflow-hidden relative flex items-center justify-center">
+        <div class="relative max-h-full"> 
+          <div class="absolute top-0 right-0 z-1060 flex justify-center">
+            <button @click="closeModal" class="text-gray-500 hover:text-gray-700 bg-white rounded-full p-3">
+              <IconsCloseIco />
+            </button>
+          </div>
+          <img :src="selectedImage" alt="Selected Image" class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" />
+        </div>
+        
+      </div>
+    </div>              
     </section>
 </template>
 
@@ -70,7 +83,8 @@
 import { Carousel, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-
+const selectedImage = ref('');
+const isModalOpen = ref(false);
 const name = 'WrapAround';
 
 const carouselItemsToShow1 = ref(2.1);
@@ -97,6 +111,16 @@ onMounted(() => {
 onBeforeUnmount(() => {
   window.removeEventListener('resize', updateItemsToShow);
 });
+
+const openModal = (image: string) => {
+  selectedImage.value = image;
+  isModalOpen.value = true;
+};
+
+const closeModal = () => {
+  console.log("cerrando modal");
+  isModalOpen.value = false;
+};
 </script>
 
 <style scoped>

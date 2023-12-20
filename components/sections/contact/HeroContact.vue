@@ -8,11 +8,11 @@
       class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed">
         <div class="flex h-full items-center justify-center">
           <AtomsContainer>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-                <div class="text-left text-white md:px-12 col-span-2">
+            <div class="">
+                <div class="text-left text-white md:px-12">
                   <AtomsTitleH1 :texte="$t('contact_title')" data-aos="fade-left"></AtomsTitleH1>
-                  <div class="flex items-center min-w-max relative" data-aos="fade-up">
-                    <p class="w-8/12">Tenemos dos formas de que te unas a nuestra iniciativa y permitas que se aplique en distintas partes del mundo.</p>
+                  <div class="flex items-center w-10/12 mt-4" data-aos="fade-up">
+                    <p class="text-[2.25rem]">Tenemos dos formas de que te unas a nuestra iniciativa y permitas que se aplique en distintas partes del mundo.</p>
                   </div>
                 </div>
             </div>

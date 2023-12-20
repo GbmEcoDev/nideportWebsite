@@ -1,10 +1,10 @@
 <template>
   <header class="inset-x-0 top-0 py-0 dark:bg-body sticky bg-black-10 " :class="{
-                'scrollUp': scrollY > 0,
-                'scrollDown translate-y-0': scrollY === 0
+                'scrollUp hidden': scrollY > 0,
+                'scrollDown translate-y-0 ': scrollY === 0
                 }">
       <AtomsContainer class="relative">
-          <nav class="flex items-center justify-between w-full relative py-0 ">
+          <nav class="z-100 flex items-center justify-between w-full relative py-0 ">
               <!-- app logo -->
               <div class="inline-flex relative py-0 logo" :class="{
                 'scrollUp': scrollY > 0,
