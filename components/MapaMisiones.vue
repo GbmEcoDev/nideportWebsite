@@ -104,7 +104,7 @@ export default{
       return {
         pointToLayer: function(feature, latlng) {
                 return L.marker(latlng, {icon: new L.Icon({
-                  'iconUrl': 'http://localhost:3000/images/rgs1_nov_23/'+feature.properties.foto ,
+                  'iconUrl': '/images/rgs1_nov_23/'+feature.properties.foto ,
                   'iconSize': [30, 30],
                   'iconAnchor': [13, 27],
                   'popupAnchor':  [1, -24]
@@ -120,7 +120,7 @@ export default{
         },
         pointToLayer: function(feature, latlng) {
                 return L.marker(latlng, {icon: new L.Icon({
-                  'iconUrl': 'http://localhost:3000/images/icon/alertas-thunder.svg',
+                  'iconUrl': '/images/icon/alertas-thunder.svg',
                   'iconSize': [20, 20],
                   'iconAnchor': [13, 27],
                   'popupAnchor':  [1, -24]
@@ -136,7 +136,7 @@ export default{
         },
         pointToLayer: function(feature, latlng) {
                 return L.marker(latlng, {icon: new L.Icon({
-                  'iconUrl': 'http://localhost:3000/images/icon/alertas-fire-baja.svg',
+                  'iconUrl': '/images/icon/alertas-fire-baja.svg',
                   'iconSize': [20, 20],
                   'iconAnchor': [13, 27],
                   'popupAnchor':  [1, -24]
@@ -157,7 +157,7 @@ export default{
       return (feature, layer) => {
         if(feature.properties.foto) {
           layer.bindPopup(
-          '<img src="http://localhost:3000/images/rgs1_nov_23/'+feature.properties.foto+'" />',
+          '<img src="/images/rgs1_nov_23/'+feature.properties.foto+'" />',
           { permanent: false, sticky: true }
         );
         }
