@@ -16,23 +16,21 @@
       <div v-else-if="error || !data">
         <h2>Error</h2>
       </div>
-      <div v-else class="flex">
-             
-        <SectionsBlogPostsCategory v-for="post in data" :key="post.uri" :post="post"></SectionsBlogPostsCategory>
-        <!-- Botón "Ver más" -->
-        <div class="flex justify-center pb-3">
-          <button v-if="hasMore" @click="loadMore" class="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-              Ver más
-          </button>
+      <div v-else>
+        <div class="flex flex-wrap grid-row-2 w-full">
+          <SectionsBlogPostsCategory v-for="post in data" :key="post.uri" :post="post"></SectionsBlogPostsCategory>
+        </div>
+        <div>
+          <ElementsPagination @change="refetch" :totalPages="data.total_pages" :currentPage="page" />
         </div>
       </div> 
+
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, defineProps, watch } from 'vue';
+import { ref, defineProps } from 'vue';
 import { useI18n } from 'vue-i18n';
-
 
 const { categorySel } = defineProps(['categorySel']);
 const { locale } = useI18n();
@@ -40,22 +38,22 @@ const config = useRuntimeConfig();
 const language = locale.value.toUpperCase();
 
 const selectedCategory = ref(categorySel);
+const postsCount = ref(12);
+const page = ref(1);
 
-const posts = ref([]);
-const visiblePosts = ref([]);
-const perPage = 4;
-const increment = 3;
-let page = 1;
-let hasMore = true;
-
-const { data, error, pending } = await useFetch(config.public.wordpressUrl, {
+const { data, error, pending, refresh } = await useFetch(config.public.wordpressUrl, {
     lazy: true,
     method: 'post',
     body: {
       query: `
-        query posts($language: LanguageCodeFilterEnum!, $category: String!, $perPage: Int!, $page: Int!) {
-          posts(where: { language: $language, categoryName: $category }, first: ${perPage}, page: ${page} ) {
-            edges {
+        query posts($language: LanguageCodeFilterEnum!, $category: String!, $count: Int!) {
+          posts(where: { language: $language, categoryName: $category }, first: $count ) {
+            pageInfo {
+              hasNextPage
+              startCursor
+              endCursor
+              }
+              edges {
               node {
                 id
                 excerpt
@@ -77,11 +75,8 @@ const { data, error, pending } = await useFetch(config.public.wordpressUrl, {
                 nodes {
                   name
                 }
-              }
-              pageInfo {
-                    hasNextPage
-                    endCursor
-                  }
+                }
+                
               }
             }
           }
@@ -90,8 +85,7 @@ const { data, error, pending } = await useFetch(config.public.wordpressUrl, {
       variables: {
         language: language,
         category: selectedCategory.value,
-        perPage: perPage,
-        page: page
+        count: postsCount.value
       }
     },
     transform(data: any) {
@@ -113,22 +107,19 @@ const { data, error, pending } = await useFetch(config.public.wordpressUrl, {
       categories: node?.categories?.nodes?.map((category: any) => category?.name).join(', ') || '',
     };
   }
-  watch(data, (newData) => {
-  // Cuando los datos cambian, actualizamos la lista completa de posts y la lista visible
-  posts.value = newData;
-  visiblePosts.value = posts.value.slice(0, perPage);
-  hasMore = posts.value.length > perPage;
-});
-
-function loadMore() {
-  // Incrementa la página y agrega más posts a la lista visible
-  page++;
-  const endIndex = page * perPage;
-  visiblePosts.value = posts.value.slice(0, endIndex);
-  hasMore = endIndex < posts.value.length;
+function refetch(pageNumber:any){
+    page.value = pageNumber;
+    refresh()
 }
 </script>
-
 <style scoped>
-  /* Estilos específicos del componente si es necesario */
+/* Estilos específicos del componente si es necesario */
+.post {
+  margin-bottom: 20px;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 20px;
+}
 </style>

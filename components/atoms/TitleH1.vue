@@ -1,5 +1,5 @@
 <template>
-    <H1 class="text-base text-left md:text-6xl max-sm:text-7xl max-sm:text-center dark:text-white font-bold">
+    <H1 class="text-base text-left md:text-6xl max-sm:text-5xl max-sm:text-center dark:text-white font-bold">
         {{ texte }}
     </H1>
 </template>

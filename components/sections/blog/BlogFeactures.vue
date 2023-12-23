@@ -1,7 +1,7 @@
 <template>
-    <div class="mx-24 h-24 relative max-sm:mx-5 max-sm:h-[900px]">
-      <div class="mt-20 h-24 absolute z-900 bottom-[40px] w-full flex items-center justify-center max-sm:h-[1090px]">
-        <div v-if="pending" class="flex items-start justify-center">
+    <div class="mx-16 max-sm:mx-1">
+      <div class="mt-5 w-full flex items-center justify-center ">
+        <div v-if="pending" class="flex items-start justify-center w-full">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 200 200">
           <circle fill="#0FAEA9" stroke="#0FAEA9" stroke-width="15" r="15" cx="40" cy="100">
             <animate attributeName="opacity" calcMode="spline" dur="2" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
@@ -17,8 +17,8 @@
         <div v-else-if="error || !data">
           <h2>Error </h2>
         </div>
-        <div v-else>
-          <div class="flex items-start justify-center w-full max-sm:flex-col">
+        <div v-else class="w-full">
+          <div class="flex items-start justify-center w-full max-sm:flex-col max-sm:mx-0 max-sm:px-0">
             <SectionsBlogPost v-for="post in data" :key="post.uri" :post="post" data-aos="fade-up"></SectionsBlogPost>
           </div>
         </div>

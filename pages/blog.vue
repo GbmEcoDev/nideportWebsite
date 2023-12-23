@@ -1,20 +1,23 @@
 <template>
-  <SectionsBlogHeroBlog/>
-  
-  <SectionsBlogFeactures/>
-  <section class="p-28 max-sm:p-3 flex gap-8">
-    
-      <div class="w-2/12">
+  <div class="relative w-full">
+    <SectionsBlogHeroBlog/>
+    <div class="absolute w-full bottom-[-3em] max-sm:bottom-0 h-48 max-sm:h-[640px] max-sm:relative"><SectionsBlogFeactures/></div>
+  </div>
+  <section class="p-28 max-sm:p-3 flex max-sm:flex-col gap-8">
+      <div class="w-3/12 max-sm:w-full">
           <SectionsBlogCategories/>
+          
         </div>
-      <div class="w-8/12 flex-col">
-        <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Categorías</p>
+      <div class="w-8/12  max-sm:w-full flex-col">
+       
+        <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Últimas Noticias</p>
           <div class="w-full max-sm:w-full">
             <SectionsBlogPostBiodiversity />
           </div>
           <div class="w-full max-sm:w-full">
             <SectionsBlogPostCommunity/>
-          </div>
+          </div> 
+          <SectionsBlogEvent/>
           <div class="w-full max-sm:w-full">
             <SectionsBlogPostSecurity/>
           </div>
@@ -22,8 +25,6 @@
             <SectionsBlogPostTechnology/>
           </div>
         </div>
-     
-    
   </section>
   <ScrollTop />
 </template>

@@ -1,21 +1,14 @@
 <template>
     <div class="w-full">
       <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Categorías</p>
-<!--       <ul>
-      <li v-for="category in categories" :key="category.id" @click="selectCategory(category)" class="text-gray-600  dark:text-white border rounded-lg p-2 mb-1 hover:-translate-x-1">
-          {{ category.name }} 
-        </li>
-      </ul> -->
         <NuxtLink
           v-for="category in categories"
           :key="(category as any).id"
           :to="`/categories/${(category as any).name}`"
-          class="flex items-center justify-center py-2 px-4 rounded text-primary shadow-md hover:shadow-lg duration-200 text-sm uppercase"
+          class="flex items-center justify-start py-2 px-4 rounded text-secondary shadow-md hover:shadow-lg duration-200 text-sm capitalize max-sm:justify-center"
         >
           <span class="font-semibold">{{ (category as any).name }}</span>
         </NuxtLink>
-
-
     </div>
   </template>
   
@@ -53,11 +46,5 @@
   
 const categories = ref(categoriesData || []);
 
-/*
-  const selectCategory = (category:any) => {
-    
-    console.log('Categoría seleccionada:', category.name);
-       
-  };  */
   </script>
   

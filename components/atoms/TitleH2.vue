@@ -23,7 +23,7 @@ let wClass: string = "";
 let sClass: string = "text-2xl  md:text-3xl";
 
 if (alignTxt === "left") {
-    spanClassTxt = "text-left max-sm:text-center";
+    spanClassTxt = "text-left";
 } else if (alignTxt === "center") {
     spanClassTxt = "text-center";
 } else if (alignTxt === "right") {
