@@ -6,7 +6,7 @@
   <section class="p-28 max-sm:p-3 flex max-sm:flex-col gap-8">
       <div class="w-3/12 max-sm:w-full">
           <SectionsBlogCategories/>
-          
+          <SectionsBlogEvent/>
         </div>
       <div class="w-8/12  max-sm:w-full flex-col">
        
@@ -17,7 +17,7 @@
           <div class="w-full max-sm:w-full">
             <SectionsBlogPostCommunity/>
           </div> 
-          <SectionsBlogEvent/>
+          
           <div class="w-full max-sm:w-full">
             <SectionsBlogPostSecurity/>
           </div>

@@ -17,19 +17,23 @@
         <h2>Error</h2>
       </div>
       <div v-else>
-        <div class="flex flex-wrap grid-row-2 w-full">
-          <SectionsBlogPostsCategory v-for="post in data" :key="post.uri" :post="post"></SectionsBlogPostsCategory>
-        </div>
-        <div>
-          <ElementsPagination @change="refetch" :totalPages="data.total_pages" :currentPage="page" />
-        </div>
+        
+          <div class="text-sm text-gray-700 dark:text-white">Se encontraron {{ dataSizeRef }} post relacionados</div>
+          <div class="flex flex-wrap grid-row-2 w-full">
+            <SectionsBlogPostsCategory 
+            v-for="(post, index) in data" 
+            :key="post.uri" 
+            :post="post" 
+            :isFirstPost="index === 0" ></SectionsBlogPostsCategory>
+          </div>
+          <!--<div>  <ElementsPagination @change="refetch" :totalPages="dataSizeRef/3" :currentPage="page" /> </div>-->
+          
       </div> 
-
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps } from 'vue';
+import { ref, defineProps, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { categorySel } = defineProps(['categorySel']);
@@ -38,10 +42,10 @@ const config = useRuntimeConfig();
 const language = locale.value.toUpperCase();
 
 const selectedCategory = ref(categorySel);
-const postsCount = ref(12);
-const page = ref(1);
+const postsCount = ref(100);
+//const page = ref(1);
 
-const { data, error, pending, refresh } = await useFetch(config.public.wordpressUrl, {
+const { data, error, pending } = await useFetch(config.public.wordpressUrl, {
     lazy: true,
     method: 'post',
     body: {
@@ -94,6 +98,7 @@ const { data, error, pending, refresh } = await useFetch(config.public.wordpress
     }
   });
   
+  
   function transformPost(node: any) {
     return {
       id: node?.id || '',
@@ -107,13 +112,16 @@ const { data, error, pending, refresh } = await useFetch(config.public.wordpress
       categories: node?.categories?.nodes?.map((category: any) => category?.name).join(', ') || '',
     };
   }
-function refetch(pageNumber:any){
-    page.value = pageNumber;
-    refresh()
-}
+  
+  //const dataSize = ref(data.value.length);
+  const dataSizeRef = computed(() => data.value.length);
+/* function refetch(pageNumber:any){
+  dataSize.value = dataSizeRef.value;
+  page.value = pageNumber;
+  refresh();
+} */
 </script>
 <style scoped>
-/* Estilos específicos del componente si es necesario */
 .post {
   margin-bottom: 20px;
 }
@@ -121,5 +129,9 @@ function refetch(pageNumber:any){
 .loading {
   text-align: center;
   margin-top: 20px;
+}
+.is-first-post {
+  font-size: 2.2em; /* Tamaño de fuente más grande */
+  /* Otros estilos que desees aplicar al primer post */
 }
 </style>

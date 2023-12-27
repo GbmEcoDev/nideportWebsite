@@ -11,8 +11,9 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
                 <div class="text-left text-white md:px-12 col-span-2" data-aos="fade-left">
                   <AtomsTitleH1 :texte="$t('blog_title')"></AtomsTitleH1>
-                    <p class="text-left max-sm:text-center">Conoce nuestras actividades.</p>
-                </div>
+                  <div class="flex items-center w-10/12 mt-4 max-sm:w-full" data-aos="fade-up">
+                    <p class="text-[2.25rem] max-sm:text-base max-sm:text-center">Conoce nuestras actividades.</p>
+                </div></div>
             </div>
           </AtomsContainer>
         </div>

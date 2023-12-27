@@ -18,8 +18,8 @@
           <h2>Error </h2>
         </div>
         <div v-else class="w-full">
-          <div class="flex items-start justify-center w-full max-sm:flex-col max-sm:mx-0 max-sm:px-0">
-            <SectionsBlogPost v-for="post in data" :key="post.uri" :post="post" data-aos="fade-up"></SectionsBlogPost>
+          <div class="flex items-start justify-center w-full max-sm:flex-col max-sm:mx-0 max-sm:px-0" data-aos="fade-up">
+            <SectionsBlogPost v-for="post in data" :key="post.uri" :post="post"></SectionsBlogPost>
           </div>
         </div>
       </div>

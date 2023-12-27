@@ -41,7 +41,7 @@
   <style>
   .scroll-to-top-btn {
     position: fixed;
-    bottom: 20px;
+    bottom: 28px;
     right: 20px;
     padding: 10px;
     border-radius: 50%;

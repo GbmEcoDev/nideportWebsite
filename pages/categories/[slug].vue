@@ -1,15 +1,28 @@
 <template>
     <SectionsBlogHeroCategory :categorySel="`${ categoryName }`"/>
-    <AtomsContainer>
-      <div class="my-4 px-40 max-sm:px-2">
-        <NuxtLink to="/Noticias" class="text-blue-500 hover:underline">Noticias</NuxtLink>
-        <span class="mx-2  text-gray-600">/</span>
-        <span class=" text-gray-600">{{ categoryName }}</span>
-      </div>
-        <main class="container mx-auto mt-6 px-40 rounded-lg max-sm:px-2">
+    <div class="px-28 max-sm:px-3 flex max-sm:flex-col gap-8 mt-6">
+      <div class="w-3/12 max-sm:w-full">
+          <SectionsBlogCategories/>
+          <hr>
+          <SectionsBlogEvent/>
+        </div>
+      <div class="w-8/12  max-sm:w-full flex-col">
+        <div class="my-4 px-6 max-sm:px-2">
+          <NuxtLink to="/Noticias" class="text-blue-500 hover:underline">Noticias</NuxtLink>
+          <span class="mx-2  text-gray-600">/</span>
+          <span class=" text-gray-600 dark:text-white">{{ categoryName }}</span>
+        </div>
+          <div class="w-full max-sm:w-full">
+            <main class="container mx-auto mt-6 px-6 rounded-lg max-sm:px-2">
             <SectionsBlogCategoryPost :categorySel="`${ categoryName }`"/>
         </main>
-    </AtomsContainer>   
+          </div>
+        </div>
+  </div>
+  <ScrollTop />
+
+
+
 </template>
 
 <script setup lang="ts">
