@@ -1,7 +1,8 @@
 //import { defineNuxtModule } from 'nuxt'
+
+
 export default defineNuxtConfig({
-  serverMiddleware: ['~/server-middleware/process-form.js'],
-  //devtools: { enabled: true }
+
   css: [
     '@/assets/css/main.css',
   ],
@@ -93,9 +94,14 @@ export default defineNuxtConfig({
   },
 /* */  
   runtimeConfig: {
-    public: {
-        wordpressUrl: 'https://oaks.malvinasargentinas.ar/web/graphql',
-        url_base : process.env.BASE_URL
-    }
-} 
+      public: {
+          wordpressUrl: 'https://oaks.malvinasargentinas.ar/web/graphql',
+          url_base : process.env.BASE_URL,
+          MAILHOST: process.env.MAILHOST,
+          MAILPORT: process.env.MAILPORT,
+          MAILUSER: process.env.MAILUSER,
+          MAILPASSWORD: process.env.MAILPASSWORD,
+          CONTACTMAIL: process.env.CONTACTMAIL
+      }
+  }
 })
