@@ -39,7 +39,7 @@
                 'scrollDown': scrollY === 0
                 }">
                       <AtomsLinkBtn href="#" variant="primary" class="max-[640px]:hidden">
-                          Únete Ahora
+                        {{$t('home_hero_btn_join')}}
                       </AtomsLinkBtn>
                   <ElementsLangSwitcher />
                   <ElementsThemeSwitcher />

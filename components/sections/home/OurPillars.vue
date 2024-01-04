@@ -2,7 +2,7 @@
     <section class="relative scroll-snap-align-start">
        <AtomsContainer></AtomsContainer>
             <div class="flex items-center justify-center py-20 px-40 my-20 bg-primary bg-opacity-10 max-sm:px-10" data-aos="flip-up">
-                <AtomsTitleH2 alignTxt="center" colorTxt="secondary" weightTxt="bold" texte="NUESTRO OBJETIVO ES RECUPERAR 45 MILLONES DE HECTÁREAS Y GARANTIZAR SU CONSERVACIÓN A LARGO PLAZO" />
+                <AtomsTitleH2 alignTxt="center" colorTxt="secondary" weightTxt="bold" :texte="$t('home_pillar_phrase')" />
             </div>
             <div class="flex justify-center items-center pb-16 h-[454px] max-sm:flex-col">
                 <!-- <div class="flex items-center justify-center px-20 w-2/6 h-full max-sm:w-full max-sm:px-2 max-sm:my-8 bg-center max-sm:bg-[left_1rem]" data-aos="fade-right" style="
@@ -11,7 +11,7 @@
                         background-size: contain;
                     "> -->
                     <div class="flex items-center justify-center px-20 w-2/6 h-full max-sm:w-full max-sm:px-2 max-sm:my-8 " data-aos="fade-right">
-                    <AtomsTitleH3 texte="Nuestros Pilares"/>
+                    <AtomsTitleH3 :texte="$t('home_pillar_title')"/>
                 </div>
                 <div class="relative w-4/6 max-sm:w-11/12 h-full">
                     <div 
@@ -31,23 +31,23 @@
                     <div data-slide-recent @scroll="initScroll()" class="flex items-stretch gap-5 overflow-hidden overflow-x-auto invisible-scroll h-full max-sm:w-full max-sm:snap-x">
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" @click="() => toggleModal('PillarOne')" >
-                              <CardsNidePillar title="Restauración de ecosistemas" cover-image="/images/one_pillar.webp" />
+                              <CardsNidePillar :title="$t('home_pillar_c1_title')" cover-image="/images/one_pillar.webp" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" @click="() => toggleModal('PillarTwo')">
-                             <CardsNidePillar title="Conservación de la biodiversidad" cover-image="/images/two_pillar.webp" />
+                             <CardsNidePillar :title="$t('home_pillar_c2_title')" cover-image="/images/two_pillar.webp" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" @click="() => toggleModal('PillarTree')">
-                                <CardsNidePillar title="Comunidades locales" cover-image="/images/tree_pillar.webp" />
+                                <CardsNidePillar :title="$t('home_pillar_c3_title')" cover-image="/images/tree_pillar.webp" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" @click="() => toggleModal('PillarFour')">
-                                <CardsNidePillar title="Acción climatica y tecnología" cover-image="/images/four_pillar.webp" />
+                                <CardsNidePillar :title="$t('home_pillar_c4_title')" cover-image="/images/four_pillar.webp" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" @click="() => toggleModal('PillarFive')">
-                                <CardsNidePillar title="Seguridad y prevención" cover-image="/images/five_pillar.webp" />
+                                <CardsNidePillar :title="$t('home_pillar_c5_title')" cover-image="/images/five_pillar.webp" />
                             </div>
                     </div>
                 </div>

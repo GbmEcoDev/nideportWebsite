@@ -1,10 +1,9 @@
 <template>
     <section class="bg-gradient-to-b from-[rgb(1,106,129)] to-[rgb(15,95,57)] p-24 max-sm:px-1 scroll-snap-align-start">
         <AtomsContainer>
-            <AtomsTitleH2 texte="Conservación del Capital Natural" alignTxt="center" colorTxt="white" weightTxt="normal"/>
+            <AtomsTitleH2 :texte="$t('project_object_title1')" alignTxt="center" colorTxt="white" weightTxt="normal"/>
              <div class="mb-6"><p class="text-white text-base pt-10 text-center">
-                Transformamos nuestra tierra en un entorno digital mediante tecnologías satelitales y drones.
-                Desarrollamos un sistema de supervisión y control en colaboración con las autoridades regionales y locales, que nos permite prevenir incendios forestales, intrusiones, caza ilegal y tala descontrolada.
+              {{$t('project_object_phrase1')}}
             </p></div> 
             <Carousel :items-to-show="carouselItemsToShow1" :wrap-around="true" :starting-from="1" :snap-align="'start'" :navigation="true">
                 <Slide  key="1" class="p-2 overflow-hidden">
@@ -22,10 +21,9 @@
             </Carousel>
         </AtomsContainer>
         <AtomsContainer class="mt-16">
-            <AtomsTitleH2 texte="Comunidades locales" alignTxt="center" colorTxt="white" weightTxt="normal"/>
+            <AtomsTitleH2 :texte="$t('project_object_title1')" alignTxt="center" colorTxt="white" weightTxt="normal"/>
             <div class="mb-6"><p class="text-white text-base pt-10 text-center">
-                El proyecto está situado cerca de la comunidad indígena de Tekoa Alecrin. Realizamos una investigación exhaustiva para comprender su cultura y estructura social, asegurándonos de respetar sus formas de interacción. Implementamos una Consulta Gratuita, Previa e Informada (CGPI) para establecer una relación colaborativa y explorar maneras de mejorar sus condiciones de vida.
-            </p></div>
+              {{$t('project_object_phrase2')}}</p></div>
             <Carousel :items-to-show="carouselItemsToShow2" :wrap-around="true" :starting-from="1" :snap-align="'start'">
                 <Slid key="5"  class="p-2 overflow-hidden">
                     <nuxt-img src="/images/obj-img-05.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-05.jpg')"/> 
@@ -42,10 +40,9 @@
             </Carousel>
         </AtomsContainer>
         <AtomsContainer class="mt-16">
-            <AtomsTitleH2 texte="Ciudado de la bodiversidad" alignTxt="center" colorTxt="white" weightTxt="normal"/>
+            <AtomsTitleH2 :texte="$t('project_object_title3')" alignTxt="center" colorTxt="white" weightTxt="normal"/>
             <div class="mb-6"><p class="text-white text-base pt-10 text-center">
-                Llevamos a cabo inventarios de fauna para identificar diversas especies y poblaciones, priorizando aquellas que contribuyen a formar un hábitat propicio para la prosperidad de la fauna nativa. Nuestra amplia gama de actividades nos permite obtener la certificación Clima, Comunidad y Biodiversidad (CCB) más alta, evidenciando nuestro compromiso con la sostenibilidad y la preservación de la biodiversidad.
-            </p></div>
+              {{$t('project_object_phrase3')}}</p></div>
             <Carousel :items-to-show="carouselItemsToShow3" :wrap-around="true" :starting-from="1" :snap-align="'start'">
                 <Slide key="9" class="p-2 overflow-hidden">
                     <nuxt-img src="/images/obj-img-09.jpg" class="w-full aspect-square object-cover rounded-2xl mx-1" alt="" @click="openModal('/images/obj-img-09.jpg')"/> 
@@ -72,7 +69,6 @@
           </div>
           <img :src="selectedImage" alt="Selected Image" class="max-sm:h-auto max-sm:w-auto h-screen w-auto z-60" />
         </div>
-        
       </div>
     </div>              
     </section>

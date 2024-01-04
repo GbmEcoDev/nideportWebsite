@@ -5,7 +5,7 @@
                 <div class="flex md:h-full ">
                     <div
                         class="w-full md:h-full bg-white dark:bg-body pt-10">
-                       <AtomsTitleH2 sizeTxt="text-[28px]" alignTxt="left" colorTxt="secondary" weightTxt="bold" class="tracking-tighter" texte="Durante los últimos 80 años, el Bosque Atlántico ha sufrido una intensiva tala de especies nativas, lo que ha llevado a una degradación severa y pérdidas significativas de biodiversidad y servicios ecosistémicos." />
+                       <AtomsTitleH2 sizeTxt="text-[28px]" alignTxt="left" colorTxt="secondary" weightTxt="bold" class="tracking-tighter" :texte="$t('project_gs1_phrase')" />
                     </div>
                 </div>
                 <div class="md:py-2 lg:py-4 relative col-span-1 h-full ">

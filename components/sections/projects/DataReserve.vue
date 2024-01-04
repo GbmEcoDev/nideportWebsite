@@ -14,8 +14,8 @@
                       <div class="w-full max-sm:mt-10">
                           <img src="/images/objetive-1.svg" alt="" class="pb-5 mx-auto">
                       </div>
-                      <AtomsTitleH2 texte="Composición del bosque" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
-                      <p class="text-md text-center py-8 text-gray-500 dark:text-white">22,878 hectares of Atlantic Forest</p>
+                      <AtomsTitleH2 :texte="$t('project_data_c1_title')" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
+                      <p class="text-md text-center py-8 text-gray-500 dark:text-white">{{$t('project_data_c1_parag')}}</p>
                   </div>
               </div>
             </Slide>
@@ -31,8 +31,8 @@
                       <div class="w-full max-sm:mt-10">
                           <img src="/images/objetive-2.svg" alt="" class="pb-5 mx-auto">
                       </div>
-                      <AtomsTitleH2 texte="Biodiversidad" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
-                      <p class="text-md text-center py-8 text-gray-500 dark:text-white">3,000 vascular species · 500 vertebrate species · 300 bird species · 116 mammal species</p>
+                      <AtomsTitleH2 :texte="$t('project_data_c2_title')" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
+                      <p class="text-md text-center py-8 text-gray-500 dark:text-white">{{$t('project_data_c2_parag')}}</p>
                   </div>
               </div>
             </Slide>
@@ -48,8 +48,8 @@
                       <div class="w-full max-sm:mt-10">
                           <img src="/images/objetive-3.svg" alt="" class="pb-5 mx-auto">
                       </div>
-                      <AtomsTitleH2 texte="Sumidero de carbono" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
-                      <p class="text-md text-center py-8 text-gray-500 dark:text-white">2,455,977 tons of total Carboncaptured in forest biomass</p>
+                      <AtomsTitleH2 :texte="$t('project_data_c3_title')" alignTxt="center" colorTxt="secondary" weightTxt="bold" />
+                      <p class="text-md text-center py-8 text-gray-500 dark:text-white">{{$t('project_data_c3_parag')}}</p>
                   </div>
               </div>
             </Slide>

@@ -27,7 +27,7 @@
                     </h1>
                     <div class="flex items-center max-sm:justify-center mt-12 relative" data-aos="fade-left">
                             <AtomsLinkBtn :href="localePath({ name: 'projects' })" variant="primary">
-                                Únete ahora
+                              {{$t('home_hero_btn_join')}}
                             </AtomsLinkBtn>
                     </div>
                   </div>
