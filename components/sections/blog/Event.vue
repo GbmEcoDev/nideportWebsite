@@ -15,6 +15,7 @@
             </div>
         </div>
     </div>
+    <TestEvento/>
 </template>
 
 <script setup lang="ts">

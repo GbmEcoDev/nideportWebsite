@@ -6,12 +6,9 @@
                 'transition opacity-20': scrollY > 0,
                 'transition opacity-100 ': scrollY === 0
                 }"
-        >
-      <div class="absolute top-0 w-full h-full" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 20%, rgba(0, 0, 0, 0.00) 100%);"></div>
-      <div class="absolute bottom-0 w-full h-[24em]" 
-      style="background:linear-gradient(0deg, rgba(255, 255, 255, 1) 65%, rgba(255, 255, 255, 0.00) 100%);"
-      :style="{ background: getLinearGradient() }"
-     ></div>
+        ><!-- style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 10%, rgba(0, 0, 0, 0.00) 100%);" -->
+      <div class="absolute top-0 w-full h-full  bg-gradient-to-b from-gray-900" ></div><!-- style="background:linear-gradient(0deg, rgba(255, 255, 255, 1) 65%, rgba(255, 255, 255, 0.00) 100%);" -->
+      <div class="absolute bottom-0 w-full h-[24em] " :class="bglinear"></div>
     </div>
    <div class="relative mt-[-18em] z-2" >
     
@@ -49,19 +46,18 @@
   </template>
   
   <script setup>
+  import {ref} from 'vue';
   import { useRoute } from 'vue-router';
   const route = useRoute();
   const uri = route.params.uri.join('/');
   const config = useRuntimeConfig();
 
   const color = useColorMode();
-  //console.log("mode",color.value);
+  console.log("mode",color.value);
 
-  function getLinearGradient() {
-  return color.value === 'dark'
-    ? 'linear-gradient(0deg, rgba(17, 24, 39, 1) 65%, rgba(17, 24, 39, 0.00) 100%)'
-    : 'linear-gradient(0deg, rgba(255, 255, 255, 1) 65%, rgba(255, 255, 255, 0.00) 100%);';
-} 
+   const bglinear = color.value === 'light' ? 'bg-gradient-to-t from-white ' : 'bg-gradient-to-t from-gray-900 border-t-2 border-red-600';
+  console.log("bg",bglinear);
+
   const { data, pending, error } = await useFetch(config.public.wordpressUrl, {
     method: 'get',
     query: {

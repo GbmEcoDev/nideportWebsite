@@ -15,7 +15,8 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     'vue3-carousel-nuxt',
     'nuxt-swiper',
-    'nuxt3-leaflet'
+    'nuxt3-leaflet',
+
   ],
   carousel: {
     prefix: 'MyPrefix'
