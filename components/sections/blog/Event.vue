@@ -8,14 +8,13 @@
                     <AtomsTitleH2 texte="Programa de Carbono Participativo" alignTxt="left" colorTxt="white" weightTxt="bold" sizeTxt="max-lg:text-2xl"/>
                     <p class="text-white">¿Qué es el Carbono Participativo?</p>
                     <div class="flex  my-10 h-12 ">
-                        
                         <AtomsLinkBtn :href="`${config.public.url_base}/es/programa-de-carbono-participativo/`" variant="primary">Más Info</AtomsLinkBtn>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <TestEvento/>
+    <ListEvento/><!--  -->
 </template>
 
 <script setup lang="ts">

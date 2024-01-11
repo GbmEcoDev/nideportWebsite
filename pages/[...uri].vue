@@ -16,7 +16,7 @@
       <div class="my-4 px-40 max-sm:px-2">
         <NuxtLink to="/" class="text-blue-500 hover:underline">Inicio</NuxtLink>
         <span class="mx-2  text-gray-600 dark:text-slate-300">/</span>
-        <NuxtLink to="/Noticias" class="text-blue-500 hover:underline">Noticias</NuxtLink>
+        <NuxtLink to="/blog" class="text-blue-500 hover:underline">Noticias</NuxtLink>
         <span class="mx-2  text-gray-600 dark:text-slate-300">/</span>
         <span class=" text-gray-600 dark:text-slate-300">{{ data.title }}</span>
       </div>
@@ -40,7 +40,6 @@
             </div>
         </main>
       </AtomsContainer>
-    
   </div>
     <ScrollTop />
   </template>
@@ -51,12 +50,8 @@
   const route = useRoute();
   const uri = route.params.uri.join('/');
   const config = useRuntimeConfig();
-
   const color = useColorMode();
-  console.log("mode",color.value);
-
-   const bglinear = color.value === 'light' ? 'bg-gradient-to-t from-white ' : 'bg-gradient-to-t from-gray-900 border-t-2 border-red-600';
-  console.log("bg",bglinear);
+  const bglinear = color.value === 'light' ? 'bg-gradient-to-t from-white via-white' : 'bg-gradient-to-t from-gray-900 ';
 
   const { data, pending, error } = await useFetch(config.public.wordpressUrl, {
     method: 'get',

@@ -45,7 +45,7 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',  // recommended
     },
-    customRoutes: 'config',   // disable custom route with page components
+    customRoutes: 'config',   //config or disable custom route with page components
     pages: {
       index: {
         en: '/', 
@@ -61,7 +61,7 @@ export default defineNuxtConfig({
       },
       blog: {
         en: '/blog', 
-        es: '/noticias'     
+        es: '/blog'     
       },
       contact: {
         en: '/contact', 
@@ -72,6 +72,19 @@ export default defineNuxtConfig({
         es: '/mapa'     
       }
     },
+/*     generate: {
+      exclude: [
+        '/en/categories/technology-en',
+        '/categories/biodiversidad',
+        '/categories/tecnologia',
+        '/categories/seguridad',
+        '/categories/sustentabilidad',
+        '/categories/destacadas',
+        '/blog',
+        '/en/blog',
+        // Agrega aquí cualquier otra ruta problemática
+      ],
+    }, */
     lazy: true,
     langDir: "locales",
     strategy: "prefix_except_default",
@@ -96,8 +109,8 @@ export default defineNuxtConfig({
 /* */  
   runtimeConfig: {
       public: {
-           wordpressUrl: 'https://blog.nideport.com/graphql',
-          //wordpressUrl: 'https://oaks.malvinasargentinas.ar/web/graphql',
+          wpEventos : process.env.WP_EVENT,
+          wordpressUrl: process.env.WP_POST,
           url_base : process.env.BASE_URL,
           MAILHOST: process.env.MAILHOST,
           MAILPORT: process.env.MAILPORT,

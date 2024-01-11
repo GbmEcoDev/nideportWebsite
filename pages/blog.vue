@@ -10,7 +10,7 @@
         </div>
       <div class="w-8/12  max-sm:w-full flex-col">
        
-        <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Últimas Noticias</p>
+        <!----> <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Últimas Noticias</p>
           <div class="w-full max-sm:w-full">
             <SectionsBlogPostBiodiversity />
           </div>
@@ -24,12 +24,12 @@
           <div class="w-full max-sm:w-full">
             <SectionsBlogPostTechnology/>
           </div>
-        </div>
+        </div> 
   </section>
   <ScrollTop />
 </template>
 <script setup lang="ts">
-const route = useRoute()
+const route = useRoute();
 useHead({
   title: 'Nideport - Noticias',
   meta: [

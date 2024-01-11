@@ -8,7 +8,7 @@
         </div>
       <div class="w-8/12  max-sm:w-full flex-col">
         <div class="my-4 px-6 max-sm:px-2">
-          <NuxtLink to="/Noticias" class="text-blue-500 hover:underline">Noticias</NuxtLink>
+          <NuxtLink to="/blog" class="text-blue-500 hover:underline">Noticias</NuxtLink>
           <span class="mx-2  text-gray-600">/</span>
           <span class=" text-gray-600 dark:text-white">{{ categoryName }}</span>
         </div>
@@ -20,23 +20,16 @@
         </div>
   </div>
   <ScrollTop />
-
-
-
 </template>
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 
-  const { locale, setLocale } = useI18n();
+  const { locale } = useI18n();
   const language = locale.value.toUpperCase();
-  console.log(language);
-
   const router = useRouter()
   const currentRoute = router.currentRoute.value.path
   const routeParts = currentRoute.split('/')
-  //const categoryName = routeParts[2]
   const categoryName = language === "ES" ? routeParts[2] : routeParts[3]
-  console.log("routerparts:", categoryName)
 </script>
