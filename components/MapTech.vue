@@ -11,8 +11,8 @@
       ></l-tile-layer><UBadge>alerta</UBadge>
       <l-geo-json :geojson="limites" :options="options" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" />
       <l-geo-json :geojson="cuadriculas" :options="options" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" />
-      <l-geo-json :geojson="fajas" :options="optionsFajas" layer-type="overlay" name="Fajas" />
-      <l-geo-json :geojson="areasDegradadas" :options="styleFunctionAreasDeg" layer-type="overlay" name="Áreas degradadas" />
+      <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" />
+      <l-geo-json :geojson="areasDegradadas" :options="optionsAreasDeg" :options-style="styleFunctionAreasDeg" layer-type="overlay" name="Áreas degradadas" />
       <l-geo-json :geojson="alertas" :options="optionsAlertasRayos" layer-type="overlay" name="Rayos" />
       <l-geo-json :geojson="alertas" :options="optionsAlertasAlta" layer-type="overlay" name="Alertas probabilidad alta" />
       <l-geo-json :geojson="alertas" :options="optionsAlertasMedia" layer-type="overlay" name="Alertas probabilidad media" />
@@ -34,36 +34,16 @@ const alertas = ref(null);
 const fotos = ref(null);
 const areasDegradadas = ref(null);
 
-const onEachFeatureFunction = (feature, layer) => {
-  let opciones = { year: 'numeric', month: 'short', day: 'numeric' };
-  let fecha = new Date(feature.properties.acq_date).toLocaleDateString('es-AR', opciones);
-  layer.bindTooltip('Fecha: ' + fecha, { permanent: false, sticky: true });
-};
-
-
-
-const onEachFeatureAreasDeg = (feature, layer) => {
-  layer.bindPopup(
-    'Nombre: ' + feature.properties.Name,
-    { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
-  );
-};
-
-const onEachFeatureFajas = (feature, layer) => {
-  layer.bindPopup(
-    feature.properties.description,
-    { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
-  );
-};
-
+// Límites----------------------------------------
 const styleFunctionLimites = {
-  color: 'red',
+  color: 'blue',
   weight: 4,
   opacity: 0.7,
   fillOpacity: 0.0,
   interactive: false
 };
 
+// Cuadrículas------------------------------------
 const styleFunctionCuadriculas = {
   color: 'green',
   weight: 1.5,
@@ -72,6 +52,7 @@ const styleFunctionCuadriculas = {
   interactive: true
 };
 
+// Áreas donde se refoesta mediante método de Faja
 const styleFunctionFajas = {
   color: 'red',
   weight: 2,
@@ -79,7 +60,16 @@ const styleFunctionFajas = {
   fillOpacity: 0.0,
   interactive: true
 };
+const optionsFajas = {
+  onEachFeature: (feature, layer) => {
+  layer.bindPopup(
+    feature.properties.description,
+    { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
+  );
+}
+};
 
+// Areas degradadas ------------------------------
 const styleFunctionAreasDeg = {
   color: 'black',
   weight: 2,
@@ -87,14 +77,16 @@ const styleFunctionAreasDeg = {
   fillOpacity: 0.0,
   interactive: true
 };
-const onEachFeatureFotos = (feature, layer) => {
-  if (feature.properties.foto) {
+const optionsAreasDeg = {
+  onEachFeature: (feature, layer) => {
     layer.bindPopup(
-      '<img src="/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '',
-      { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
-    );
+      'Nombre: ' + feature.properties.Name,
+      { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
+    )
   }
-};
+}
+
+// Fotos de trabajo en campo ----------------------
 const optionsFotos = {
   pointToLayer: function(feature, latlng) {
     return L.marker(latlng, {
@@ -107,10 +99,91 @@ const optionsFotos = {
       })
     });
   },
-  onEachFeature: onEachFeatureFotos
+  onEachFeature: (feature, layer) => {
+    if (feature.properties.foto) {
+      layer.bindPopup(
+        '<img src="/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '',
+        { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
+      );
+    }
+  }
 };
 
 
+// OnEach para Alertas
+const onEachFeatureFunction = (feature, layer) => {
+        let opciones = { year: 'numeric', month: 'short', day: 'numeric' }
+        let fecha = new Date(feature.properties.acq_date).toLocaleDateString('es-AR', opciones)
+        layer.bindTooltip('Fecha: '+ fecha, { permanent: false, sticky: true });
+      };
+
+// Alertas por rayos -----------------------------
+const optionsAlertasRayos = {
+  filter: function(feature, layer) {
+      if((feature.properties.tipo == 'Rayo')
+      && (feature.properties.acq_date >= '2023-11-15')
+      && (feature.properties.acq_date <= '2023-12-15')
+    ) 
+    return true;
+  },
+  pointToLayer: function(feature, latlng) {
+          return L.marker(latlng, {icon: new L.Icon({
+            'iconUrl': '/images/icon/alertas-thunder.svg',
+            'iconSize': [20, 20],
+            'iconAnchor': [0, 0],
+            'popupAnchor':  [1, -24]
+          })});
+      },
+  onEachFeature: onEachFeatureFunction
+}
+
+// Alertas Baja probailidad  ----------------------
+const optionsAlertasBajas = {
+  filter: function(feature, layer) {
+    if(feature.properties.tipo == 'Con probabilidad baja') return true;
+  },
+  pointToLayer: function(feature, latlng) {
+          return L.marker(latlng, {icon: new L.Icon({
+            'iconUrl': '/images/icon/alertas-fire-baja.svg',
+            'iconSize': [20, 20],
+            'iconAnchor': [0, 0],
+            'popupAnchor':  [1, -24]
+          })});
+      },
+  onEachFeature: onEachFeatureFunction
+}
+
+// Alertas probailidad media ----------------------
+const optionsAlertasMedia = {
+  filter: function(feature, layer) {
+    if(feature.properties.tipo == 'Con probabilidad media') return true;
+  },
+  pointToLayer: function(feature, latlng) {
+          return L.marker(latlng, {icon: new L.Icon({
+            'iconUrl': '/images/icon/alertas-fire-media.svg',
+            'iconSize': [20, 20],
+            'iconAnchor': [0, 0],
+            'popupAnchor':  [1, -24]
+          })});
+      },
+  onEachFeature: onEachFeatureFunction
+}
+
+// Alertas probailidad alta ----------------------
+const optionsAlertasAlta = {
+  filter: function(feature, layer) {
+    if(feature.properties.tipo == 'Con probabilidad alta') return true;
+  },
+  pointToLayer: function(feature, latlng) {
+          return L.marker(latlng, {icon: new L.Icon({
+            'iconUrl': '/images/icon/alertas-fire-alta.svg',
+            'iconSize': [20, 20],
+            'iconAnchor': [0, 0],
+            'popupAnchor':  [1, -24]
+          })});
+      },
+  onEachFeature: onEachFeatureFunction
+}
 
 const fetchData = async () => {
   const config = useRuntimeConfig();
