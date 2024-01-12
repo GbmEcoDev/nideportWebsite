@@ -12,13 +12,14 @@
             <div class="p-4 flex-1">
             <listEvento />
             <UVerticalNavigation :links="links" />
+            <UCheckbox v-model="selected" name="cuadriculas" label="Cuadrículas" />
             </div>
         </USlideover>
         </div>
    </div>
   </template>
   <script setup lang="ts">
- 
+  const selected = ref(true)
   const route = useRoute();
   const { t, locale, setLocale } = useI18n()
   const localePath = useLocalePath()
