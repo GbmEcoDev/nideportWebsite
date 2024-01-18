@@ -1,5 +1,5 @@
 import { onMounted, onUnmounted } from 'vue'
-import { useEventBus, Events, ApplicationEventCallback } from '@/lib/event'
+//import { useEventBus, Events, ApplicationEventCallback } from '@/lib/event'
 
 export function useEventListener(target: HTMLElement, eventName: string, callback: (event: Event) => void) {
   // if you want, you can also make this support selector strings as target

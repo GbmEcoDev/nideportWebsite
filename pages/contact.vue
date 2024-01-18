@@ -1,7 +1,7 @@
 <template>
    <SectionsContactHeroContact/>
    <SectionsContactMoreInfoContact/>
-   <SectionsContactFormInfo/>
+   <!-- <SectionsContactFormInfo/> -->
    <ScrollTop />
 </template>
 <script setup lang="ts">

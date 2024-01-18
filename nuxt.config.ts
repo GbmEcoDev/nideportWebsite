@@ -18,9 +18,11 @@ export default defineNuxtConfig({
     'nuxt3-leaflet',
     '@nuxt/ui',
   ],
+  
   carousel: {
     prefix: 'MyPrefix'
   },
+
   colorMode: {
     preference: 'light', // default value of $colorMode.preference
     fallback: 'light', // fallback value if not system preference found
@@ -102,6 +104,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
       public: {
           wpEventos : process.env.WP_EVENT,
+          wpFindings : process.env.WP_FIND,
+          wpRestora: process.env.WP_RESTO,
           wordpressUrl: process.env.WP_POST,
           url_base : process.env.BASE_URL,
           MAILHOST: process.env.MAILHOST,

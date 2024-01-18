@@ -1,5 +1,5 @@
 <template>
-
+ 
   <div class="relative z-50 h-screen w-screen">
     
     <l-map ref="map" class="z-0" :zoom="zoom" :center="[-26.52536, -53.8127]">
@@ -19,12 +19,17 @@
       <l-geo-json :geojson="alertas" :options="optionsAlertasBajas" layer-type="overlay" name="Alertas probabilidad baja" />
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" />
     </l-map>
+    <p>ID: {{ idFotoSelect }}</p>
   </div>
 </template>
 <script setup>
 import "leaflet/dist/leaflet.css";
 import { ref, onMounted } from 'vue';
 import { LMap, LTileLayer, LGeoJson, LControlLayers, LIcon } from "@vue-leaflet/vue-leaflet";
+
+const props = defineProps({
+  idFotoSelect: String
+});
 
 const zoom = ref(12);
 const limites = ref(null);
@@ -45,7 +50,7 @@ const styleFunctionLimites = {
 
 // Cuadrículas------------------------------------
 const styleFunctionCuadriculas = {
-  color: 'green',
+  color: 'gray',
   weight: 1.5,
   opacity: 0.6,
   fillOpacity: 0.0,
@@ -54,7 +59,7 @@ const styleFunctionCuadriculas = {
 
 // Áreas donde se refoesta mediante método de Faja
 const styleFunctionFajas = {
-  color: 'red',
+  color: 'green',
   weight: 2,
   opacity: 0.7,
   fillOpacity: 0.0,
@@ -71,7 +76,7 @@ const optionsFajas = {
 
 // Areas degradadas ------------------------------
 const styleFunctionAreasDeg = {
-  color: 'black',
+  color: 'red',
   weight: 2,
   opacity: 0.5,
   fillOpacity: 0.0,
@@ -250,4 +255,4 @@ onMounted(() => {
   .popUpClass{
     width: fit-content;
   }
-</style>
+</style>~/composable/useEventData~/composables/useEventData

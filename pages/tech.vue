@@ -1,16 +1,16 @@
 <template>
     <div class="relative w-screen h-screen z-0">
         
-      <div class="absolute z-0 w-screen h-screen"><MapTech/></div>
+      <div class="absolute z-0 w-screen h-screen"><MapTech @ver-disco="recibirId"/></div>
       <div class="absolute top-0 left-8 h-18 w-48">
         <NuxtLink :to="localePath({ name: 'index' })" class=" relative z-1000" ><Logo color="dark"/></NuxtLink>
       </div>
-      <div class="absolute z-55 bottom-4 left-4">
-        <UButton label="Open" @click="isOpen = true" />
+      <div class="absolute z-55 bottom-4 right-8">
+        <UButton label="DISCOVERY" @click="isOpen = true" color="primary" size="xl" icon="i-heroicons-cursor-arrow-rays-20-solid"/>
 
-        <USlideover v-model="isOpen" :transition="false">
+        <USlideover v-model="isOpen" :transition="true" side="left">
             <div class="p-4 flex-1">
-            <listEvento />
+            <SectionsMapappListDiscovery />
             <UVerticalNavigation :links="links" />
             <UCheckbox v-model="selected" name="cuadriculas" label="Cuadrículas" />
             </div>
@@ -24,6 +24,12 @@
   const { t, locale, setLocale } = useI18n()
   const localePath = useLocalePath()
   const isOpen = ref(false);
+
+   const recibirId = (idFotoSelect: string) => {
+    alert(idFotoSelect);
+    console.log(`El ID en tech: ${idFotoSelect}`);
+  } 
+
   useHead({
     title: 'Nideport - Tech',
     meta: [
@@ -39,21 +45,21 @@
   })
 
   const links = [{
-  label: 'Profile',
+  label: 'Restauracion',
   avatar: {
     src: 'https://avatars.githubusercontent.com/u/739984?v=4'
   },
   badge: 100
 }, {
-  label: 'Installation',
+  label: 'Biodiversidad',
   icon: 'i-heroicons-home',
   to: '/getting-started/installation'
 }, {
-  label: 'Vertical Navigation',
+  label: 'Seguridad',
   icon: 'i-heroicons-chart-bar',
   to: '/navigation/vertical-navigation'
 }, {
-  label: 'Command Palette',
+  label: 'Comunidad',
   icon: 'i-heroicons-command-line',
   to: '/navigation/command-palette'
 }]
