@@ -1,13 +1,13 @@
 <template>
     <div class="relative w-screen h-screen z-0">
-      <div class="absolute z-0 w-screen h-screen"><MapTech :fotoId="idSeleccionado" /></div>
+      <div class="absolute z-0 w-screen h-screen"><MapTech :fotoId="idSeleccionado" :estadoLimites="selected"/></div>
       <div class="absolute top-0 left-8 h-18 w-48">
         <NuxtLink :to="localePath({ name: 'index' })" class=" relative z-1000" ><Logo color="dark"/></NuxtLink>
       </div>
       <div class="absolute z-55 bottom-4 right-8">
         <UButton label="DESCUBRIR" @click="isOpen = true" color="primary" size="xl" icon="i-heroicons-cursor-arrow-rays-20-solid"/>
 
-        <USlideover v-model="isOpen" :transition="true" side="left">
+        <USlideover v-model="isOpen" :transition="true" side="left" :overlay="false">
             <Logo/>
             <div class="p-4 flex-1">
               <UTabs :items="items">
@@ -27,7 +27,7 @@
               </template>
             </UTabs>
 
-            <UCheckbox v-model="selected" name="cuadriculas" label="Cuadrículas" />
+            <UCheckbox v-model="selected" name="cuadriculas" label="Cuadrículas" @change="layerVisibility(selected)"/>
             </div>
         </USlideover>
         </div>
@@ -101,5 +101,9 @@ useHead({
     layout: 'application'
   })
 
+  const emit = defineEmits(['layer-vis']);
+  const layerVisibility = (estado: Boolean) => {
+    emit('layer-vis', estado);
+  };
 
 </script>

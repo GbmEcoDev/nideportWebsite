@@ -11,7 +11,7 @@
         name="Google Satellite"
       ></l-tile-layer>
       <UBadge>alert</UBadge>
-      <l-geo-json :geojson="limites" :options="options" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" />
+      <l-geo-json :geojson="limites" :options="options" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
       <l-geo-json :geojson="cuadriculas" :options="options" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" />
       <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" />
       <l-geo-json :geojson="areasDegradadas" :options="optionsAreasDeg" :options-style="styleFunctionAreasDeg" layer-type="overlay" name="Áreas degradadas" />
@@ -30,7 +30,7 @@ import { ref, onMounted,watch } from 'vue';
 import { LMap, LTileLayer, LGeoJson, LControlLayers, LIcon } from "@vue-leaflet/vue-leaflet";
 
 // Definir la prop para recibir el ID
-const props = defineProps(['fotoId']);
+const props = defineProps(['fotoId', 'estadoLimites']);
 
 // Usar ref para almacenar el ID recibido
 const idToShow = ref(props.fotoId);
