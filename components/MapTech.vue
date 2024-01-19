@@ -3,16 +3,11 @@
   <div class="relative z-50 h-screen w-screen">
     <p>Id desde otro componente: {{ fotoId }}</p> 
 
-    <l-map ref="map" class="z-0" :zoom="zoom" :center="[-26.52536, -53.8127]">
-     <l-control-layers position="topright" ></l-control-layers>
-      <l-tile-layer
-        url="https://mt3.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}"
-        layer-type="base"
-        name="Google Satellite"
-      ></l-tile-layer>
+    <l-map ref="map" class="z-0" :zoom="zoom" :center="[-26.52536, -53.91]" :options="mapoptions" >
+      <l-tile-layer url="https://mt1.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
       <UBadge>alert</UBadge>
-      <l-geo-json :geojson="limites" :options="options" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
-      <l-geo-json :geojson="cuadriculas" :options="options" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" />
+      <l-geo-json :geojson="limites" :options="options" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites"  />
+      <l-geo-json :geojson="cuadriculas" :options="options" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoLimites />
       <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" />
       <l-geo-json :geojson="areasDegradadas" :options="optionsAreasDeg" :options-style="styleFunctionAreasDeg" layer-type="overlay" name="Áreas degradadas" />
       <l-geo-json :geojson="alertas" :options="optionsAlertasRayos" layer-type="overlay" name="Rayos" />
@@ -30,7 +25,7 @@ import { ref, onMounted,watch } from 'vue';
 import { LMap, LTileLayer, LGeoJson, LControlLayers, LIcon } from "@vue-leaflet/vue-leaflet";
 
 // Definir la prop para recibir el ID
-const props = defineProps(['fotoId', 'estadoLimites']);
+const props = defineProps(['fotoId', 'estadoLimites', 'featureByName']);
 
 // Usar ref para almacenar el ID recibido
 const idToShow = ref(props.fotoId);
@@ -40,13 +35,17 @@ watch(() => {
   idToShow.value = props.fotoId;
 }, { immediate: true });
 
-const zoom = ref(12);
+const zoom = ref(11);
 const limites = ref(null);
 const cuadriculas = ref(null);
 const fajas = ref(null);
 const alertas = ref(null);
 const fotos = ref(null);
 const areasDegradadas = ref(null);
+
+const mapoptions = {
+  zoomControl: false
+}
 
 // Límites----------------------------------------
 const styleFunctionLimites = {
@@ -103,6 +102,7 @@ const optionsAreasDeg = {
 // Fotos de trabajo en campo ----------------------
 const optionsFotos = {
   pointToLayer: function(feature, latlng) {
+  if (feature.properties.ubicacion === 'externo'){
     return L.marker(latlng, {
       icon: new L.Icon({
         'iconUrl': '/images/rgs1_nov_23/' + feature.properties.foto,
@@ -112,6 +112,17 @@ const optionsFotos = {
         'className': 'fotosClass'
       })
     });
+  } else {
+    return L.marker(latlng, {
+      icon: new L.Icon({
+        'iconUrl': '/images/rgs1_nov_23/' + feature.properties.foto,
+        'iconSize': [30, 30],
+        'iconAnchor': [13, 27],
+        'popupAnchor': [1, -24],
+        'className': 'fotosClass2'
+      })
+    });
+  }
   },
   onEachFeature: (feature, layer) => {
     if (feature.properties.foto) {
@@ -227,9 +238,22 @@ onMounted(() => {
   .leaflet-popup-content {
     width: 250px;
   }
+  .fotosClass2 {
+    border-color: rgb(255, 255, 255);
+    border-width: 1px;
+  }
   .fotosClass {
     border-color: rgb(255, 255, 255);
     border-width: 1px;
+    animation: pulse-animation 2s infinite;
+  }
+  @keyframes pulse-animation {
+    0% {
+      box-shadow: 0 0 0 0px rgb(255, 255, 255, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+    }
   }
   .leaflet-popup-content-wrapper, .leaflet-popup-tip{
     color: white;
