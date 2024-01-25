@@ -26,8 +26,19 @@
                 </UCard>
               </template>
             </UTabs>
-
-            <UCheckbox v-model="selected" name="cuadriculas" label="Cuadrículas" @change="layerVisibility(selected)"/>
+            </div>
+            <div class="p-4 flex-1">
+              <UCard>
+                <UCheckbox color="black" v-model="selected" name="limites" label="Límites" @change="layerVisibility(selected , 'limites' )"/>
+                <UCheckbox color="gray" v-model="selected" name="cuadriculas" label="Cuadrículas" @change="layerVisibility(selectedCuadricula, 'cuadriculas')"/>
+                <UCheckbox color="green" v-model="selected" name="fajas" label="Área reforestada" @change="layerVisibility(selected)"/>
+                <UCheckbox color="red" v-model="selected" name="areasDegradadas" label="Áreas a refosrestar" @change="layerVisibility(selected)"/>
+                <UCheckbox color="blue" v-model="selected" name="rayos" label="Alertas por rayos" @change="layerVisibility(selected)"/>
+                <UCheckbox color="yellow" v-model="selected" name="alertasBajas" label="Alertas con probabilidad baja" @change="layerVisibility(selected)"/>
+                <UCheckbox color="orange" v-model="selected" name="alertasMedia" label="Alertas con probabilidad media" @change="layerVisibility(selected)"/>
+                <UCheckbox color="red" v-model="selected" name="alertasAlta" label="Alertas con probabilidad alta" @change="layerVisibility(selected)"/>
+                <UCheckbox color="black" v-model="selected" name="fotos" label="Registros de trabajo en campo" @change="layerVisibility(selected)"/>
+              </UCard>
             </div>
         </USlideover>
         </div>
@@ -37,6 +48,8 @@
   <script setup lang="ts">
   import { ref, onMounted } from 'vue';
   const selected = ref(true)
+  const selectedCuadricula = ref(true)
+
   //const route = useRoute();
   const { t, locale, setLocale } = useI18n()
   const localePath = useLocalePath()
@@ -102,8 +115,8 @@ useHead({
   })
 
   const emit = defineEmits(['layer-vis']);
-  const layerVisibility = (estado: Boolean) => {
-    emit('layer-vis', estado);
+  const layerVisibility = (estado: Boolean, capa: string) => {
+    emit('layer-vis', estado, capa);
   };
 
 </script>

@@ -2,19 +2,19 @@
  
   <div class="relative z-50 h-screen w-screen">
 
-    <l-map ref="map" class="z-0" :zoom="zoom" :center="[-26.52536, -53.91]" :options="mapoptions" >
+    <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="[-26.52536, -53.91]" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
-      
-      <l-geo-json :geojson="limites" :options="options" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites"  />
-      <l-geo-json :geojson="cuadriculas" :options="options" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoLimites />
-      <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" />
-      <l-geo-json :geojson="areasDegradadas" :options="optionsAreasDeg" :options-style="styleFunctionAreasDeg" layer-type="overlay" name="Áreas degradadas" />
-      <l-geo-json :geojson="alertas" :options="optionsAlertasRayos" layer-type="overlay" name="Rayos" />
-      <l-geo-json :geojson="alertas" :options="optionsAlertasAlta" layer-type="overlay" name="Alertas probabilidad alta" />
-      <l-geo-json :geojson="alertas" :options="optionsAlertasMedia" layer-type="overlay" name="Alertas probabilidad media" />
-      <l-geo-json :geojson="alertas" :options="optionsAlertasBajas" layer-type="overlay" name="Alertas probabilidad baja" />
-      <!-- <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" /> -->
-      <l-geo-json ref="fotosLayer" :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" />
+      <UBadge>alert</UBadge>
+      <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
+      <l-geo-json :geojson="cuadriculas" :options="optionsCuadriculas" :options-style="styleFunctionCuadriculas" layer-type="overlay" name="Cuadrículas" :visible=estadoCuadriculas />
+      <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
+      <l-geo-json :geojson="areasDegradadas" :options="optionsAreasDeg" :options-style="styleFunctionAreasDeg" layer-type="overlay" name="Áreas degradadas" :visible=estadoAreasDeg />
+      <l-geo-json :geojson="alertas" :options="optionsAlertasRayos" layer-type="overlay" name="Rayos" :visible=estadoRayos />
+      <l-geo-json :geojson="alertas" :options="optionsAlertasAlta" layer-type="overlay" name="Alertas probabilidad alta" :visible=estadoAlta />
+      <l-geo-json :geojson="alertas" :options="optionsAlertasMedia" layer-type="overlay" name="Alertas probabilidad media" :visible=estadoMedia />
+      <l-geo-json :geojson="alertas" :options="optionsAlertasBajas" layer-type="overlay" name="Alertas probabilidad baja" :visible=estadoBaja />
+      <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" :visible=estadoFotos />
+      <l-geo-json :geojson="pois" :options="optionsPois" layer-type="overlay" name="Ubicaciones destacadas" :visible=estadoPois />
     </l-map>
     <UNotification class="absolute w-40 right-0 top-0 z-1001 m-4" :id="idToShow" :title="showLastSixDigits(idToShow)" 
     icon="i-heroicons-command-line"
@@ -28,14 +28,18 @@
 </template>
 <script setup>
 import "leaflet/dist/leaflet.css";
-import { ref, onMounted,watch } from 'vue';
-import { LMap, LTileLayer, LGeoJson, LControlLayers, LIcon } from "@vue-leaflet/vue-leaflet";
+import { ref, onMounted , watch } from 'vue';
+import { LMap, LTileLayer, LGeoJson } from "@vue-leaflet/vue-leaflet";
 const config = useRuntimeConfig();
 const urlImg = config.public.url_base;
 const isNotificationVisible = ref(false);
 
-// Definir la props para recibir el ID
-const props = defineProps(['fotoId', 'estadoLimites', 'featureByName']);
+// Definir la prop para recibir el ID
+const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoCuadriculas' , 'cuadriculas' , 'estadoFajas' , 'estadoAreasDeg' , 'estadoRayos' , 'estadoAlta' , 'estadoMedia' , 'estadoBaja' , 'estadoFotos' ]);
+
+const featureByName = ref([])
+const map = ref()
+
 // Usar ref para almacenar el ID recibido
 const idToShow = ref(props.fotoId);
 // Ref de capa fotos para comparar
@@ -48,7 +52,7 @@ const fotosLayer = ref(null);
   return `...${lastSixDigits}`;
 }
 // Acciones a realizar cuando cambia el ID
-watch(() => props.fotoId, (newValue, oldValue) => {
+/* watch(() => props.fotoId, (newValue, oldValue) => {
   //tomo valor, activo Unotification y apago en 6 seg.
   idToShow.value = newValue;
   isNotificationVisible.value = true;
@@ -64,16 +68,16 @@ watch(() => props.fotoId, (newValue, oldValue) => {
       
       console.log("layerf", fotosLayer);
       // Iterar sobre cada capa y activa el popup si coincide con idToShow
-      /*fotosLayer.value.eachLayer((layer) => {
+      fotosLayer.value.eachLayer((layer) => {
       const feature = layer.feature;
 
       if (feature.properties.ID === idToShow.value) {
         layer.fire("click"); // Simula un clic para activar el popup
       }
-    });*/
+    });
 
   }
-}, { immediate: true });
+}, { immediate: true }); */
 
 // Cerrar UNotification
 const closeNotification = () => {
@@ -87,6 +91,7 @@ const fajas = ref(null);
 const alertas = ref(null);
 const fotos = ref(null);
 const areasDegradadas = ref(null);
+const pois = ref(null)
 
 const mapoptions = {
   zoomControl: false
@@ -170,6 +175,7 @@ const optionsFotos = {
   }
   },
   onEachFeature: (feature, layer) => {
+    featureByName[feature.properties.ID] = layer;
     if (feature.properties.foto) {
         layer.bindPopup(
           '<img src="' + urlImg + '/images/rgs1_nov_23/' + feature.properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + feature.properties.Name + '<br/>Fecha: ' + feature.properties.Date + '',
@@ -256,6 +262,22 @@ const optionsAlertasAlta = {
   onEachFeature: onEachFeatureFunction
 }
 
+// Puntos destacados con videos
+const optionsPois = {
+  pointToLayer: function(feature, latlng) {
+          return L.marker(latlng, {icon: L.icon({
+          iconUrl: "/images/icon/location-forest.svg",
+          iconSize: [30, 85],
+        })} )
+      },
+  onEachFeature: (feature, layer) => {
+      layer.bindPopup(
+        '<div class="widget popupDetailsVideo"><h3>'+feature.properties.Name+'</h3><div class="video"><iframe width="100%" heigth="100%" src="/videos/'+feature.properties.video+'.mp4?autoplay=1" frameborder="0" allowfullscreen></iframe></div></div>',
+        { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"}
+      );
+  }
+}
+
 const fetchData = async () => {
   const config = useRuntimeConfig();
   const fetchGeoJson = async (url) => {
@@ -270,6 +292,7 @@ const fetchData = async () => {
   fotos.value = await fetchGeoJson(config.public.url_base + '/capas/fotos.geojson');
   alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
   areasDegradadas.value = await fetchGeoJson(config.public.url_base + '/capas/areas_degradadas.geojson');
+  pois.value = await fetchGeoJson(config.public.url_base + '/capas/pois.geojson');
 };
 
 onMounted(() => {
@@ -277,6 +300,36 @@ onMounted(() => {
  // fotosLayer.value = this.$refs.fotosLayer;
 
 });
+
+const navigateTo = async (idFoto) => {
+
+  if (featureByName) {
+
+    console.log( featureByName[idFoto]);
+    console.log( map )
+    map.flyTo(featureByName[idFoto].getLatLng() , 20 , { maxZoom: 21 });
+
+    } else {
+    console.log(idFoto)
+  }
+
+}
+
+// Acciones a realizar cuando cambia el ID
+watch( () => props.fotoId, (newValue, oldValue) =>  {
+  idToShow.value = newValue;
+  isNotificationVisible.value = true;
+ 
+  if ( isNotificationVisible) {
+      setTimeout(() => {
+      closeNotification();
+    }, 6000);
+  }
+
+  navigateTo(props.fotoId) 
+}, { immediate: true });
+
+defineExpose( { map , featureByName , navigateTo } )
 </script>
 
 <style>
