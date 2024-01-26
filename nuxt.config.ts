@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  nitro:{prerender:{failOnError:false,}},
+  nitro:{prerender:{failOnError:false,},compressPublicAssets: true },
 
   /* generate:{
     exclude: [
@@ -24,23 +24,33 @@ export default defineNuxtConfig({
     '@/assets/css/main.css',
   ],
   modules:['@nuxt/image', //'@nuxtjs/tailwindcss',
-  '@nuxt/devtools', '@nuxtjs/i18n', '@nuxtjs/sitemap', //'@nuxtjs/color-mode',
+  '@nuxt/devtools', '@nuxtjs/i18n', ['@nuxtjs/sitemap', { sitemap: {
+    hostname: 'https://demo.nideport.com',
+    lastmod: '2017-06-30',
+    /* sitemaps: [
+      {
+        path: '/sitemap-foo.xml',
+        routes: ['foo/1', 'foo/2'],
+        gzip: true
+      }, {
+        path: '/folder/sitemap-bar.xml',
+        routes: ['bar/1', 'bar/2'],
+        exclude: ['/**']
+      }
+    ] */
+  }}], //'@nuxtjs/color-mode',
   '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui',['nuxt-mail', {
     message: {
       to: 'arielrobles@outlook.com',
     },
     smtp: {
-      service: 'gmail',
+      service: 'smtp.gmail.com',
       auth: {
         user: process.env.MAILUSER,
         pass: process.env.MAILPASSWORD,
       },
     },
   }]],
-
-  carousel: {
-    prefix: 'MyPrefix'
-  },
 
   colorMode: {
     preference: 'light', // default value of $colorMode.preference
