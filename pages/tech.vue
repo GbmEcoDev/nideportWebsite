@@ -3,13 +3,10 @@
       <div class="absolute z-0 w-screen h-screen">
         <MapTech :fotoId="idSeleccionado" 
         :estadoLimites="selected" 
-        :estadoCuadriculas="selectedCuadricula" 
         :estadoFajas="selectedFajas" 
         :estadoAreasDeg="selectedAreasDeg" 
         :estadoRayos="selectedRayos"
         :estadoAlta="selectedAlta"
-        :estadoMedia="selectedMedia"
-        :estadoBaja="selectedBaja"
         :estadoFotos="selectedFotos"
         :estadoCaminos="selectedCaminos"
         :estadoPois="selectedPois" />
@@ -42,12 +39,9 @@
             <div class="p-4 flex-1">
               <UCard>
                 <UCheckbox color="black" v-model="selected" name="limites" label="Límites" :update:model-value="layerVisibility(selected )" />
-                <UCheckbox color="gray" v-model="selectedCuadricula" name="cuadriculas" label="Cuadrículas" :update:model-value="cuadriculasVisibility(selectedCuadricula )" />
                 <UCheckbox color="green" v-model="selectedFajas" name="fajas" label="Área reforestada" :update:model-value="fajasVisibility(selectedFajas )" />
                 <UCheckbox color="red" v-model="selectedAreasDeg" name="areasDegradadas" label="Áreas a refosrestar" :update:model-value="areasDegVisibility(selectedAreasDeg )" />
                 <UCheckbox color="blue" v-model="selectedRayos" name="rayos" label="Alertas por rayos" :update:model-value="rayosVisibility(selectedRayos )" />
-                <UCheckbox color="yellow" v-model="selectedBaja" name="alertasBajas" label="Alertas con probabilidad baja" :update:model-value="bajaVisibility(selectedBaja )" />
-                <UCheckbox color="orange" v-model="selectedMedia" name="alertasMedia" label="Alertas con probabilidad media" :update:model-value="mediaVisibility(selectedMedia )" />
                 <UCheckbox color="red" v-model="selectedAlta" name="alertasAlta" label="Alertas con probabilidad alta" :update:model-value="altaVisibility(selectedAlta )" />
                 <UCheckbox color="black" v-model="selectedFotos" name="fotos" label="Registros de trabajo en campo" :update:model-value="fotosVisibility(selectedFotos )" />
                 <UCheckbox color="black" v-model="selectedPois" name="pois" label="Puntos destacados" :update:model-value="poisVisibility(selectedPois )" />
@@ -62,12 +56,9 @@
   <script setup lang="ts">
   import { ref, onMounted } from 'vue';
   const selected = ref(true)
-  const selectedCuadricula = ref(true)
   const selectedFajas = ref(true)
   const selectedAreasDeg = ref(true)
   const selectedRayos = ref(true)
-  const selectedBaja = ref(true)
-  const selectedMedia = ref(true)
   const selectedAlta = ref(true)
   const selectedFotos = ref(true)
   const selectedCaminos = ref(true)
@@ -113,14 +104,10 @@ onMounted(() => {
     layout: 'application'
   })
 
-  const emit = defineEmits( [ 'layer-vis' , 'cuadriculas-vis', 'fajas-vis' , 'areasDeg-vis' , 'areasDeg-vis' , 'baja-vis' , 'media-vis' , 'alta-vis' , 'fotos-vis' , 'pois-vis' , 'caminos-vis' ] );
+  const emit = defineEmits( [ 'layer-vis' , 'fajas-vis' , 'areasDeg-vis' , 'areasDeg-vis' , 'alta-vis' , 'fotos-vis' , 'pois-vis' , 'caminos-vis' ] );
 
   const layerVisibility = ( estado: Boolean ) => {
     emit( 'layer-vis' , estado );
-  };
-
-  const cuadriculasVisibility = (estado: Boolean) => {
-    emit( 'cuadriculas-vis' , estado );
   };
 
   const fajasVisibility = (estado: Boolean) => {
@@ -133,14 +120,6 @@ onMounted(() => {
 
   const rayosVisibility = (estado: Boolean) => {
     emit( 'areasDeg-vis' , estado );
-  };
-
-  const bajaVisibility = (estado: Boolean) => {
-    emit( 'baja-vis' , estado );
-  };
-
-  const mediaVisibility = (estado: Boolean) => {
-    emit( 'media-vis' , estado );
   };
 
   const altaVisibility = (estado: Boolean) => {
