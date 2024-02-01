@@ -3,7 +3,7 @@ export default defineAppConfig({
         primary: 'teal',
         gray: 'cool',
         slideover:{
-            "wrapper": "fixed inset-0 flex z-50",
+            "wrapper": "fixed inset-0 flex w-[450px] border-r border-red z-50",
             "overlay": {
                 "base": "fixed inset-0 transition-opacity",
                 "background": "bg-teal-900/10 dark:bg-teal-900/10",

@@ -26,9 +26,8 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/main.css',
   ],
-  modules:['@nuxt/image', //'@nuxtjs/tailwindcss',
-  '@nuxt/devtools', '@nuxtjs/i18n', 
-  '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui',['nuxt-mail', {
+  modules:[//'@nuxtjs/tailwindcss',
+  '@nuxt/image', '@nuxt/devtools', '@nuxtjs/i18n', '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui', ['nuxt-mail', {
     message: {
       to: 'arielrobles@outlook.com',
     },
@@ -39,7 +38,7 @@ export default defineNuxtConfig({
         pass: process.env.MAILPASSWORD,
       },
     },
-  }]],
+  }], '@nuxtjs/device'],
 
   colorMode: {
     preference: 'light', // default value of $colorMode.preference

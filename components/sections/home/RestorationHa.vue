@@ -10,33 +10,56 @@ import { ref,onMounted, onBeforeUnmount, onActivated } from "vue"
 const colorHeight = ref('0%');
 const cantidad = ref(0);
 let tiempo;
+const numeroVisible = ref(false);
+const intervalo = ref(null);
 
-const iniciarContador = () => {
-tiempo = setInterval(() => {
-    cantidad.value += 354321;
-    colorHeight.value = `${(cantidad.value / 45000000) * 95}%`;
-
-        if (cantidad.value >= 45000000) {
-        cantidad.value = 45000000;
-        clearInterval(tiempo);
-        }
-    }, 50);
+const handleIntersection = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      numeroVisible.value = true;
+      if (!intervalo.value) {
+        iniciarContador();
+      }
+    } else {
+      numeroVisible.value = false;
+      clearInterval(intervalo.value);
+      intervalo.value = null;
+      cantidad.value = 0;
+      colorHeight.value = '0%';
+    }
+  });
 };
-onMounted(() => {
 
-    iniciarContador();
-
+const observer = new IntersectionObserver(handleIntersection, {
+  threshold: 0.5, // Cambia este valor según tus necesidades
 });
 
-onActivated(() => {
-    // Reinicia el contador cuando el componente es activado nuevamente
+const iniciarContador = () => {
+  if (intervalo.value) return; // Si ya hay un intervalo activo, salir de la función
+  intervalo.value = setInterval(() => {
+    cantidad.value += 354321;
+    colorHeight.value = `${(cantidad.value / 45000000) * 95}%`;
+    if (cantidad.value >= 45000000) {
+      cantidad.value = 45000000;
+      clearInterval(intervalo.value);
+      intervalo.value = null;
+    }
+  }, 50);
+};
+onMounted(() => {
+    observer.observe(document.querySelector('.numero'));
+    iniciarContador();
+});
+
+/* onActivated(() => {
     cantidad.value = 0;
     colorHeight.value = '0%';
     iniciarContador();
-  });
+  }); */
 
 onBeforeUnmount(() => {
-  clearInterval(tiempo);
+  observer.disconnect();
+  clearInterval(intervalo.value);
 });
 </script>
 
