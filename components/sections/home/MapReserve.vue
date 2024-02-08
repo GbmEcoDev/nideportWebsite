@@ -43,6 +43,6 @@ const urlImg = config.public.url_base;
 </script>
 <style scoped>
 .parcialover{
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.80) 30%, rgba(0, 0, 0, 0.00) 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.80) 30%, rgba(0, 0, 0, 0.00) 100%);
 }
 </style>

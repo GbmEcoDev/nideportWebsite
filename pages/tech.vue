@@ -8,7 +8,6 @@
         :estadoFotos="selectedFotos"
         :estadoCaminos="selectedCaminos"
         :estadoHidro="selectedHidro"
-        :estadoPois="selectedPois"
         @propsDetalle="handlePropsDetalle" @open-panel="handleOpenPanel"
          />
       </div>
@@ -18,20 +17,35 @@
       <div class="absolute z-55 bottom-2 left-8" :class="{ 'left-[-250px]': isOpen }">
         <UButton ref="btnActivePanel" label="Explorá nuestro proceso de restauración" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-72 text-bold"/>
       </div>
-      <div class="absolute z-55 bottom-2 left-[-250px]" :class="{ 'left-[320px]': isOpen }">
-        <UButton ref="btnActivePanel" @click="isOpen = false" color="primary" size="xl"  trailingIcon="i-heroicons-x-mark-20-solid" />
-      </div>
+      
       
       <SectionsMapappUCardDetalle class=" w-[350px] h-screen absolute top-0 right-0 bg-slate-900/10 dark:bg-slate-900/10" :id="selectedDetID" v-model="isOpenDet" v-if="isOpenDet" @close-det-panel="handleCloseDetPanel" :fotoId="selectedDetID" />
 
         <div v-if="isOpen" class="absolute top-0 left-0 w-1/4 h-screen bg-slate-900/90 dark:bg-slate-900/90" >
-            <Logo/>
+          <div class="relative flex items-center justify-between w-full">
+            <Logo color="dark"/>
+            <NuxtLink :to="localePath({ name: 'index' })" class="z-1000" ><UButton color="white" variant="outline" icon="i-heroicons-home-20-solid" class="mx-1"/></NuxtLink>
+            <UPopover :popper="{ placement: 'bottom-start' }" class="border rounded-md">
+              <UButton color="white" label="Capas" icon="i-heroicons-square-3-stack-3d-20-solid" />
+              <template #panel>
+                <div class="p-4">
+                  <UCheckbox v-model="selected" name="limites" label="Límites" :update:model-value="layerVisibility(selected )" />
+                  <UCheckbox v-model="selectedFajas" name="fajas" label="Áreas en restauración" :update:model-value="fajasVisibility(selectedFajas )" />
+                  <UCheckbox v-model="selectedAreasArest" name="areasDegradadas" label="Áreas a restaurar" :update:model-value="areasArestisibility(selectedAreasArest )" />
+                  <UCheckbox v-model="selectedFotos" name="fotos" label="Registros de trabajo en campo" :update:model-value="fotosVisibility(selectedFotos )" />
+                  <!-- <UCheckbox v-model="selectedPois" name="pois" label="Puntos destacados" :update:model-value="poisVisibility(selectedPois )" /> -->
+                  <UCheckbox v-model="selectedCaminos" name="caminos" label="Caminos" :update:model-value="caminosVisibility(selectedCaminos )" />
+                  <UCheckbox v-model="selectedHidro" name="hidrografia" label="Hidrografía" :update:model-value="hidrografiaVisibility(selectedHidro )" /></div>
+              </template>
+            </UPopover>
+            <UButton color="white" variant="outline" icon="i-heroicons-x-mark-20-solid" class="mx-1" @click="isOpen = false, isOpenDet = false"  ref="btnActivePanel" />
+          </div>
             <div class="p-1 flex-1">
               <UTabs :items="items" @change="onChange">
               <template #item="{ item }">
                 <UCard>
                   <div v-if="item.key === 'discover'" class="space-y-1">
-                    {{ item.content }}
+                    <p class="text-sm border-b mb-2">{{ item.content }}</p>
                    <UAccordion :items="itemscat" 
                     color="black" 
                     variant="soft"
@@ -58,7 +72,7 @@
                     </UAccordion>
                   </div>
                   <div v-else-if="item.key === 'planner'" class="space-y-1" id="acco-area">
-                    {{ item.content }}
+                    <p class="text-sm border-b mb-2"> {{ item.content }}</p>
                      <UAccordion
                         :items="itemsa"
                       >
@@ -86,21 +100,12 @@
             </UTabs>
           </div>
 
-            <UPopover :popper="{ placement: 'top-start' }" class="p-1 absolute bottom-1 left-1">
-              <UButton color="white" label="Vista de capas" icon="i-heroicons-square-3-stack-3d-20-solid" />
-              <template #panel>
-                <div class="p-4">
-                  <UCheckbox v-model="selected" name="limites" label="Límites" :update:model-value="layerVisibility(selected )" />
-                  <UCheckbox v-model="selectedFajas" name="fajas" label="Áreas en restauración" :update:model-value="fajasVisibility(selectedFajas )" />
-                  <UCheckbox v-model="selectedAreasArest" name="areasDegradadas" label="Áreas a restaurar" :update:model-value="areasArestisibility(selectedAreasArest )" />
-                  <UCheckbox v-model="selectedFotos" name="fotos" label="Registros de trabajo en campo" :update:model-value="fotosVisibility(selectedFotos )" />
-                  <UCheckbox v-model="selectedPois" name="pois" label="Puntos destacados" :update:model-value="poisVisibility(selectedPois )" />
-                  <UCheckbox v-model="selectedCaminos" name="caminos" label="Caminos" :update:model-value="caminosVisibility(selectedCaminos )" />
-                  <UCheckbox v-model="selectedHidro" name="hidrografia" label="Hidrografía" :update:model-value="hidrografiaVisibility(selectedHidro )" /></div>
-              </template>
-            </UPopover>
+           
         </div>
    </div>
+  <!--  <div class="absolute z-1100 bottom-2 left-[-250px]" :class="{ 'left-[320px]': isOpen }">
+        <UButton ref="btnActivePanel" @click="isOpen = false" color="primary" size="xl"  trailingIcon="i-heroicons-x-mark-20-solid" />
+      </div> -->
   </template>
 
   <script setup lang="ts">
@@ -112,7 +117,7 @@
   const selectedAlta = ref(true) */
   const selectedFotos = ref(true)
   const selectedCaminos = ref(true)
-  const selectedPois = ref(false)
+  //const selectedPois = ref(false)
   const selectedHidro = ref(false)
 
   const { t, locale, setLocale } = useI18n()
@@ -133,7 +138,7 @@
     selectedFajas.value=false;
     selectedAreasArest.value=false;
     selectedFotos.value=true;
-    selectedPois.value=false;
+    //selectedPois.value=false;
     selectedCaminos.value=true;
     selectedHidro.value=false;
   } else{
@@ -141,36 +146,35 @@
     selectedFajas.value=true;
     selectedAreasArest.value=true;
     selectedFotos.value=true;
-    selectedPois.value=false;
+    //selectedPois.value=false;
     selectedCaminos.value=false;
     selectedHidro.value=false;
     isOpenDet.value=false;
-
   }
 }
  
    const itemsa = [{
-  label: 'Áreas en restauración',
+  label: 'Etapa 1 - En restauración ',
   icon: 'i-heroicons-map',
   //content:"uno"
   slot: 'zone-restore'
 }, {
-  label: 'Áreas a restaurar Etapa 1',
+  label: 'Etapa 2 - 2024/2026',
   icon: 'i-heroicons-map-solid',
   //content:"dos"
   slot: 'zone-from-restorate-e1'
 }, {
-  label: 'Áreas a restaurar Etapa 2',
+  label: 'Etapa 3 - 2027/2028',
   icon: 'i-heroicons-map-solid',
   //content:"dos"
   slot: 'zone-from-restorate-e2'
 }, {
-  label: 'Áreas a restaurar Etapa 3',
+  label: 'Etapa 4 - 2029/2032',
   icon: 'i-heroicons-map-solid',
   //content:"dos"
   slot: 'zone-from-restorate-e3'
 }, {
-  label: 'Áreas a restaurar Etapa 4',
+  label: 'Etapa 5 - 2033/2045',
   icon: 'i-heroicons-map-solid',
   //content:"dos"
   slot: 'zone-from-restorate-e4'
@@ -214,7 +218,7 @@ const items = [{
   key:'planner',
   label: 'RESTAURACIÓN',
   disabled: false,
-  content: 'Etapas de restauración'
+  content: 'Restauración y plan de gestión del bosque'
 }]
 
 // Función para recibir el ID y actualizar el estado
@@ -241,6 +245,9 @@ const handleOpenDetPanel = (value:any) => {
   isOpenDet.value=false;
   isOpenDet.value = value;
 };
+
+
+
 //generales de page
   onMounted(() => {
       colorMode.value = "dark";
@@ -258,7 +265,7 @@ const handleOpenDetPanel = (value:any) => {
     layout: 'application'
   })
 
-  const emit = defineEmits( [ 'layer-vis' , 'fajas-vis' , 'areasArest-vis' , 'fotos-vis' , 'pois-vis' , 'caminos-vis' , 'hidrografia-vis','center-map','zoom-map' ] );
+  const emit = defineEmits( [ 'layer-vis' , 'fajas-vis' , 'areasArest-vis' , 'fotos-vis' , 'caminos-vis' , 'hidrografia-vis' ] );
 
   const layerVisibility = ( estado: Boolean ) => {
     emit( 'layer-vis' , estado );
@@ -276,10 +283,10 @@ const handleOpenDetPanel = (value:any) => {
     emit( 'fotos-vis' , estado );
   };
 
-  const poisVisibility = (estado: Boolean) => {
+ /*  const poisVisibility = (estado: Boolean) => {
     emit( 'pois-vis' , estado );
   };
-
+ */
   const caminosVisibility = (estado: Boolean) => {
     emit( 'caminos-vis' , estado );
   };
@@ -287,8 +294,6 @@ const handleOpenDetPanel = (value:any) => {
   const hidrografiaVisibility = (estado: Boolean) => {
     emit( 'hidrografia-vis' , estado );
   };
-
-
 
 </script>
 <style scoped>
@@ -312,6 +317,6 @@ const handleOpenDetPanel = (value:any) => {
   color: rgba(233,118,24,1);
 }
 #acco-area ::v-deep(button:nth-child(9)) {
-  color: rgba(241,46,25,1);
+  color: rgb(139, 139, 139);
 }
 </style>

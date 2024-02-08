@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
-  nitro:{prerender:{failOnError:false,},compressPublicAssets: true },
+  nitro:{
+    compressPublicAssets: true,
+    prerender:{failOnError:false}
+   },
 
   /**/ generate:{
     exclude: [
@@ -19,6 +22,7 @@ export default defineNuxtConfig({
       /^\/en\/stockholm50moray\/.*$/,
       /^\/en\/tags\/.*$/,
       /^\/tags\/.*$/,
+      /^\/categories\/.*$/,
     ],
   }, 
 
@@ -27,7 +31,11 @@ export default defineNuxtConfig({
     '@/assets/css/main.css',
   ],
   modules:[//'@nuxtjs/tailwindcss',
-  '@nuxt/image', '@nuxt/devtools', '@nuxtjs/i18n', '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui', ['nuxt-mail', {
+  ['@nuxt/image',{
+    image:{
+      quality:80,
+    }
+  }], '@nuxt/devtools', '@nuxtjs/i18n', '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui', ['nuxt-mail', {
     message: {
       to: 'arielrobles@outlook.com',
     },
