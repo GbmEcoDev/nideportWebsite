@@ -7,9 +7,11 @@
      <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
       <l-geo-json :geojson="areasArestaurar" :options="optionsArestaurar" :options-style="styleFunctionAreasRest" layer-type="overlay" name="Áreas a restaurar" :visible=estadoAreasArest />>
       <l-geo-json :geojson="fotos" :options="optionsFotos" layer-type="overlay" name="Trabajo en campo" :visible=estadoFotos />
+      <l-geo-json :geojson="degradadas" :options="optionsDegradadas" :options-style="styleFunctionDegradadas" layer-type="overlay" name="Áreas degradadas" :visible=estadoDegradadas />
       <!-- <l-geo-json :geojson="pois" :options="optionsPois" layer-type="overlay" name="Ubicaciones destacadas" :visible=estadoPois /> -->
       <l-geo-json :geojson="caminos" :options="optionsCaminos" :options-style="styleFunctionCaminos" layer-type="overlay" name="Caminos principales" :visible=estadoCaminos />
       <l-geo-json :geojson="hidrografia" :options="optionsHidro" :options-style="styleFunctionHidro" layer-type="overlay" name="Hidrografía" :visible=estadoHidro />
+      <l-geo-json :geojson="fueraProyecto" :options-style="styleFunctionFuera" layer-type="overlay" name="Fuera de proyecto" :visible=estadoFueraProy />
     </l-map>
   </div>
 </template>
@@ -20,7 +22,7 @@ import { LMap, LTileLayer, LGeoJson , LPopup } from "@vue-leaflet/vue-leaflet";
 const config = useRuntimeConfig();
 const urlImg = config.public.url_base;
 
-const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasArest' , 'estadoAlta' , 'estadoFotos' , 'estadoCaminos' , 'estadoHidro' ]);
+const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasArest' , 'estadoAlta' , 'estadoFotos' , 'estadoCaminos' , 'estadoHidro' , 'estadoDegradadas' , 'estadoFueraProy' ]);
 
 const featureByName = ref([])
 const map = ref(null)
@@ -38,6 +40,8 @@ const areasArestaurar = ref(null);
 //const pois = ref(null)
 const caminos = ref(null)
 const hidrografia = ref(null)
+const degradadas = ref(null)
+const fueraProyecto = ref(null)
 const openPanel = ref(false)
 const mapoptions = {
 zoomControl: false
@@ -63,10 +67,11 @@ const styleFunctionLimites = {
 
 // Áreas donde se refoesta mediante método de Faja
 const styleFunctionFajas = {
-  color: 'green',
+  color: 'rgb(112, 176, 85)',
+  fillColor: 'rgb(112, 176, 85)',
+  fillOpacity: 0.3,
   weight: 2,
-  opacity: 0.7,
-  fillOpacity: 0.0,
+  opacity: 0.6,
   interactive: true
 };
 const optionsFajas = {
@@ -99,36 +104,35 @@ const styleFunctionAreasRest  = (feature)=>
     { 
       if (feature.properties.etapa == 'Etapa 2') { 
         return {
-          color:'rgba(255,195,0,0.6)',
-          fillColor: 'rgba(255,195,0)' ,
-          fillOpacity: 0.4,
-          weight: 3,
-          opacity: 0.7,
+          color:'rgb(192, 209, 53)',
+          fillColor: 'rgb(192, 209, 53)' ,
+          fillOpacity: 0.3,
+          weight: 1,
+          opacity: 0.3,
           interactive: true
         }
       } else if (feature.properties.etapa == 'Etapa 3') {
         return {
-          color:'rgba(28,124,152,0.6)',
-          fillColor: 'rgba(28,124,152)' ,
+          color:'rgb(217, 177, 42)',
+          fillColor: 'rgb(217, 177, 42)' ,
           fillOpacity: 0.4,
-          weight: 3,
-          opacity: 0.7,
+          weight: 1,
+          opacity: 0.3,
           interactive: true
         }
       } else if (feature.properties.etapa == 'Etapa 4') {
         return {
-          color:'rgba(128,60,13,0.7)',
-          fillColor: 'rgba(128,60,13)' ,
+          color:'rgb(233, 118, 24)',
+          fillColor: 'rgb(233, 118, 24)' ,
           fillOpacity: 0.4,
-          weight: 3,
-          opacity: 0.7,
-          interactive: true,
-          dashArray: [5, 5]
+          weight: 1,
+          opacity: 0.3,
+          interactive: true
         }
       }
 
 };
-      const optionsArestaurar = {
+const optionsArestaurar = {
   onEachFeature: (feature, layer) => {
     layer.bindPopup(
       'Nombre: ' + feature.properties.Name + '<br> Etapa: ' + feature.properties.etapa,
@@ -136,6 +140,41 @@ const styleFunctionAreasRest  = (feature)=>
     )
   }
 }
+
+// Areas degradadas ------------------------------
+const styleFunctionDegradadas  = (feature)=> 
+    { 
+        return {
+          color:'gray',
+          fillColor: 'gray' ,
+          fillOpacity: 0.4,
+          weight: 3,
+          opacity: 0.2,
+          interactive: true
+        }
+};
+
+const optionsDegradadas = {
+  onEachFeature: (feature, layer) => {
+    layer.bindPopup(
+      'Nombre: ' + feature.properties.name + '<br> Tipo: ' + feature.properties.nombre,
+      { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
+    )
+  }
+}
+
+// Areas degradadas ------------------------------
+const styleFunctionFuera  = (feature)=> 
+    { 
+        return {
+          color:'rgb(44,44,44)',
+          fillColor: 'rgb(44,44,44)' ,
+          fillOpacity: 0.8,
+          weight: 1,
+          opacity: 0.2,
+          interactive: true
+        }
+};
 
 // Fotos de trabajo en campo ----------------------
 const optionsFotos = {
@@ -176,8 +215,6 @@ const optionsFotos = {
     
   }
 };
-
-
 
 // OnEach para Alertas
 /* const onEachFeatureFunction = (feature, layer) => {
@@ -343,6 +380,8 @@ const fetchData = async () => {
   //pois.value = await fetchGeoJson(config.public.url_base + '/capas/pois.geojson');
   caminos.value = await fetchGeoJson(config.public.url_base + '/capas/caminos.geojson');
   hidrografia.value = await fetchGeoJson(config.public.url_base + '/capas/hidrografia.geojson');
+  degradadas.value = await fetchGeoJson(config.public.url_base + '/capas/areas_degradadas.geojson');
+  fueraProyecto.value = await fetchGeoJson(config.public.url_base + '/capas/fuera_de_proyecto.geojson');
 };
 
 onMounted(() => {
