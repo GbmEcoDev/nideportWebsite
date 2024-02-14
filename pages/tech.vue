@@ -8,6 +8,8 @@
         :estadoFotos="selectedFotos"
         :estadoCaminos="selectedCaminos"
         :estadoHidro="selectedHidro"
+        :estadoDegradadas="selectedDegradadas"
+        :estadoFueraProy="selectedFueraProy"
         @propsDetalle="handlePropsDetalle" @open-panel="handleOpenPanel"
          />
       </div>
@@ -32,10 +34,12 @@
                   <UCheckbox v-model="selected" name="limites" label="Límites" :update:model-value="layerVisibility(selected )" />
                   <UCheckbox v-model="selectedFajas" name="fajas" label="Áreas en restauración" :update:model-value="fajasVisibility(selectedFajas )" />
                   <UCheckbox v-model="selectedAreasArest" name="areasDegradadas" label="Áreas a restaurar" :update:model-value="areasArestisibility(selectedAreasArest )" />
+                  <UCheckbox v-model="selectedDegradadas" name="areasDegradadas" label="Áreas degradadas" :update:model-value="degradadasVisibility(selectedDegradadas )" />
                   <UCheckbox v-model="selectedFotos" name="fotos" label="Registros de trabajo en campo" :update:model-value="fotosVisibility(selectedFotos )" />
                   <!-- <UCheckbox v-model="selectedPois" name="pois" label="Puntos destacados" :update:model-value="poisVisibility(selectedPois )" /> -->
                   <UCheckbox v-model="selectedCaminos" name="caminos" label="Caminos" :update:model-value="caminosVisibility(selectedCaminos )" />
-                  <UCheckbox v-model="selectedHidro" name="hidrografia" label="Hidrografía" :update:model-value="hidrografiaVisibility(selectedHidro )" /></div>
+                  <UCheckbox v-model="selectedHidro" name="hidrografia" label="Hidrografía" :update:model-value="hidrografiaVisibility(selectedHidro )" />
+                  <UCheckbox v-model="selectedFueraProy" name="hidrografia" label="Áreas fuera de Proyecto" :update:model-value="fueraProyVisibility(selectedFueraProy )" /></div>
               </template>
             </UPopover>
             <UButton color="white" variant="outline" icon="i-heroicons-x-mark-20-solid" class="mx-1" @click="isOpen = false, isOpenDet = false"  ref="btnActivePanel" />
@@ -113,6 +117,8 @@
   const selected = ref(true)
   const selectedFajas = ref(true)
   const selectedAreasArest = ref(true)
+  const selectedDegradadas = ref(true)
+  const selectedFueraProy = ref(true)
 /*   const selectedRayos = ref(true)
   const selectedAlta = ref(true) */
   const selectedFotos = ref(true)
@@ -137,6 +143,8 @@
     selected.value=true;
     selectedFajas.value=false;
     selectedAreasArest.value=false;
+    selectedDegradadas.value=false;
+    selectedFueraProy.value=false;
     selectedFotos.value=true;
     //selectedPois.value=false;
     selectedCaminos.value=true;
@@ -145,6 +153,8 @@
     selectedHidro.value=true;
     selectedFajas.value=true;
     selectedAreasArest.value=true;
+    selectedDegradadas.value=true;
+    selectedFueraProy.value=true;
     selectedFotos.value=true;
     //selectedPois.value=false;
     selectedCaminos.value=false;
@@ -265,7 +275,7 @@ const handleOpenDetPanel = (value:any) => {
     layout: 'application'
   })
 
-  const emit = defineEmits( [ 'layer-vis' , 'fajas-vis' , 'areasArest-vis' , 'fotos-vis' , 'caminos-vis' , 'hidrografia-vis' ] );
+  const emit = defineEmits( [ 'layer-vis' , 'fajas-vis' , 'areasArest-vis' , 'areasDegra-vis', 'fotos-vis' , 'caminos-vis' , 'hidrografia-vis' , 'fueraproy-vis' ] );
 
   const layerVisibility = ( estado: Boolean ) => {
     emit( 'layer-vis' , estado );
@@ -277,6 +287,10 @@ const handleOpenDetPanel = (value:any) => {
 
   const areasArestisibility = (estado: Boolean) => {
     emit( 'areasArest-vis' , estado );
+  };
+
+  const degradadasVisibility = (estado: Boolean) => {
+    emit( 'areasDegra-vis' , estado );
   };
 
   const fotosVisibility = (estado: Boolean) => {
@@ -293,6 +307,10 @@ const handleOpenDetPanel = (value:any) => {
 
   const hidrografiaVisibility = (estado: Boolean) => {
     emit( 'hidrografia-vis' , estado );
+  };
+
+  const fueraProyVisibility = (estado: Boolean) => {
+    emit( 'fueraproy-vis' , estado );
   };
 
 </script>
