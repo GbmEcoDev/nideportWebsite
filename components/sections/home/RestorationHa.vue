@@ -1,7 +1,7 @@
 <template>
     <div class="contador">
         <div class="color_fondo" :style="{ height: colorHeight }"></div>
-        <div class="numero xs:text-4xl xs:leading-7 lg:text-6xl">{{ cantidad.toLocaleString() }} HECTAREAS </div>
+        <div class="numero xs:text-4xl xs:leading-8 sm:text-3xl sm:leading-9 lg:text-6xl">{{ cantidad.toLocaleString() }} HECTAREAS </div>
     </div>
 </template>
 
