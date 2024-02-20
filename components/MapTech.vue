@@ -1,7 +1,7 @@
 <template>
  
   <div class="relative z-50 lg:w-screen lg:h-full xs:h-2/3 overflow-hidden">
-    <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="center" :options="mapoptions" >
+    <l-map ref="map" id="map" class="z-0" :zoom="zoom" :center="center" :bounds="bounds" :options="mapoptions" >
       <l-tile-layer url="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}" layer-type="base" name="Google Satellite" />
       <l-geo-json :geojson="limites" :options="optionsLimites" :options-style="styleFunctionLimites" layer-type="overlay" name="Límites" :visible=estadoLimites />
      <l-geo-json :geojson="fajas" :options="optionsFajas" :options-style="styleFunctionFajas" layer-type="overlay" name="Fajas" :visible=estadoFajas />
@@ -20,17 +20,26 @@ import "leaflet/dist/leaflet.css";
 import { ref, onMounted , watch } from 'vue';
 import { LMap, LTileLayer, LGeoJson , LPopup } from "@vue-leaflet/vue-leaflet";
 const config = useRuntimeConfig();
+const { isMobile } = useDevice();
+
 const urlImg = config.public.url_base;
 
-const props = defineProps(['fotoId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasArest' , 'estadoAlta' , 'estadoFotos' , 'estadoCaminos' , 'estadoHidro' , 'estadoDegradadas' , 'estadoFueraProy' ]);
+const props = defineProps(['fotoId','areaId','fajaId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasArest' , 'estadoAlta' , 'estadoFotos' , 'estadoCaminos' , 'estadoHidro' , 'estadoDegradadas' , 'estadoFueraProy' ]);
 
 const featureByName = ref([])
+const featureByArea = ref([])
+const featureByFaja = ref([])
 const map = ref(null)
 
  // Usar ref para almacenar el ID recibido
 const idToShow = ref(props.fotoId);
-const { isMobile } = useDevice();
+const idAreaShow = ref(props.areaId);
+const idFajaShow = ref(props.fajaId);
+
 const zoom = ref(11);
+if(isMobile){
+ zoom.value = 10;
+}
 const center = ref([-26.52536, -53.91])
 const limites = ref(null);
 const fajas = ref(null);
@@ -39,14 +48,15 @@ const fotos = ref(null);
 const areasArestaurar = ref(null);
 //const pois = ref(null)
 const caminos = ref(null)
+const bounds = ref(null)
 const hidrografia = ref(null)
 const degradadas = ref(null)
 const fueraProyecto = ref(null)
 const openPanel = ref(false)
+const openPanelArea = ref(false)
 const mapoptions = {
 zoomControl: false
 }
-console.log(zoom.value, 'valor de zoom');
 // Límites----------------------------------------
 const styleFunctionLimites = {
   color: 'white',
@@ -134,6 +144,7 @@ const styleFunctionAreasRest  = (feature)=>
 };
 const optionsArestaurar = {
   onEachFeature: (feature, layer) => {
+    featureByArea[feature.properties.ID] = layer;
     layer.bindPopup(
       'Nombre: ' + feature.properties.Name + '<br> Etapa: ' + feature.properties.etapa,
       { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
@@ -388,35 +399,97 @@ const fetchData = async () => {
 
 onMounted(() => {
   fetchData();
-
 });
 
-const flyTo = async (idFoto) => {
+ // Acciones a realizar cuando cambia el ID de area
+const navigateTo = async (idArea) => {
+  if(featureByArea[idArea]){
+   bounds.value = featureByArea[idArea].getBounds();
+   zoom.value=18;
+  }
+  }
 
-  center.value = featureByName[idFoto].getLatLng();
-  zoom.value = 21;
+watch( 
+  () => props.areaId, 
+  (newValue, oldValue) =>  {
+    idAreaShow.value = newValue;
+    navigateTo(props.areaId);
 
-  /* 
-    '<img src="' + urlImg + '/images/rgs1_nov_23/' + featureByName[idFoto].properties.foto + '" style="border-radius: 14px; border: 2px solid gray; max-width: auto""/><br/>Nombre: ' + featureByName[idFoto].properties.Name + '<br/>Fecha: ' + featureByName[idFoto].properties.Date + '',
-    { permanent: false, sticky: true, maxWidth: "auto", closeButton: false, className: "popUpClass"} 
-  */
+    if (newValue && featureByArea[newValue]) {
+      const feature = featureByArea[newValue].feature;
+      if (feature.properties.Name) {
+        if (isMobile) {
+          featureByArea[newValue]
+            .bindPopup(
+              'Nombre: ' + feature.properties.Name + '<br> Etapa: ' + feature.properties.etapa,
+              { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
+            )
+            .openPopup();
+        } else {
+          //abrimos panel con datos del area
+           featureByArea[newValue].on("click", () =>
+            selectItemArea(openPanelArea, feature.properties.ID)
+          );
+        }
+      }
+    }
+    
+}, { immediate: true }); 
+ // Acciones a realizar cuando cambia el ID de area
+ const navigateFajaTo = async (idFaja) => {
+  if(featureByFaja[idFaja]){
+   bounds.value = featureByFaja[idFaja].getBounds();
+   zoom.value=18;
+  }
+  }
   
+watch( 
+  () => props.fajaId, 
+  (newValue, oldValue) =>  {
+    idFajaShow.value = newValue;
+    navigateFajaTo(props.fajaId);
+
+    if (newValue && featureByFaja[newValue]) {
+      const feature = featureByFaja[newValue].feature;
+      if (feature.properties.Name) {
+        if (isMobile) {
+          featureByFaja[newValue]
+            .bindPopup(
+              'Nombre: ' + feature.properties.nombre + '<br> descripcion: ' + feature.properties.descripcion,
+              { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
+            )
+            .openPopup();
+        } else {
+          //abrimos panel con datos del area
+           featureByFaja[newValue].on("click", () =>
+            selectItemFaja(openPanelFaja, feature.properties.ID)
+          );
+        }
+      }
+    }
+    
+}, { immediate: true }); 
+
+// Acciones a realizar cuando cambia el ID de foto
+const flyTo = async (idFoto) => {
+    if(featureByName[idFoto]){
+    zoom.value=21;
+    if(isMobile){
+    const { lat, lng } = featureByName[idFoto].getLatLng();
+    const newLat = lat + 0.001;
+    center.value = [newLat, lng];
+    }else{
+      center.value = featureByName[idFoto].getLatLng();
+    }
+  }
 }
 
- // Acciones a realizar cuando cambia el ID
-/*watch( () => props.fotoId, (newValue, oldValue) =>  {
-  idToShow.value = newValue;
-  flyTo(props.fotoId);
-  console.log("accion popup");
-
-
-}, { immediate: true }); */
 watch(
   () => props.fotoId,
   (newValue, old) => {
     idToShow.value = newValue;
     flyTo(props.fotoId);
- console.log("acc popup");
+    //aca activo popup con info
     if (newValue && featureByName[newValue]) {
       const feature = featureByName[newValue].feature;
       if (feature.properties.foto) {
@@ -433,6 +506,7 @@ watch(
               }
             )
             .openPopup();
+            zoom.value=21;
         } else {
           featureByName[newValue].on("click", () =>
             selectItem(openPanel, feature.properties.ID)
@@ -444,24 +518,20 @@ watch(
   { immediate: true }
 );
 
-
-
-/**/
-defineExpose( { map , featureByName , navigateTo } )
-
+defineExpose( { map , featureByName, featureByArea, featureByFaja , navigateTo, navigateFajaTo } );
   //get data item    
-  const emit = defineEmits(['open-panel', 'propsDetalle']);
+  const emit = defineEmits(['open-panel','open-panel-area','open-panel-faja', 'propsDetalle']);
   const selectItem = (openPanel, ID) => {
     emit('propsDetalle', ID);
     emit('open-panel',openPanel.value=true);
-    //console.log(ID, 'idelegido',openPanel.value)
   };
-
-  watch(isMobile, (newValue) => {
-  if (newValue) {
-    zoom.value = 16
-  }
-})
+  const selectItemArea = (openPanelArea, ID) => {
+    emit('open-panel-area',openPanelArea.value=true);
+  };
+  const selectItemFaja = (openPanelFaja, ID) => {
+    emit('open-panel-faja',openPanelFaja.value=true);
+  };
+  
 </script>
 
 <style>

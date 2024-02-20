@@ -1,11 +1,11 @@
 <template>
-    <div class="relative overflow-hidden bg-cover bg-no-repeat h-[41.5rem] z-0">
+    <div class="relative overflow-hidden bg-cover bg-no-repeat lg:h-[41.5rem] xs:h-[24rem] sm:h-[24rem] z-0">
       <video
         autoplay
         loop
         muted
         preload="none"
-        class="absolute z-0 w-auto min-w-full min-h-full max-w-none"
+        class="absolute z-0 lg:w-full min-w-full lg:h-auto max-w-none xs:h-full sm:h-full xs:w-auto sm:w-auto"
         poster="/images/hero_about.jpg"
         >
         <source

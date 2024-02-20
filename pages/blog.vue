@@ -3,28 +3,28 @@
     <SectionsBlogHeroBlog/>
     <div class="absolute w-full bottom-[-3em] max-sm:bottom-0 h-48 max-sm:h-[640px] max-sm:relative"><SectionsBlogFeactures/></div>
   </div>
-  <section class="p-28 max-lg:p-12 max-lg:pt-28 max-sm:p-3 flex max-sm:flex-col gap-8">
-      <div class="w-3/12 max-sm:w-full">
-          <SectionsBlogCategories/>
-          <SectionsBlogEvent/>
-        </div>
-      <div class="w-8/12  max-sm:w-full flex-col">
-       
-        <!----> <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Últimas Noticias</p>
-          <div class="w-full max-sm:w-full">
-            <SectionsBlogPostBiodiversity />
+  <section class="p-36 max-lg:p-12 max-lg:pt-28 max-sm:p-3 flex max-sm:flex-col gap-8">
+        <div class="w-8/12  max-sm:w-full flex-col">
+          <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Últimas Noticias</p>
+            <div class="w-full max-sm:w-full">
+              <SectionsBlogPostBiodiversity class="border border-gray-200 shadow-md rounded-md p-2" />
+            </div>
+            <div class="w-full max-sm:w-full">
+              <SectionsBlogPostCommunity class="border border-gray-200 shadow-md rounded-md p-2"/>
+            </div>
+        
+            <div class="w-full max-sm:w-full">
+              <SectionsBlogPostSecurity class="border border-gray-200 shadow-md rounded-md p-2"/>
+            </div>
+            <div class="w-full max-sm:w-full">
+              <SectionsBlogPostTechnology class="border border-gray-200 shadow-md rounded-md p-2"/>
+            </div>
           </div>
-          <div class="w-full max-sm:w-full">
-            <SectionsBlogPostCommunity/>
-          </div> 
-          
-          <div class="w-full max-sm:w-full">
-            <SectionsBlogPostSecurity/>
+          <div class="w-3/12 max-sm:w-full">
+            <SectionsBlogCategories class="hidden"/>
+            <SectionsBlogEvent/>
           </div>
-          <div class="w-full max-sm:w-full">
-            <SectionsBlogPostTechnology/>
-          </div>
-        </div> 
+     
   </section>
   <ScrollTop />
 </template>

@@ -1,14 +1,13 @@
 <template>
     <div class="border-b border-gray-200 mb-6">
         <!-- <p class="font-bold text-primary mb-2 border-b border-gray-200 dark:text-white">Discovering</p> -->
-        <div class="h-56 overflow-auto">
-          <div v-for="disco in discover" :key="disco.id" class="w-full mt-1 mb-1 flex p-1 border-b border-gray-700">
-              <span class="w-8 h-8 mr-3 rounded-full aspect-square border-2 border-green-800"></span>
-              <span v-if="disco.nombre_pol" class="text-xs text-gray-100 dark:text-gray-100 px-2"> {{ disco.nombre_pol }}</span>
-               
-              <!-- <div class="h-4">
-                <UButton @click="goMapId(disco.id)" label="view" color="primary" size="2xs" icon="i-heroicons-cursor-arrow-ripple-20-solid"/>
-              </div>  -->
+        <div class="h-56 overflow-auto"><span class="text-sm text-right w-full text-gray-600">({{ discover.length }} areas encontradas)</span>
+          <div v-for="disco in discover" :key="disco.id" class="w-full mt-1 mb-1 flex justify-between p-1 border-b border-gray-700">
+              <span v-if="disco.nombre" class="text-xs text-gray-100 dark:text-gray-100 px-2"> {{ disco.nombre }}</span>
+              <UButton @click="goMapFajaId(disco.id)" label="" color="primary" size="2xs" icon="i-heroicons-cursor-arrow-ripple-20-solid" class=" active:bg-green-700 focus:outline-none focus:ring focus:ring-green-300"/>
+              <div v-if="!discover.length" class="text-xs text-gray-500 px-2">
+                No areas found.
+              </div>
           </div>
         </div>
     </div>
@@ -22,8 +21,8 @@
   const { locale } = useI18n();
   const config = useRuntimeConfig();
   const language = locale.value.toUpperCase();
-  const discover = ref<Array<{ id: string; nombre_pol: string }>>([]);
-
+  const discover = ref<Array<{ id: string; nombre: string }>>([]);
+  const openPanelDetFaja = ref(false);
 onMounted(async () => {
   try {
     const { data } = await axios.get(`${config.public.url_base}/capas/reforestacion_fajas.geojson`);
@@ -35,8 +34,9 @@ onMounted(async () => {
   }
 });
   //get data item    
-  const emit = defineEmits(['go-map-id']);
-  const goMapId = (id: string) => {
-    emit('go-map-id', id);
+  const emit = defineEmits(['go-map-faja-id','open-panel-det-faja']);
+  const goMapFajaId = (id: string) => {
+    emit('go-map-faja-id', id);
+    emit('open-panel-det-faja',openPanelDetFaja.value=true);
   };
 </script>

@@ -1,9 +1,9 @@
 <template>
-    <div v-if="photoDetails" class="h-full">
+    <div v-if="areaDetails" class="h-full">
         <UCard class="lg:w-[350px] lg:h-full xs:w-full xs:h-1/3">
             <template #header class="relative">
-              <h2 class="text-4xl">{{ photoDetails.nombre }}</h2>
-                <UButton @click="closeDetalle"
+            <h2 class="text-4xl">{{ areaDetails.Name }}</h2>
+                <UButton @click="closeDetalleArea"
                     icon="i-heroicons-x-mark-20-solid"
                     size="md"
                     color="gray" variant="ghost"
@@ -11,23 +11,15 @@
                     />
             </template>
             <div class="flex gap-2">
-                <div class="lg:w-full xs:w-full">
-                    <NuxtImg :src="`${config.public.url_base}/images/rgs1_nov_23/${ photoDetails.foto }`" class="w-full aspect-ratio-square object-cover" />
-                    <p>{{ photoDetails.Date }}</p>
-                    <p>{{ photoDetails.descripcion }}</p>
-                </div>
+                <div class="lg:w-full xs:w-full"><p class="border-t border-b border-gray-300 text-gray-300 text-sm mb-8"><span>{{ areaDetails.etapa }} - {{ areaDetails.__rea_ha_ }} Hectareas</span></p> <p>{{ areaDetails.description }}</p></div>
             </div>
-
             <template #footer>
-            
-                
             </template>
         </UCard>
-     
     </div>
     <div v-else>
       <!-- Mensaje o contenido por defecto si no hay detalles disponibles -->
-      <p>No se encontraron detalles para el ID proporcionado.</p>
+      <p>No se encontraron detalles del area.</p>
     </div>
   </template>
   
@@ -40,24 +32,26 @@
   const { locale } = useI18n();
   const config = useRuntimeConfig();
   const language = locale.value.toUpperCase();
-  const props = defineProps(['id','fotoId']);
-  const discover = ref<Array<{ ID: string; foto: string; Date: string; nombre: string; descripcion: string }>>([]);
-  const photoDetails = ref<{ foto: string; Date: string; nombre: string; descripcion: string } | null>(null);
-  const closePanel = ref(true);
 
-  //const idToShow = ref(props.fotoId);
-  console.log(props.fotoId,"lo que mando view");
+  const props = defineProps(['id','areaId']);
+  const discover = ref<Array<{ ID: string; Name: string; description: string; __rea_ha_: string; etapa: string }>>([]);
+  const areaDetails = ref<{ Name: string; description: string; __rea_ha_: string; etapa: string } | null>(null);
+  const closePanelArea = ref(true);
+
+  const idToShowArea = ref(props.areaId);
+  console.log(idToShowArea.value,"id area detalle");
+
   onMounted(async () => {
     try {
-      const { data } = await axios.get(`${config.public.url_base}/capas/fotos.geojson`);
+      const { data } = await axios.get(`${config.public.url_base}/capas/areas_arestaurar24_32.geojson`);
       if (data.features) {
         discover.value = data.features.map((feature: any) => feature.properties) || [];
         // Cargar los detalles de la foto al recibir el ID
         if(props.id != ''){
-        loadPhotoDetails(props.id);
+        loadareaDetails(props.id);
         }
-        else if(props.fotoId){
-        loadPhotoDetails(props.fotoId);
+        else if(props.areaId){
+        loadareaDetails(props.areaId);
         }
         else{}
       }
@@ -68,21 +62,20 @@
   
   // Actualizar los detalles de la foto cuando cambia el ID
   watch(() => props.id, (newID) => {
-    loadPhotoDetails(newID);
+    loadareaDetails(newID);
   });
   
-  const loadPhotoDetails = (id: string) => {
+  const loadareaDetails = (id: string) => {
     // Buscar los detalles de la foto con el ID proporcionado
-    const details = discover.value.find((photo) => photo.ID === id);
+    const details = discover.value.find((area) => area.ID === id);
   
     // Actualizar el estado con los detalles encontrados o null si no se encuentra la foto
-    photoDetails.value = details || null;
+    areaDetails.value = details || null;
   };
 
-  const emit = defineEmits(['close-det-panel']);
-  const closeDetalle = () => {
-
-    emit('close-det-panel', closePanel.value=false);
+  const emit = defineEmits(['close-det-panel-area']);
+  const closeDetalleArea = () => {
+    emit('close-det-panel-area', closePanelArea.value=false);
   };
   </script>
   <style scoped>

@@ -1,7 +1,10 @@
 <template>
     <div class="relative w-screen h-screen z-0  overflow-x-hidden">
       <div class="absolute z-0 w-screen h-screen">
-        <MapTech :fotoId="selectedDetID" 
+        <MapTech 
+        :fotoId="selectedDetID"
+        :areaId="selectedAreaID"
+        :fajaId="selectedFajaID"
         :estadoLimites="selected" 
         :estadoFajas="selectedFajas" 
         :estadoAreasArest="selectedAreasArest"
@@ -10,7 +13,12 @@
         :estadoHidro="selectedHidro"
         :estadoDegradadas="selectedDegradadas"
         :estadoFueraProy="selectedFueraProy"
-        @propsDetalle="handlePropsDetalle" @open-panel="handleOpenPanel"
+        @propsDetalle="handlePropsDetalle" 
+        @propsDetalleArea="handlePropsDetalleArea" 
+        @propsDetalleFaja="handlePropsDetalleFaja" 
+        @open-panel="handleOpenPanel" 
+        @open-panel-area="handleOpenPanelArea" 
+        @open-panel-faja="handleOpenPanelFaja"
          />
       </div>
       <div class="absolute top-0 left-0 h-14 w-48">
@@ -34,7 +42,16 @@
 
 
         </div>
-        
+        <SectionsMapappUCardDetalleFaja class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
+      xs:top-[33%]
+      xs:w-full
+      " :id="selectedFajaID" v-model="isOpenDetFaja" v-if="isOpenDetFaja && isDesktop" @close-det-panel-faja="handleCloseDetPanelFaja" :fajaId="selectedFajaID" />
+
+        <SectionsMapappUCardDetalleArea class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
+      xs:top-[33%]
+      xs:w-full
+      " :id="selectedAreaID" v-model="isOpenDetArea" v-if="isOpenDetArea && isDesktop" @close-det-panel-area="handleCloseDetPanelArea" :areaId="selectedAreaID" />
+
       <SectionsMapappUCardDetalle class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
       xs:top-[33%]
       xs:w-full
@@ -102,20 +119,23 @@
                       >
                     <template #zone-restore >
                       <div>
-                        <SectionsMapappListAreaWorked />
+                        <SectionsMapappListAreaWorked @go-map-faja-id="recibirFajaId" @open-panel-det-faja="handleOpenDetPanelFaja" />
                       </div>
                     </template> 
                     <template #zone-from-restorate-e1 >
-                      <SectionsMapappListAreaToRestore />
+                      <SectionsMapappListAreaToRestore namefilter="Etapa 2" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" />
                     </template>
                     <template #zone-from-restorate-e2 >
-                      <SectionsMapappListAreaToRestore />
+                      <SectionsMapappListAreaToRestore namefilter="Etapa 3" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea"/>
                     </template>
                     <template #zone-from-restorate-e3 >
-                      <SectionsMapappListAreaToRestore />
+                      <SectionsMapappListAreaToRestore namefilter="Etapa 4" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea"/>
                     </template>
                     <template #zone-from-restorate-e4 >
-                      <SectionsMapappListAreaToRestore />
+                      <p class="text-sm text-gray-600">Descripcion area con ha aproximadas.</p>
+                    </template> 
+                    <template #zone-from-restorate-e5 >
+                      <p class="text-sm text-gray-600">Descripción fuera de proyecto dado que...</p>
                     </template> 
                     </UAccordion>
                   </div>
@@ -123,13 +143,8 @@
               </template>
             </UTabs>
           </div>
-
-           
         </div>
    </div>
-  <!--  <div class="absolute z-1100 bottom-2 left-[-250px]" :class="{ 'left-[320px]': isOpen }">
-        <UButton ref="btnActivePanel" @click="isOpen = false" color="primary" size="xl"  trailingIcon="i-heroicons-x-mark-20-solid" />
-      </div> -->
   </template>
 
   <script setup lang="ts">
@@ -151,11 +166,14 @@
   const localePath = useLocalePath()
   const isOpen = ref(false);
   const isOpenDet = ref(false);
+  const isOpenDetArea = ref(false);
+  const isOpenDetFaja = ref(false);
   const selectedDetID = ref('');
+  const selectedAreaID = ref('');
+  const selectedFajaID = ref('');
   const colorMode  = useColorMode();
   const idSeleccionado = ref('');
   const btnActivePanel = ref('null'); 
-
 
   //seteo vista de capas 
   function onChange (index:any) {
@@ -170,17 +188,20 @@
     //selectedPois.value=false;
     selectedCaminos.value=true;
     selectedHidro.value=false;
+    isOpenDetArea.value=false;
+    isOpenDetFaja.value=false;
   } else{
     selectedHidro.value=true;
     selectedFajas.value=true;
     selectedAreasArest.value=true;
-    selectedDegradadas.value=true;
+    selectedDegradadas.value=false;
     selectedFueraProy.value=true;
-    selectedFotos.value=true;
+    selectedFotos.value=false;
     //selectedPois.value=false;
     selectedCaminos.value=false;
     selectedHidro.value=false;
     isOpenDet.value=false;
+    isOpenDetArea.value=false;
   }
 }
  
@@ -205,11 +226,17 @@
   //content:"dos"
   slot: 'zone-from-restorate-e3'
 }, {
-  label: 'Etapa 5 - 2033/2045',
+  label: 'Etapa 5 - 2033/2045 Áreas degradadas',
   icon: 'i-heroicons-map-solid',
   //content:"dos"
   slot: 'zone-from-restorate-e4'
-}]
+}, {
+  label: 'Zona fuera de proyecto',
+  icon: 'i-heroicons-map-solid',
+  //content:"dos"
+  slot: 'zone-from-restorate-e5'
+}
+]
 const itemscat = [{
   label: 'Destacadas',
   icon: 'i-heroicons-sparkles',
@@ -258,26 +285,76 @@ const recibirId = (ID: any) => {
   //console.log(idFotoSelect);
 };
 
+const recibirAreaId = (ID: any) => {
+  selectedAreaID.value = ID;
+  console.log("envio id de area ",ID);
+};
+
+const recibirFajaId = (ID: any) => {
+  selectedFajaID.value = ID;
+  console.log("envio id de faja ",ID);
+};
+
 const handlePropsDetalle = (ID:any) => {
   selectedDetID.value = ID;
 
 };
 
+const handlePropsDetalleArea = (ID:any) => {
+  selectedAreaID.value = ID;
+};
+
+const handlePropsDetalleFaja = (ID:any) => {
+  selectedFajaID.value = ID;
+};
+
+
 const handleOpenPanel = (value:any) => {
   isOpenDet.value = value;
+  isOpenDetFaja.value = false;
+  isOpenDetArea.value= false;
 };
+
+ const handleOpenPanelArea = (value:any) => {
+  isOpenDetArea.value = value;
+  isOpenDetFaja.value = false;
+  isOpenDet.value = false;
+}; 
+const handleOpenPanelFaja = (value:any) => {
+  isOpenDetFaja.value = value;
+  isOpenDetArea.value= false;
+  isOpenDet.value=false;
+}; 
 
 const handleCloseDetPanel = (value:any) => {
   isOpenDet.value = value;
   selectedDetID.value = '';
   idSeleccionado.value= '';
 };
+const handleCloseDetPanelArea = (value:any) => {
+  isOpenDetArea.value = value;
+  selectedDetID.value = '';
+  idSeleccionado.value= '';
+};
+
+const handleCloseDetPanelFaja = (value:any) => {
+  isOpenDetFaja.value = value;
+  selectedFajaID.value = '';
+  idSeleccionado.value= '';
+};
+
 const handleOpenDetPanel = (value:any) => {
   isOpenDet.value=false;
   isOpenDet.value = value;
 };
-
-
+const handleOpenDetPanelArea = (value:any) => {
+  isOpenDetArea.value=false;
+  isOpenDetArea.value = value;
+};
+const handleOpenDetPanelFaja = (value:any) => {
+  isOpenDetFaja.value=false;
+  isOpenDetFaja.value = value;
+};
 
 //generales de page
   onMounted(() => {
@@ -357,5 +434,8 @@ const handleOpenDetPanel = (value:any) => {
 }
 #acco-area ::v-deep(button:nth-child(9)) {
   color: rgb(139, 139, 139);
+}
+#acco-area ::v-deep(button:nth-child(11)) {
+  color: rgb(77, 65, 41);
 }
 </style>

@@ -43,7 +43,7 @@
     "axios": "^1.6.0",
     "element-plus": "^2.4.3",
     "nodemailer": "^6.9.7",
-    "nuxt-mail": "^4.0.2",
+    "nuxt-mail": "^4.0.3",
     "nuxt-protected-mailto": "^0.0.12",
     "sharp": "^0.33.2",
     "tailwindcss-gradients": "^3.0.0",

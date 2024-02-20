@@ -1,7 +1,7 @@
 <template>
      <div>
          <p v-if="color ? color === 'light' : $colorMode.value === 'light'">
-            <NuxtImg src="/images/logo-nideport.svg" alt="Logo Nideport" class="py-0 w-[185px]"/>
+            <NuxtImg src="/images/logo-nideport-dark.svg" alt="Logo Nideport" class="py-0 w-[185px]"/>
              </p>
              <p v-if="color ? color === 'dark' : $colorMode.value === 'dark'">
             <NuxtImg src="/images/logo-nideport-dark.svg" alt="Logo Nideport white" class="w-[185px]"/>

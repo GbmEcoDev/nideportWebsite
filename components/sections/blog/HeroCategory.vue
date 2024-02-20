@@ -1,5 +1,5 @@
 <template>
-    <div class="relative overflow-hidden bg-cover bg-no-repeat h-[20rem]" style="
+    <div class="relative overflow-hidden bg-cover bg-no-repeat h-[24rem]" style="
         background-position: 50%;
         background-image: url('/images/bg-blog.webp');
         background-size: cover;

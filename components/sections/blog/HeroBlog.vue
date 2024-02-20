@@ -1,19 +1,20 @@
 <template>
-    <div class="relative overflow-hidden bg-cover bg-no-repeat h-[41.5rem]" style="
+    <div class="relative overflow-hidden bg-cover bg-no-repeat lg:h-[41.5rem] xs:h-[24rem] sm:h-[24rem]" style="
         background-position: 50%;
-        background-image: url('/images/bg-blog.webp');
+        background-image: url('/images/hero-blog.webp');
         background-size: cover;
       ">
     <div
       class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed">
         <div class="flex h-full items-center justify-center">
           <AtomsContainer>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-                <div class="text-left text-white md:px-12 col-span-2" data-aos="fade-left">
-                  <AtomsTitleH1 :texte="$t('blog_title')"></AtomsTitleH1>
-                  <div class="flex items-center w-10/12 mt-4 max-sm:w-full" data-aos="fade-up">
-                    <p class="text-[2.25rem] max-sm:text-base max-sm:text-center">{{$t('blog_subtitle')}}</p>
-                </div></div>
+            <div class="">
+                <div class="text-left text-white md:px-12">
+                  <AtomsTitleH1 :texte="$t('blog_title')" data-aos="fade-left"></AtomsTitleH1>
+                  <div class="flex items-center sm:justify-center xs:justify-center lg:justify-start w-10/12 mt-4 max-sm:w-full" data-aos="fade-up">
+                    <p class=" text-[2.25rem] max-sm:text-base lg:text-left xs:text-center sm:text-center">{{$t('blog_subtitle')}}</p>
+                  </div>
+              </div>
             </div>
           </AtomsContainer>
         </div>

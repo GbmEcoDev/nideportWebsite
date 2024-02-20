@@ -1,37 +1,38 @@
 export default defineNuxtConfig({
   /* */ ssr: false,
   spaLoadingTemplate: true,
+
   nitro:{
     compressPublicAssets: true,
     prerender:{failOnError:false}
    },
 
   /**/ generate:{
-    exclude: [
-      /^\/tecnologias-financieras-para-un-planeta-mas-sostenible\/.*$/, 
-      /^\/tecnologia\/.*$/, 
-      /^\/plantacion\/.*$/,
-      /^\/en\/categories\/highlights-en\/.*$/,
-      /^\/en\/categories\/security\/.*$/,
-      /^\/en\/categories\/technology-en\/.*$/,
-      /^\/en\/categories\/sustainability-en\/.*$/,
-      /^\/categories\/destacadas\/.*$/,
-      /^\/en\/financial-technologies-for-a-more-sustainable-planet\/.*$/,
-      /^\/categories\/seguridad\/.*$/,
-      /^\/programa-de-carbono-participativo\/.*$/,
-      /^\/categories\/sustentabilidad\/.*$/,
-      /^\/categories\/tecnologia\/.*$/,
-      /^\/en\/stockholm50moray\/.*$/,
-      /^\/en\/tags\/.*$/,
-      /^\/tags\/.*$/,
-      /^\/categories\/.*$/,
-    ],
-  }, 
-
+      exclude: [
+        /^\/tecnologias-financieras-para-un-planeta-mas-sostenible\/.*$/, 
+        /^\/tecnologia\/.*$/, 
+        /^\/plantacion\/.*$/,
+        /^\/en\/categories\/highlights-en\/.*$/,
+        /^\/en\/categories\/security\/.*$/,
+        /^\/en\/categories\/technology-en\/.*$/,
+        /^\/en\/categories\/sustainability-en\/.*$/,
+        /^\/categories\/destacadas\/.*$/,
+        /^\/en\/financial-technologies-for-a-more-sustainable-planet\/.*$/,
+        /^\/categories\/seguridad\/.*$/,
+        /^\/programa-de-carbono-participativo\/.*$/,
+        /^\/categories\/sustentabilidad\/.*$/,
+        /^\/categories\/tecnologia\/.*$/,
+        /^\/en\/stockholm50moray\/.*$/,
+        /^\/en\/tags\/.*$/,
+        /^\/tags\/.*$/,
+        /^\/categories\/.*$/,
+      ],
+    },
 
   css: [
     '@/assets/css/main.css',
   ],
+
   modules:[//'@nuxtjs/tailwindcss',
   ['@nuxt/image',{
     image:{
@@ -43,6 +44,7 @@ export default defineNuxtConfig({
     },
     smtp: {
       service: 'smtp.gmail.com',
+      port: 587,
       auth: {
         user: process.env.MAILUSER,
         pass: process.env.MAILPASSWORD,
@@ -61,6 +63,7 @@ export default defineNuxtConfig({
     classSuffix: '',
     storageKey: 'nuxt-color-mode'
   },
+
   //buildModules: ['@nuxt/image'],
   postcss: {
     plugins: {
@@ -68,6 +71,7 @@ export default defineNuxtConfig({
       autoprefixer: {}, 
     },
   },
+
   i18n: {
     detectBrowserLanguage: {
       useCookie: true,
@@ -127,7 +131,8 @@ export default defineNuxtConfig({
     
     /* fallbackLocale: "es", */
   },
-/* */ 
+
+  /* */
   runtimeConfig: {
       public: {
           wpEventos : process.env.WP_EVENT,
@@ -142,7 +147,7 @@ export default defineNuxtConfig({
           CONTACTMAIL: process.env.CONTACTMAIL,
           SENDGRID_API_KEY: process.env.SENDGRID_API_KEY
       }
-  },
+  }
   /* mail: {
     message: {
       to: 'info@nideport.com',
@@ -154,5 +159,11 @@ export default defineNuxtConfig({
         pass: process.env.MAILPASSWORD,
       },
     },
-  }, */
+  }, */,
+
+  devtools: {
+    timeline: {
+      enabled: true
+    }
+  }
 })

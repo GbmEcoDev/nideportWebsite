@@ -1,7 +1,7 @@
 <template>
     <div class="contador">
         <div class="color_fondo" :style="{ height: colorHeight }"></div>
-        <div class="numero xs:text-4xl xs:leading-8 sm:text-3xl sm:leading-9 lg:text-6xl">{{ cantidad.toLocaleString() }} HECTAREAS </div>
+        <div class="numero xs:text-4xl xs:leading-9 sm:text-3xl sm:leading-9 lg:text-6xl">{{ cantidad.toLocaleString() }} HECTAREAS </div>
     </div>
 </template>
 
@@ -45,7 +45,7 @@ onBeforeUnmount(() => {
   transform: rotate(180deg);
   margin: 0px;
   position: relative;
-  height:4.1em;
+  height:4.9em;
 }
 
 .numero {
@@ -62,6 +62,7 @@ onBeforeUnmount(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+  line-height: 40px;
 }
 
 .color_fondo {

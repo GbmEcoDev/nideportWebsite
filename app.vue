@@ -4,31 +4,25 @@
     <NuxtPage />
   </NuxtLayout>
 </template>
-<style>
 
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.4s;
-}
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-  filter: blur(1rem);
-}
-</style>
 <script setup lang="ts">
 import Loading from './components/Loading.vue';
-//import { ref } from 'vue';
-const loading = ref(true);
+import { ref } from 'vue';
+let loading = ref(true);
 
 setTimeout(() => {
   loading.value = false;
 }, 1000); 
  
 useSeoMeta({
+  ogUrl: 'https://www.nideport.com',
   ogTitle: 'Nideport - Soluciones basadas en la naturaleza',
   ogDescription: 'Somos una empresa desarrolladora de proyectos de créditos de carbono, dedicada a la restauración ecológica y conservación de la biodiversidad con un enfoque social.',
-  ogImage: 'https://demo.nideport.com/images/bg-contact.webp'
+  ogImage: 'https://demo.nideport.com/images/bg-contact.webp',
+  twitterTitle: 'Nideport - Soluciones basadas en la naturaleza',
+  twitterDescription: 'Somos una empresa desarrolladora de proyectos de créditos de carbono, dedicada a la restauración ecológica y conservación de la biodiversidad con un enfoque social.',
+  twitterImage: 'https://demo.nideport.com/images/bg-contact.webp',
+  twitterCard: 'summary'
 });
 useHead({
     htmlAttrs: {
@@ -41,3 +35,15 @@ useHead({
     ],
   });
 </script>
+<style>
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+</style>
