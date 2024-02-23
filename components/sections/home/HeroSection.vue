@@ -36,7 +36,7 @@
             <div class="flex h-full items-center justify-center">
               <div class="flex max-sm:flex-col w-5/6 gap-4 mt-60">
                   <div class="flex justify-end max-sm:justify-center max-sm:mx-auto w-[18.75rem]">
-                    <NuxtImg :src="`${urlImg}/images/imagonideport.svg`" width="1080"/>
+                    <NuxtImg :src="`${urlImg}/images/imagonideport.svg`" width="236" class="max-w-none w-[14.75rem] h-auto max-sm:w-[150px] max-sm:h-[150px]" alt="Logo Nideport"/>
                     <!--  <ElementsImagoLogo width="236" class="max-w-none w-[14.75rem] h-auto max-sm:w-[150px] max-sm:h-[150px]" />-->
                     <!-- <object alt="Logo Nideport" :data="`${urlImg}/images/logo-imago.svg`" width="236" class="max-w-none w-[14.75rem] h-auto max-sm:w-[150px] max-sm:h-[150px]"></object>
                    --></div>

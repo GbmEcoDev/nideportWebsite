@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  /* */ ssr: false,
+  ssr: false,
   spaLoadingTemplate: true,
 
   nitro:{
@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     prerender:{failOnError:false}
    },
 
-  /**/ generate:{
+  generate:{
       exclude: [
         /^\/tecnologias-financieras-para-un-planeta-mas-sostenible\/.*$/, 
         /^\/tecnologia\/.*$/, 
@@ -38,19 +38,7 @@ export default defineNuxtConfig({
     image:{
       quality:80,
     }
-  }], '@nuxt/devtools', '@nuxtjs/i18n', '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui', ['nuxt-mail', {
-    message: {
-      to: 'arielrobles@outlook.com',
-    },
-    smtp: {
-      service: 'smtp.gmail.com',
-      port: 587,
-      auth: {
-        user: process.env.MAILUSER,
-        pass: process.env.MAILPASSWORD,
-      },
-    },
-  }], '@nuxtjs/device'],
+  }], '@nuxt/devtools', '@nuxtjs/i18n', '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui', '@nuxtjs/device'],
 
   colorMode: {
     preference: 'light', // default value of $colorMode.preference
@@ -128,11 +116,8 @@ export default defineNuxtConfig({
       }
     ],
     defaultLocale: "es",
-    
-    /* fallbackLocale: "es", */
   },
 
-  /* */
   runtimeConfig: {
       public: {
           wpEventos : process.env.WP_EVENT,
@@ -140,26 +125,12 @@ export default defineNuxtConfig({
           wpRestora: process.env.WP_RESTO,
           wordpressUrl: process.env.WP_POST,
           url_base : process.env.BASE_URL,
-          MAILHOST: process.env.MAILHOST,
-          MAILPORT: process.env.MAILPORT,
-          MAILUSER: process.env.MAILUSER,
-          MAILPASSWORD: process.env.MAILPASSWORD,
-          CONTACTMAIL: process.env.CONTACTMAIL,
-          SENDGRID_API_KEY: process.env.SENDGRID_API_KEY
+          CONTACTMAILTO: process.env.CONTACTMAILTO,
+          CONTACTMAILFROM: process.env.CONTACTMAILFROM,
+          SMTPTOKEN: process.env.SMTP_SERVER_SECURITY_TOKEN,
+          gtmContainerId:'',
       }
-  }
-  /* mail: {
-    message: {
-      to: 'info@nideport.com',
-    },
-    smtp: {
-      service: 'gmail',
-      auth: {
-        user: process.env.MAILUSER,
-        pass: process.env.MAILPASSWORD,
-      },
-    },
-  }, */,
+  },
 
   devtools: {
     timeline: {

@@ -17,30 +17,32 @@
 </template>
 <script setup>
 import "leaflet/dist/leaflet.css";
-import { ref, onMounted , watch } from 'vue';
+import { ref, onMounted , watch, computed } from 'vue';
 import { LMap, LTileLayer, LGeoJson , LPopup } from "@vue-leaflet/vue-leaflet";
 const config = useRuntimeConfig();
 const { isMobile } = useDevice();
 
 const urlImg = config.public.url_base;
 
-const props = defineProps(['fotoId','areaId','fajaId', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasArest' , 'estadoAlta' , 'estadoFotos' , 'estadoCaminos' , 'estadoHidro' , 'estadoDegradadas' , 'estadoFueraProy' ]);
+const props = defineProps(['fotoId','areaId','fajaId','resetMap', 'estadoLimites' , 'limites' , 'estadoFajas' , 'estadoAreasArest' , 'estadoAlta' , 'estadoFotos' , 'estadoCaminos' , 'estadoHidro' , 'estadoDegradadas' , 'estadoFueraProy' ]);
 
 const featureByName = ref([])
 const featureByArea = ref([])
 const featureByFaja = ref([])
 const map = ref(null)
-
- // Usar ref para almacenar el ID recibido
-const idToShow = ref(props.fotoId);
-const idAreaShow = ref(props.areaId);
-const idFajaShow = ref(props.fajaId);
-
+const bounds = ref(null)
 const zoom = ref(11);
 if(isMobile){
  zoom.value = 10;
 }
 const center = ref([-26.52536, -53.91])
+
+ // Usar ref para almacenar el ID recibido
+const idToShow = ref(props.fotoId);
+const idAreaShow = ref(props.areaId);
+const idFajaShow = ref(props.fajaId);
+const resetedMap = ref(false);
+//capas
 const limites = ref(null);
 const fajas = ref(null);
 //const alertas = ref(null);
@@ -48,7 +50,6 @@ const fotos = ref(null);
 const areasArestaurar = ref(null);
 //const pois = ref(null)
 const caminos = ref(null)
-const bounds = ref(null)
 const hidrografia = ref(null)
 const degradadas = ref(null)
 const fueraProyecto = ref(null)
@@ -86,6 +87,7 @@ const styleFunctionFajas = {
 };
 const optionsFajas = {
   onEachFeature: (feature, layer) => {
+    featureByFaja[feature.properties.id] = layer;
   layer.bindPopup(
     feature.properties.description,
     { permanent: false, sticky: true, maxWidth: "auto", closeButton: false }
@@ -401,10 +403,50 @@ onMounted(() => {
   fetchData();
 });
 
- // Acciones a realizar cuando cambia el ID de area
+// Acciones a realizar cuando se desea resetear el centro y zoom del map
+/* const resetMapTo = async () => {
+  if (resetedMap.value == true){ 
+    resetedMap.value == false;
+    console.log('reposiciono y falseo',props.resetMap);
+    center.value = [-26.52536, -53.91];
+    zoom.value = 11;
+    }else{}
+  }
+
+watch( 
+  () => props.resetMap, 
+  (newValue, oldValue) =>  {
+    resetedMap.value = newValue;
+    console.log('reposiciono mapa',props.resetMap);
+    if (props.resetMap == true){
+      resetMapTo();
+    }else{}
+}, { immediate: true });
+ */
+ const needsRepositioning = computed(() => {
+  return props.resetMap || resetedMap.value;
+});
+
+const resetMapTo = async () => {
+  if (needsRepositioning.value) {
+    center.value = [-26.52536, -53.91];
+    zoom.value = 11;
+    resetedMap.value = false;
+    props.resetMap = false;
+  }
+};
+
+watch(() => {
+  // Se agrega resetedMap.value a la dependencia
+  return props.resetMap || resetedMap.value;
+}, resetMapTo);
+
+
+// Acciones a realizar cuando cambia el ID de area
 const navigateTo = async (idArea) => {
+ 
   if(featureByArea[idArea]){
-   bounds.value = featureByArea[idArea].getBounds();
+   bounds.value = featureByArea[idArea].getBounds().pad(.5);
    zoom.value=18;
   }
   }
@@ -435,11 +477,15 @@ watch(
     }
     
 }, { immediate: true }); 
+
+
  // Acciones a realizar cuando cambia el ID de area
  const navigateFajaTo = async (idFaja) => {
+ 
   if(featureByFaja[idFaja]){
-   bounds.value = featureByFaja[idFaja].getBounds();
-   zoom.value=18;
+    console.log(">>>>>>>>>>>>",featureByFaja[idFaja])
+  bounds.value = featureByFaja[idFaja].getBounds().pad(.5);
+  zoom.value=18;
   }
   }
   
@@ -448,7 +494,7 @@ watch(
   (newValue, oldValue) =>  {
     idFajaShow.value = newValue;
     navigateFajaTo(props.fajaId);
-
+    console.log(props.fajaId,'faja en mapatech');
     if (newValue && featureByFaja[newValue]) {
       const feature = featureByFaja[newValue].feature;
       if (feature.properties.Name) {
@@ -462,7 +508,7 @@ watch(
         } else {
           //abrimos panel con datos del area
            featureByFaja[newValue].on("click", () =>
-            selectItemFaja(openPanelFaja, feature.properties.ID)
+            selectItemFaja(openPanelFaja, feature.properties.id)
           );
         }
       }

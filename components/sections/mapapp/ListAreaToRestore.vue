@@ -27,6 +27,7 @@
   const areas = ref<Array<{ ID: string; Name: string; etapa: string }>>([]);
   const areafiltered = computed(() => areas.value.filter((item) => item.etapa === namefilter));
   const openPanelDetArea = ref(false)
+  const isOpenDetFaja = ref(false);
 onMounted(async () => {
   try {
     const { data } = await axios.get(`${config.public.url_base}/capas/areas_arestaurar24_32.geojson`);
@@ -38,9 +39,10 @@ onMounted(async () => {
   }
 });
   //get data item    
-  const emit = defineEmits(['go-map-area-id','open-panel-det-area']);
+  const emit = defineEmits(['go-map-area-id','open-panel-det-area', 'close-panel-det-faja']);
   const goMapAreaId = (ID: string) => {
     emit('go-map-area-id', ID);
     emit('open-panel-det-area',openPanelDetArea.value=true);
+    emit('close-panel-det-faja',isOpenDetFaja.value=false);
   };
 </script>

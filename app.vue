@@ -33,6 +33,12 @@ useHead({
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Nunito:wght@400;700&display=swap',crossorigin: ''},
     ],
+    script: [
+    {
+      src: 'https://smtpjs.com/v3/smtp.js', // Reemplaza con la ruta de tu librería
+      crossorigin: '', // Agrega el atributo crossorigin para evitar errores de CORS
+    },
+  ],
   });
 </script>
 <style>

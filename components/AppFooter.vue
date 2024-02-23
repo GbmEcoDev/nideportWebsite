@@ -3,13 +3,13 @@
         
         <AtomsContainer>
         <!-- Div que ocupa el ancho completo -->
-        <div class="p-1 mb-1 flex items-center justify-center"><hr class="custom-hr"></div>
+        <div class="p-1 mb-1 flex items-center justify-center"></div>
 
         <!-- Tres columnas -->
         <div class="flex flex-col items-center sm:flex-row sm:justify-between sm:items-center gap-4">
             <div class="p-4 flex items-center ">
                 <NuxtLink to="/" class=" flex items-center gap-2">
-                    <Logo/>
+                    <LogoFooter/>
                 </NuxtLink>
             </div>
             <div class="p-4 flex items-center text-left text-slate-500 text-xs leading-22 w-3/4 " >Copyright Nideport Uruguay &copy; {{ new Date().getFullYear() }} All rights Reserved.

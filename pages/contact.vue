@@ -2,7 +2,6 @@
    <SectionsContactHeroContact/>
    <SectionsContactMoreInfoContact/>
     <SectionsContactFormInfo/>
-    <!-- <SectionsContactTresDe/>-->
    <ScrollTop />
 </template>
 <script setup lang="ts">

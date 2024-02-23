@@ -5,34 +5,34 @@
       <p class="text-left text-base text-secondary my-4  dark:text-white">{{$t('contact_form_legend')}}</p>
     </div>
     <div class="mx-32 mt-8 max-sm:mx-1">
-      <form @submit.prevent="submit(form)" class="px-8 pt-6 pb-8 mb-4 max-sm:px-0"><!--   -->
+   
         <div class="mb-4">
           <label for="nombre" class="block text-secondary text-sm mb-2  dark:text-white">{{$t('contact_form_label1')}}</label>
-          <input type="text" id="nombre" v-model="form.nombre" class="border-b border-secondary text-2xl w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
-          <p v-if="errors.nombre" class="text-red-500 text-xs">{{ errors.nombre }}</p>
+          <input type="text" id="nombre" v-model="nombre" class="border-b border-secondary text-2xl w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
+
         </div>
   
         <div class="mb-4">
           <label for="empresa" class="block text-secondary text-sm mb-2  dark:text-white">{{$t('contact_form_label2')}}</label>
-          <input type="text" id="empresa" v-model="form.empresa" class="border-b border-secondary text-2xl w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
-          <p v-if="errors.empresa" class="text-red-500 text-xs">{{ errors.nombre }}</p>
+          <input type="text" id="empresa" v-model="empresa" class="border-b border-secondary text-2xl w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
+
         </div>
   
         <div class="mb-4">
           <label for="telefono" class="block text-secondary text-sm mb-2  dark:text-white">{{$t('contact_form_label3')}}</label>
-          <input type="tel" id="telefono" v-model="form.telefono" class="border-b border-secondary text-2xl w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
-          <p v-if="errors.telefono" class="text-red-500 text-xs">{{ errors.nombre }}</p>
+          <input type="tel" id="telefono" v-model="telefono" class="border-b border-secondary text-2xl w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
+  
         </div>
   
         <div class="mb-4">
           <label for="email" class="block text-secondary text-sm mb-2  dark:text-white">{{$t('contact_form_label4')}}</label>
-          <input type="email" id="email" v-model="form.email" class="border-b border-secondary text-2xl w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
-          <p v-if="errors.email" class="text-red-500 text-xs">{{ errors.nombre }}</p>
+          <input type="email" id="email" v-model="email" class="border-b border-secondary text-2xl w-full py-2 px-3 text-secondary leading-tight focus:outline-none focus:shadow-outline" required>
+         
         </div>
   
         <div class="mb-4">
           <label class="flex items-center">
-            <input type="checkbox" v-model="form.terminos" class="mr-2 leading-tight">
+            <input type="checkbox" v-model="terminos" class="mr-2 leading-tight">
             <span class="text-secondary text-sm  dark:text-white">
               {{$t('contact_form_label5')}}
             </span>
@@ -41,7 +41,7 @@
   
         <div class="mb-6">
           <label class="flex items-center">
-            <input type="checkbox" v-model="form.notificaciones" class="mr-2 leading-tight">
+            <input type="checkbox" v-model="notificaciones" class="mr-2 leading-tight">
             <span class="text-secondary text-sm  dark:text-white">
               {{$t('contact_form_label6')}}
             </span>
@@ -49,111 +49,123 @@
         </div>
   
         <div class="flex items-center justify-center">
-          <button aria-label="Send" type="submit"  :disabled="waiting" class="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            <template v-if="waiting">{{$t('contact_form_button_act')}}</template>
-            <template v-else>{{$t('contact_form_button')}}</template>
+          <button @click="sendEmail" class="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            {{$t('contact_form_button')}}
           </button>
-          <p v-if="errors">error</p>
-          <p v-if="success">ok</p>
+
         </div>
-      </form>
+
     </div>
     
   </AtomsContainer>
+  <div id="myModal" class="modal">
+    <div class="modal-content rounded-lg mx-auto lg:w-1/2 xs:w-11/12 sm:w-11/12 xs:mt-36 sm:mt-36" >
+      <span class="close">&times;</span>
+        <div class="flex xs:flex-col sm:flex-col justify-center w-full ">
+            <div class="flex justify-center w-full">
+              <NuxtImg :src="`${urlImg}/images/imagonideport.svg`" width="224" class="max-w-none w-[10rem] h-auto max-sm:w-[124px] max-sm:h-[124px]" alt="Logo Nideport"/></div>
+            <div class=" w-full md:px-10 col-span-2">
+              <h6 class="mt-4 text-center text-primary  mb-2 text-4xl font-bold md:text-4xl xl:text-5x1 max-sm:text-center max-sm:mt-2">
+                ¡Gracias! Tu mensaje ha sido enviado correctamente.
+              </h6>
+            </div>
+        </div>
+    </div>
+  </div>
   </template>
-  <script setup>
-import { ref, computed, watch } from 'vue';
-//import { useMail } from 'nuxt/mail'; // Import the useMail utility
+<script setup>
+import { ref , computed} from 'vue';
+const config = useRuntimeConfig();
+const urlImg = config.public.url_base;
+// Formulario de contacto
+const nombre = ref('');
+const empresa = ref('');
+const telefono = ref('');
+const email = ref('');
+const terminos = ref(false);
+const notificaciones = ref(false);
 
-const mailModule = useMail(); // Access the nuxt-mail module
+const checkOneChecked = computed(() => terminos.value || notificaciones.value)
 
-const form = ref({
-  nombre: '',
-  empresa: '',
-  telefono: '',
-  email: '',
-  terminos: false,
-  notificaciones: false,
-});
 
-const errors = ref('');
-const success = ref('');
-const waiting = ref(false);
+const sendEmail = () => {
+  if (!checkOneChecked.value) { alert('Debe seleccionar una opción');return; }
 
-// Validation rules (enhanced)
-const rules = {
-  nombre: { required: true },
-  empresa: { required: true },
-  telefono: { required: true },
-  email: { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ }, // Email validation
-  terminos: { required: true }, // Ensure terms agreement
-};
+  Email.send({
+    SecureToken: config.public.SMTPTOKEN,
+    To: config.public.CONTACTMAILTO,
+    From: config.public.CONTACTMAILFROM,
+    Subject: "Contacto desde Nideport website",
+    Body: `
+      Nombre: ${nombre.value}<br>
+      Empresa: ${empresa.value}<br>
+      Teléfono: ${telefono.value}<br>
+      Correo electrónico: ${email.value}<br>
+      Solicita información para adquirir creditos: ${terminos.value ? 'Sí' : 'No'}<br>
+      Solicita información sobre el manejo de tierras: ${notificaciones.value ? 'Sí' : 'No'}
+    `
+  //}).then(message => alert(message));
+  }).then(message => {
+    const modal = document.getElementById("myModal");
+    modal.style.display = "block";
 
-// Enhanced validation
-const isValid = computed(() => {
-  errors.value = '';
-
-  for (const field in rules) {
-    const rule = rules[field];
-
-    if (rule.required && !form.value[field]) {
-      errors.value += `${field} is required\n`;
-      return false;
+    const span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+      modal.style.display = "none";
     }
 
-    if (rule.pattern && !rule.pattern.test(form.value[field])) {
-      errors.value += `${field} format is invalid\n`;
-      return false;
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
     }
-  }
 
-  return true;
+    //reseteo input
+    nombre.value=""; 
+    empresa.value=""; 
+    telefono.value=""; 
+    email.value="";
+    terminos.value=false;
+    notificaciones.value=false;
 });
-
-const submit = async (form) => {
-  if (!isValid.value) {
-    return; // Prevent submission if validation fails
-  }
-
-  waiting.value = true;
-
-  try {
-    await mailModule.$send({
-      message: {
-        from: 'Tu Nombre <[ariel.robles@gmb.eco]>', // Replace with your name and email
-        to: 'arielrobles@outlook.com', // Replace with recipient's email
-        subject: 'Contacto desde tu sitio web',
-        html: `
-          Nombre: ${form.value.nombre}<br>
-          Empresa: ${form.value.empresa}<br>
-          Teléfono: ${form.value.telefono}<br>
-          Email: ${form.value.email}<br>
-          Terminos: ${form.value.terminos ? 'Aceptado' : 'No aceptado'}<br>
-          Notificaciones: ${form.value.notificaciones ? 'Aceptado' : 'No aceptado'}<br>
-        `,
-      },
-    });
-
-    success.value = '¡Mensaje enviado! Gracias por contactarnos.';
-  } catch (error) {
-    errors.value = error.message;
-  } finally {
-    waiting.value = false;
-  }
-};
-
-// Clear form data on successful submission
-watch(success, () => {
-  if (success.value) {
-    form.value = {
-      nombre: '',
-      empresa: '',
-      telefono: '',
-      email: '',
-      terminos: false,
-      notificaciones: false,
-    };
-  }
-});
-
+}
 </script>
+<style scoped>
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+
+  padding: 20px;
+  border: 1px solid #888;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+</style>

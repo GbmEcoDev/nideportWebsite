@@ -5,8 +5,9 @@
         :fotoId="selectedDetID"
         :areaId="selectedAreaID"
         :fajaId="selectedFajaID"
-        :estadoLimites="selected" 
-        :estadoFajas="selectedFajas" 
+        :resetMap="resetedMap"
+        :estadoLimites="selected"
+        :estadoFajas="selectedFajas"
         :estadoAreasArest="selectedAreasArest"
         :estadoFotos="selectedFotos"
         :estadoCaminos="selectedCaminos"
@@ -79,7 +80,7 @@
                   <UCheckbox v-model="selectedFueraProy" name="hidrografia" label="Áreas fuera de Proyecto" :update:model-value="fueraProyVisibility(selectedFueraProy )" /></div>
               </template>
             </UPopover>
-            <UButton color="white" variant="outline" icon="i-heroicons-x-mark-20-solid" class="mx-1" @click="isOpen = false, isOpenDet = false"  ref="btnActivePanel" />
+            <UButton color="white" variant="outline" icon="i-heroicons-x-mark-20-solid" class="mx-1" @click="isOpen = false, isOpenDet = false, isOpenDetArea = false, isOpenDetFaja = false"  ref="btnActivePanel" />
           </div>
             <div class="p-1 flex-1">
               <UTabs :items="items" @change="onChange">
@@ -93,10 +94,10 @@
                     size="sm">
                     <template #jobs-featured >
                       <div>
-                        <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel"/>
+                        <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel" />
                       </div>
                     </template>
-                    <template #jobs-security >
+                    <!--<template #jobs-security >
                       <div>
                         <SectionsMapappListDiscovery @go-map-id="recibirId" @open-panel-det="handleOpenDetPanel"/>
                       </div>
@@ -109,7 +110,7 @@
                     </template>
                     <template #jobs-tech >
                       fotos de tecnologia
-                    </template>
+                    </template>-->
                     </UAccordion>
                   </div>
                   <div v-else-if="item.key === 'planner'" class="space-y-1" id="acco-area">
@@ -119,17 +120,17 @@
                       >
                     <template #zone-restore >
                       <div>
-                        <SectionsMapappListAreaWorked @go-map-faja-id="recibirFajaId" @open-panel-det-faja="handleOpenDetPanelFaja" />
+                        <SectionsMapappListAreaWorked @go-map-faja-id="recibirFajaId" @open-panel-det-faja="handleOpenDetPanelFaja" @close-panel-det-area="handleCloseDetPanelArea" />
                       </div>
                     </template> 
                     <template #zone-from-restorate-e1 >
-                      <SectionsMapappListAreaToRestore namefilter="Etapa 2" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" />
+                      <SectionsMapappListAreaToRestore namefilter="Etapa 2" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" @close-panel-det-faja="handleCloseDetPanelFaja"/>
                     </template>
                     <template #zone-from-restorate-e2 >
-                      <SectionsMapappListAreaToRestore namefilter="Etapa 3" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea"/>
+                      <SectionsMapappListAreaToRestore namefilter="Etapa 3" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" @close-panel-det-faja="handleCloseDetPanelFaja"/>
                     </template>
                     <template #zone-from-restorate-e3 >
-                      <SectionsMapappListAreaToRestore namefilter="Etapa 4" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea"/>
+                      <SectionsMapappListAreaToRestore namefilter="Etapa 4" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" @close-panel-det-faja="handleCloseDetPanelFaja"/>
                     </template>
                     <template #zone-from-restorate-e4 >
                       <p class="text-sm text-gray-600">Descripcion area con ha aproximadas.</p>
@@ -174,7 +175,7 @@
   const colorMode  = useColorMode();
   const idSeleccionado = ref('');
   const btnActivePanel = ref('null'); 
-
+  const resetedMap = ref(false);
   //seteo vista de capas 
   function onChange (index:any) {
   const item = items[index]
@@ -190,6 +191,8 @@
     selectedHidro.value=false;
     isOpenDetArea.value=false;
     isOpenDetFaja.value=false;
+    resetedMap.value=false;
+    resetMapa();
   } else{
     selectedHidro.value=true;
     selectedFajas.value=true;
@@ -202,10 +205,12 @@
     selectedHidro.value=false;
     isOpenDet.value=false;
     isOpenDetArea.value=false;
+    resetedMap.value=false;
+    resetMapa();
   }
 }
  
-   const itemsa = [{
+  const itemsa = [{
   label: 'Etapa 1 - En restauración ',
   icon: 'i-heroicons-map',
   //content:"uno"
@@ -243,7 +248,7 @@ const itemscat = [{
   defaultOpen:true,
   //content:"uno"
   slot: 'jobs-featured'
-},
+}/*,
   {
   label: 'Seguridad',
   icon: 'i-heroicons-shield-check',
@@ -266,7 +271,8 @@ const itemscat = [{
   icon: 'i-heroicons-computer-desktop',
   //content:"dos"
   slot: 'jobs-tech'
-}]
+}*/
+]
 
 const items = [{
   key: 'discover',
@@ -282,12 +288,15 @@ const items = [{
 // Función para recibir el ID y actualizar el estado
 const recibirId = (ID: any) => {
   selectedDetID.value = ID;
-  //console.log(idFotoSelect);
+};
+
+const resetMapa = () => {
+  resetedMap.value = true;
+  console.log(resetedMap.value,'centeredmap');
 };
 
 const recibirAreaId = (ID: any) => {
   selectedAreaID.value = ID;
-  console.log("envio id de area ",ID);
 };
 
 const recibirFajaId = (ID: any) => {
@@ -297,15 +306,20 @@ const recibirFajaId = (ID: any) => {
 
 const handlePropsDetalle = (ID:any) => {
   selectedDetID.value = ID;
-
+  isOpenDetFaja.value = false;
+  isOpenDetArea.value= false;
 };
 
 const handlePropsDetalleArea = (ID:any) => {
   selectedAreaID.value = ID;
+  isOpenDetFaja.value = false;
+  isOpenDet.value = false;
 };
 
 const handlePropsDetalleFaja = (ID:any) => {
   selectedFajaID.value = ID;
+  isOpenDetArea.value= false;
+  isOpenDet.value=false;
 };
 
 
@@ -333,7 +347,7 @@ const handleCloseDetPanel = (value:any) => {
 };
 const handleCloseDetPanelArea = (value:any) => {
   isOpenDetArea.value = value;
-  selectedDetID.value = '';
+  selectedAreaID.value = '';
   idSeleccionado.value= '';
 };
 

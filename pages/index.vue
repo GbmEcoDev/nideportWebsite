@@ -16,10 +16,9 @@ useHead({
 
 <template>
   <SectionsHomeHeroSection />
-  <LazySectionsHomeOurPillars />
-  <LazySectionsHomeMapReserve />
-  <!-- <PageTech/> -->
-  <LazySectionsHomePartnerNideport />
-  <LazySectionsHomeMoreInfo />
+  <SectionsHomeOurPillars />
+  <SectionsHomeMapReserve />
+  <SectionsHomePartnerNideport />
+  <SectionsHomeMoreInfo />
   <LazyScrollTop />
 </template>

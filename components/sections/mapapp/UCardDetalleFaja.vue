@@ -34,15 +34,6 @@
   const areaDetails = ref<{ id: string; nombre: string; Densidad: string; Plantas: string; Superficie: string; descripcion: string; Metodo: string  } | null>(null);
   const closePanelFaja = ref(true);
 
-/*   nombre
-Densidad
-Plantas
-Superficie
-descripcion */
-
-  const idToShowArea = ref(props.fajaId);
-  console.log(idToShowArea.value,"id area detalle");
-
   onMounted(async () => {
     try {
       const { data } = await axios.get(`${config.public.url_base}/capas/reforestacion_fajas.geojson`);

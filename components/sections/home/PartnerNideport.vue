@@ -43,7 +43,7 @@
    */
   const partners = ref([
     { logo: '/images/partners/logo-embarca.png', alt: 'Embarca', url:'https://www.embarca.tech/' },
-    { logo: '/images/partners/logo-alma.png', alt: 'Alma', url:'https://almavest.com/' },
+    { logo: '/images/partners/alma-logo.png', alt: 'Alma', url:'https://almavest.com/' },
     { logo: '/images/partners/logo-drapercygnus.svg', alt: 'Draper Cygnus', url:'https:///drapercygnus.vc/' },
     { logo: '/images/partners/logo-mesa.png', alt: 'Mesa Carbono', url:'https://mesacarbono.org.ar/' },
     

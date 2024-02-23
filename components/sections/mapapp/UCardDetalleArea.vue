@@ -38,9 +38,6 @@
   const areaDetails = ref<{ Name: string; description: string; __rea_ha_: string; etapa: string } | null>(null);
   const closePanelArea = ref(true);
 
-  const idToShowArea = ref(props.areaId);
-  console.log(idToShowArea.value,"id area detalle");
-
   onMounted(async () => {
     try {
       const { data } = await axios.get(`${config.public.url_base}/capas/areas_arestaurar24_32.geojson`);

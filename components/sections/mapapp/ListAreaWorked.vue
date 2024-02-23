@@ -23,6 +23,7 @@
   const language = locale.value.toUpperCase();
   const discover = ref<Array<{ id: string; nombre: string }>>([]);
   const openPanelDetFaja = ref(false);
+  const isOpenDetArea = ref(false);
 onMounted(async () => {
   try {
     const { data } = await axios.get(`${config.public.url_base}/capas/reforestacion_fajas.geojson`);
@@ -34,9 +35,12 @@ onMounted(async () => {
   }
 });
   //get data item    
-  const emit = defineEmits(['go-map-faja-id','open-panel-det-faja']);
+  const emit = defineEmits(['go-map-faja-id','open-panel-det-faja','close-panel-det-area']);
+
   const goMapFajaId = (id: string) => {
     emit('go-map-faja-id', id);
     emit('open-panel-det-faja',openPanelDetFaja.value=true);
+    emit('close-panel-det-area',isOpenDetArea.value=false);
+    console.log('emito faja',id);
   };
 </script>
