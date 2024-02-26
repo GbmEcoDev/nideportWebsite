@@ -22,27 +22,27 @@
         @open-panel-faja="handleOpenPanelFaja"
          />
       </div>
-      <div class="absolute top-0 left-0 h-14 w-48">
+      <div class="absolute top-2 left-2 h-14 w-48" :class="{ 'lg:hidden': isOpen }">
         <NuxtLink :to="localePath({ name: 'index' })" class=" relative z-1000" ><Logo color="dark"/></NuxtLink>
       </div>
       <div class="absolute pb-8 z-55 bottom-2 left-2 xs:px-9 " :class="{ 'left-[-350px]': isOpen }">
-        <!-- <p class="text-4xl mb-9 text-primary lg:hidden" :class="{ 'xs:block': isOpen }">Conocé nuestras acciones en restauración</p> -->
-        <UButton v-if="isDesktop" ref="btnActivePanel" label="Descubrí nuestras acciones" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-72 text-bold"/>
-        <div v-else class=" w-full relative flex h-full flex-col justify-center overflow-hidden rounded-xl" :class="{ 'hidden': isOpen }">
-          <div class="absolute inset-0 bg-center rounded-xl dark:bg-black w-full"></div>
-          <div class="group relative m-0 flex h-full w-full rounded-xl shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg">
-            <div class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
-              <img src="/images/pilar-tecnologia.webp" class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110" alt="" />
+        
+            <UButton v-if="isDesktop" ref="btnActivePanel" :label="$t('map_app_btn_discovery')" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-auto text-bold" />
+          
+            <div v-else class=" w-full relative flex h-full flex-col justify-center overflow-hidden rounded-xl" :class="{ 'hidden': isOpen }">
+              <div class="absolute inset-0 bg-center rounded-xl dark:bg-black w-full"></div>
+              <div class="group relative m-0 flex h-full w-full rounded-xl shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg">
+                <div class="z-10 h-full w-full overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
+                  <img src="/images/pilar-tecnologia.webp" class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110" alt="" />
+                </div>
+                <div class="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
+                  <p class="text-3xl px-3 mb-9 text-white text-center font-bold shadow-lg" >{{$t('map_app_btn_xs_discovery')}}</p>
+                  <UButton block ref="btnActivePanel" :label="$t('map_app_btn_xs_lb_discovery')" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-72 text-bold"/>
+                </div>
+              </div>
             </div>
-            <div class="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
-              <p class="text-3xl px-3 mb-9 text-white text-center font-bold shadow-lg" >Conocé nuestras acciones en restauración</p>
-              <UButton block ref="btnActivePanel" label="Descubrí" @click="isOpen = true" color="primary" size="xl" trailingIcon="i-heroicons-cursor-arrow-rays-20-solid" class="w-72 text-bold"/>
-            </div>
-          </div>
         </div>
-
-
-        </div>
+        
         <SectionsMapappUCardDetalleFaja class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
       xs:top-[33%]
       xs:w-full
@@ -55,32 +55,33 @@
 
       <SectionsMapappUCardDetalle class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10 dark:bg-slate-900/10
       xs:top-[33%]
-      xs:w-full
-      " :id="selectedDetID" v-model="isOpenDet" v-if="isOpenDet && isDesktop" @close-det-panel="handleCloseDetPanel" :fotoId="selectedDetID" />
+            xs:w-full" :id="selectedDetID" v-model="isOpenDet" v-if="isOpenDet && isDesktop" @close-det-panel="handleCloseDetPanel" :fotoId="selectedDetID" />
 
         <div v-if="isOpen" class="absolute lg:bottom-0 lg:left-0 lg:w-1/4 lg:h-screen bg-slate-900/90 dark:bg-slate-900/90
         xs:w-full
         xs:h-1/3
         xs:bottom-0" >
-          <div class="relative flex items-center justify-evenly w-full xs:pt-2">
-            <Logo color="dark" class="lg:block" :class="{ 'xs:hidden': isOpen }"/>
-            <NuxtLink :to="localePath({ name: 'index' })" class="z-1000" ><UButton color="white" variant="outline" icon="i-heroicons-home-20-solid" class="mx-1"/></NuxtLink>
-            <UPopover :popper="{ placement: 'bottom-start' }" class="border rounded-md">
-              <UButton color="white" label="Capas" icon="i-heroicons-square-3-stack-3d-20-solid" />
+          <div class="relative flex items-center justify-between w-full xs:pt-2">
+            <div class="mr-4  flex justify-start"><Logo color="dark" class="lg:block w-36 mb-2" :class="{ 'xs:hidden': isOpen }"/></div>
+            <div class="ml-2 flex justify-end"> 
+            <NuxtLink :to="localePath({ name: 'index' })" class="z-1000" ><UButton color="white" variant="solid" icon="i-heroicons-home-20-solid" class="mx-1"/></NuxtLink>
+            <UPopover :popper="{ placement: 'bottom-start' }" class="rounded-md">
+              <UButton color="white" label="" icon="i-heroicons-square-3-stack-3d-20-solid" />
               <template #panel>
                 <div class="p-4">
-                  <UCheckbox v-model="selected" name="limites" label="Límites" :update:model-value="layerVisibility(selected )" />
-                  <UCheckbox v-model="selectedFajas" name="fajas" label="Áreas en restauración" :update:model-value="fajasVisibility(selectedFajas )" />
-                  <UCheckbox v-model="selectedAreasArest" name="areasDegradadas" label="Áreas a restaurar" :update:model-value="areasArestisibility(selectedAreasArest )" />
-                  <UCheckbox v-model="selectedDegradadas" name="areasDegradadas" label="Áreas degradadas" :update:model-value="degradadasVisibility(selectedDegradadas )" />
-                  <UCheckbox v-model="selectedFotos" name="fotos" label="Registros de trabajo en campo" :update:model-value="fotosVisibility(selectedFotos )" />
+                  <UCheckbox v-model="selected" name="limites" :label="$t('map_app_upop_item1')" :update:model-value="layerVisibility(selected )" />
+                  <UCheckbox v-model="selectedFajas" name="fajas" :label="$t('map_app_upop_item2')" :update:model-value="fajasVisibility(selectedFajas )" />
+                  <UCheckbox v-model="selectedAreasArest" name="areasDegradadas" :label="$t('map_app_upop_item3')" :update:model-value="areasArestisibility(selectedAreasArest )" />
+                  <UCheckbox v-model="selectedDegradadas" name="areasDegradadas" :label="$t('map_app_upop_item4')" :update:model-value="degradadasVisibility(selectedDegradadas )" />
+                  <UCheckbox v-model="selectedFotos" name="fotos" :label="$t('map_app_upop_item5')" :update:model-value="fotosVisibility(selectedFotos )" />
                   <!-- <UCheckbox v-model="selectedPois" name="pois" label="Puntos destacados" :update:model-value="poisVisibility(selectedPois )" /> -->
-                  <UCheckbox v-model="selectedCaminos" name="caminos" label="Caminos" :update:model-value="caminosVisibility(selectedCaminos )" />
-                  <UCheckbox v-model="selectedHidro" name="hidrografia" label="Hidrografía" :update:model-value="hidrografiaVisibility(selectedHidro )" />
-                  <UCheckbox v-model="selectedFueraProy" name="hidrografia" label="Áreas fuera de Proyecto" :update:model-value="fueraProyVisibility(selectedFueraProy )" /></div>
+                  <UCheckbox v-model="selectedCaminos" name="caminos" :label="$t('map_app_upop_item6')" :update:model-value="caminosVisibility(selectedCaminos )" />
+                  <UCheckbox v-model="selectedHidro" name="hidrografia" :label="$t('map_app_upop_item7')" :update:model-value="hidrografiaVisibility(selectedHidro )" />
+                  <UCheckbox v-model="selectedFueraProy" name="hidrografia" :label="$t('map_app_upop_item8')" :update:model-value="fueraProyVisibility(selectedFueraProy )" /></div>
               </template>
             </UPopover>
-            <UButton color="white" variant="outline" icon="i-heroicons-x-mark-20-solid" class="mx-1" @click="isOpen = false, isOpenDet = false, isOpenDetArea = false, isOpenDetFaja = false"  ref="btnActivePanel" />
+            <UButton color="white" variant="solid" icon="i-heroicons-x-mark-20-solid" class="mx-1" @click="isOpen = false, isOpenDet = false, isOpenDetArea = false, isOpenDetFaja = false"  ref="btnActivePanel" />
+            </div>
           </div>
             <div class="p-1 flex-1">
               <UTabs :items="items" @change="onChange">
@@ -133,10 +134,10 @@
                       <SectionsMapappListAreaToRestore namefilter="Etapa 4" @go-map-area-id="recibirAreaId" @open-panel-det-area="handleOpenDetPanelArea" @close-panel-det-faja="handleCloseDetPanelFaja"/>
                     </template>
                     <template #zone-from-restorate-e4 >
-                      <p class="text-sm text-gray-600">Descripcion area con ha aproximadas.</p>
+                      <p class="text-sm text-gray-600">{{$t('map_app_acc2_content1')}}</p>
                     </template> 
                     <template #zone-from-restorate-e5 >
-                      <p class="text-sm text-gray-600">Descripción fuera de proyecto dado que...</p>
+                      <p class="text-sm text-gray-600">{{$t('map_app_acc2_content2')}}</p>
                     </template> 
                     </UAccordion>
                   </div>
@@ -211,63 +212,63 @@
 }
  
   const itemsa = [{
-  label: 'Etapa 1 - En restauración ',
+  label: t('map_app_acc2_item1'),
   icon: 'i-heroicons-map',
   //content:"uno"
   slot: 'zone-restore'
 }, {
-  label: 'Etapa 2 - 2024/2026',
+  label: t('map_app_acc2_item2'),
   icon: 'i-heroicons-map-solid',
   //content:"dos"
   slot: 'zone-from-restorate-e1'
 }, {
-  label: 'Etapa 3 - 2027/2028',
+  label: t('map_app_acc2_item3'),
   icon: 'i-heroicons-map-solid',
   //content:"dos"
   slot: 'zone-from-restorate-e2'
 }, {
-  label: 'Etapa 4 - 2029/2032',
+  label: t('map_app_acc2_item4'),
   icon: 'i-heroicons-map-solid',
   //content:"dos"
   slot: 'zone-from-restorate-e3'
 }, {
-  label: 'Etapa 5 - 2033/2045 Áreas degradadas',
+  label: t('map_app_acc2_item5'),
   icon: 'i-heroicons-map-solid',
   //content:"dos"
   slot: 'zone-from-restorate-e4'
 }, {
-  label: 'Zona fuera de proyecto',
+  label: t('map_app_acc2_item6'),
   icon: 'i-heroicons-map-solid',
   //content:"dos"
   slot: 'zone-from-restorate-e5'
 }
 ]
 const itemscat = [{
-  label: 'Destacadas',
+  label:  t('map_app_acc1_item1'),
   icon: 'i-heroicons-sparkles',
   defaultOpen:true,
   //content:"uno"
   slot: 'jobs-featured'
 }/*,
   {
-  label: 'Seguridad',
+  label: t('map_app_acc1_item2'),
   icon: 'i-heroicons-shield-check',
   //content:"uno"
   slot: 'jobs-security'
 }, {
-  label: 'Restauración',
+  label: t('map_app_acc1_item3'),
   icon: 'i-heroicons-globe-americas',
   //content:"dos"
   slot: 'jobs-restoration'
 }
 , {
-  label: 'Comunidad',
+  label: t('map_app_acc1_item4'),
   icon: 'i-heroicons-user-group',
   //content:"dos"
   slot: 'jobs-community'
 }
 , {
-  label: 'Tecnología',
+  label: t('map_app_acc1_item5'),
   icon: 'i-heroicons-computer-desktop',
   //content:"dos"
   slot: 'jobs-tech'
@@ -276,13 +277,13 @@ const itemscat = [{
 
 const items = [{
   key: 'discover',
-  label: 'ACCIONES',
-  content: 'Nuestras acciones'
+  label: t('map_app_tab_item1'),
+  content: t('map_app_tab_title1')
 }, {
   key:'planner',
-  label: 'RESTAURACIÓN',
+  label: t('map_app_tab_item2'),
   disabled: false,
-  content: 'Restauración y plan de gestión del bosque'
+  content: t('map_app_tab_title2')
 }]
 
 // Función para recibir el ID y actualizar el estado

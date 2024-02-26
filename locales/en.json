@@ -8,6 +8,7 @@
     "home_title" : "We develop nature-based solutions for ecosystem restoration.",
     "home_hero_btn_join" : "Join Now",
     "home_pillar_phrase":"OUR GOAL IS TO RESTORE",
+    "home_pillar_ha":"HECTARES",
     "home_pillar_phrases":"AND GUARANTEE THEIR LONG-TERM CONSERVATION",
     "home_pillar_title": "Our Pillars",
     "home_pillar_c1_title": "Ecosystem Restoration",
@@ -40,8 +41,8 @@
     "about_title" : "About us",
     "about_phrase1" : "Nideport is a developer of carbon credit projects, dedicated to ecological restoration and biodiversity conservation with a social approach.",
     "about_c1" : "Native forest restoration",
-    "about_c2" : "Strong Social Focus",
-    "about_c3" : "Biodiversity Conservation",
+    "about_c2" : "Strong social focus",
+    "about_c3" : "Biodiversity conservation",
     "about_c4" : "Preservation of natural capital",
     "about_phrase2" : "Through reforestation, forest enrichment, biodiversity enhancement and empowerment of local communities, we restore ecosystem services for present and future generations.",
     "about_btn" : "Join now",
@@ -83,6 +84,11 @@
 
     "blog_title" : "Blog",
     "blog_subtitle" : "Learn about our activities",
+    "blog_lasted" : "Latest news",
+    "blog_title_first_event":"What is Participatory Carbon?",
+    "blog_first_btn":"Read more",
+    "blog_title_more_event":"More Events",
+    "blog_title_not_event":"No events published",
 
     "contact_title" : "Contact Now",
     "contact_subtitle" : "Join Nideport in our commitment to ecological restoration and biodiversity conservation.",
@@ -93,11 +99,48 @@
     "contact_form_label3": "Your phone",
     "contact_form_label4": "Your email",
     "contact_form_label5": "Acquire in volume",
-    "contact_form_label6": "Offering land",
+    "contact_form_label6": "Offer land",
     "contact_form_button": "Send message",
     "contact_form_button_act": "Sending...",
+    "contact_form_thank": "Thank you! Your message has been sent successfully.",
 
     "about":"about",
-    "blog": "blog"
+    "blog": "blog",
 
+    "map_app_btn_discovery":"Discover our actions",
+    "map_app_btn_xs_discovery":"Learn about our actions in restoration",
+    "map_app_btn_xs_lb_discovery":"Discover",
+    "map_app_upop_item1": "Limits",
+    "map_app_upop_item2": "Areas under restoration",
+    "map_app_upop_item3": "Areas to be restored",
+    "map_app_upop_item4": "Degraded areas",
+    "map_app_upop_item5": "Fieldwork trace",
+    "map_app_upop_item6": "Roads",
+    "map_app_upop_item7": "Hydrography",
+    "map_app_upop_item8": "Off Project Areas",
+
+    "map_app_tab_item1": "ACTIONS",
+    "map_app_tab_item2": "RESTORATION",
+
+    "map_app_tab_title1": "Our actions",
+    "map_app_tab_title2": "Forest restoration and management plan",
+
+    "map_app_acc1_item1": "Highlights",
+    "map_app_acc1_item2": "Safety",
+    "map_app_acc1_item3": "Restoration",
+    "map_app_acc1_item4": "Community",
+    "map_app_acc1_item5": "Technology",
+
+    "map_app_acc2_item1": "Stage 1 - Restoration",
+    "map_app_acc2_item2": "Stage 2 - 2024/2026",
+    "map_app_acc2_item3": "Stage 3 - 2027/2028",
+    "map_app_acc2_item4": "Stage 4 - 2029/2032",
+    "map_app_acc2_item5": "Stage 5 - 2033/2045 Degraded areas",
+    "map_app_acc2_item6": "Off-project area",
+
+    "map_app_acc2_content1":"Descripción área con ha aproximadas.",
+    "map_app_acc2_content2":"Descripción fuera de proyecto dado que...",
+
+    "map_app_acc_label": "found areas",
+    "map_app_acc_label2": "data found"
 }

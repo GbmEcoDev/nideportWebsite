@@ -6,9 +6,9 @@
             <div class="flex-col w-full h-full border-2 p-1">
                 <div class="flex flex-col  w-full p-3 ">
                     <AtomsTitleH2 texte="Programa de Carbono Participativo" alignTxt="left" colorTxt="white" weightTxt="bold" sizeTxt="max-lg:text-2xl"/>
-                    <p class="text-white">¿Qué es el Carbono Participativo?</p>
+                    <p class="text-white">{{$t('blog_title_first_event')}}</p>
                     <div class="flex  my-10 h-12 ">
-                        <AtomsLinkBtn :href="`${config.public.url_base}/es/programa-de-carbono-participativo/`" variant="primary">Más Info</AtomsLinkBtn>
+                        <AtomsLinkBtn :href="`${config.public.url_base}/programa-de-carbono-participativo/`" variant="primary">{{$t('blog_first_btn')}}</AtomsLinkBtn>
                     </div>
                 </div>
             </div>
@@ -18,8 +18,10 @@
 </template>
 
 <script setup lang="ts">
+const { t, locale } = useI18n();
 const config = useRuntimeConfig();
 const urlImg = config.public.url_base;
+
 </script>
 
 <style scoped>

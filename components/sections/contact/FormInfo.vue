@@ -66,7 +66,7 @@
               <NuxtImg :src="`${urlImg}/images/imagonideport.svg`" width="224" class="max-w-none w-[10rem] h-auto max-sm:w-[124px] max-sm:h-[124px]" alt="Logo Nideport"/></div>
             <div class=" w-full md:px-10 col-span-2">
               <h6 class="mt-4 text-center text-primary  mb-2 text-4xl font-bold md:text-4xl xl:text-5x1 max-sm:text-center max-sm:mt-2">
-                ¡Gracias! Tu mensaje ha sido enviado correctamente.
+                {{$t('contact_form_thank')}}
               </h6>
             </div>
         </div>

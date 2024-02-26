@@ -7,25 +7,21 @@
                 <AtomsTitleH2 alignTxt="center" colorTxt="secondary" weightTxt="bold" :texte="$t('home_pillar_phrases')" />
             </div>
             <div class="flex justify-center items-center pb-16 h-[454px] max-sm:flex-col">
-                <!-- <div class="flex items-center justify-center px-20 w-2/6 h-full max-sm:w-full max-sm:px-2 max-sm:my-8 bg-center max-sm:bg-[left_1rem]" data-aos="fade-right" style="
-                        background-repeat:no-repeat;
-                        background-image: url('/images/Bg-Pillar.svg');
-                        background-size: contain;
-                    "> -->
+
                     <div class="flex items-center justify-center px-20 w-2/6 h-full max-sm:w-full max-sm:px-2 max-sm:my-8 " data-aos="fade-right">
                     <AtomsTitleH3 :texte="$t('home_pillar_title')"/>
                 </div>
                 <div class="relative w-4/6 max-sm:w-11/12 h-full">
                     <div 
                         class="flex absolute top-1/2 -left-5 -translate-y-1/2 z-10 transition duration-300 ease-linear" 
-                        :class="prevIsVisible?'visible opacity-100':'insisible opacity-0'">
+                        :class="prevIsVisible?'visible opacity-100':'invisible opacity-0'">
                         <AtomsSwiperNavButton @click="scrollToLeft()">
                             <IconsPrevIco />
                         </AtomsSwiperNavButton>
                     </div>
                     <div  
                         class="flex absolute top-1/2 -right-5 -translate-y-1/2 z-10 transition duration-300 ease-linear" 
-                        :class="nextIsVisible?'visible opacity-100':'insisible opacity-0'">
+                        :class="nextIsVisible?'visible opacity-100':'invisible opacity-0'">
                         <AtomsSwiperNavButton @click="scrollToRight()">
                             <IconsNextIco />
                         </AtomsSwiperNavButton>
@@ -59,7 +55,7 @@
             <Modal @close="() => toggleModal(null)" :modalActive="modalActive" :content="modalContent || {}" />       
     </section>
 </template>
-<script lang="ts" setup>
+<!-- <script lang="ts" setup>
 import { ref,onMounted } from "vue";
 import Modal from '@/components/Modal.vue';
 import ModalsPillarOne from '@/components/modals/PillarOne.vue';
@@ -68,11 +64,10 @@ import ModalsPillarTree from '@/components/modals/PillarTree.vue';
 import ModalsPillarFour from '@/components/modals/PillarFour.vue';
 import ModalsPillarFive from '@/components/modals/PillarFive.vue';
 const modalActive = ref(false);
-const modalContent = ref({});
+const modalContent = ref();
 
 const toggleModal = (content: string | null) => {
- // modalContent.value = content ? modals.find((modal) => modal.key === content)?.content : {} as typeof modalContent.value;
- modalContent.value = content ? modals.find((modal) => modal.key === content)?.content : {};
+  modalContent.value = content ? modals.find((modal) => modal.key === content)?.content : {};
   modalActive.value = !modalActive.value;
 };
 
@@ -82,7 +77,6 @@ const modals = [
   { key: 'PillarTree', content: ModalsPillarTree },
   { key: 'PillarFour', content: ModalsPillarFour },
   { key: 'PillarFive', content: ModalsPillarFive },
-  // Agrega más modal según sea necesario
 ];
 
 // Defino scroll pillars
@@ -94,18 +88,16 @@ if (typeof document !== "undefined") {
     element = document.querySelector("[data-slide-recent]") as HTMLDivElement
 }
 
- function initScroll(): void {
-    
+function initScroll(): void {
     if (typeof element === "undefined" || element === null) {
         return;
     }
-
     const isAtStart = element.scrollLeft <= 5; 
     const isAtEnd = element.scrollLeft >= element.scrollWidth - element.offsetWidth - 5; 
     prevIsVisible.value = isAtStart ? false : true;
     nextIsVisible.value = isAtEnd ? false : true;
 }
-
+ 
 function scrollToLeft():void{
     if (typeof element === "undefined" || element === null) {
         return
@@ -120,10 +112,64 @@ function scrollToRight():void{
     element.scrollLeft += element.clientWidth
 }
 
-
 onMounted(() => {
     if (window !== null) {
+        
         initScroll()
     }
 });
+</script> -->
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+import Modal from '@/components/Modal.vue';
+import ModalsPillarOne from '@/components/modals/PillarOne.vue';
+import ModalsPillarTwo from '@/components/modals/PillarTwo.vue';
+import ModalsPillarTree from '@/components/modals/PillarTree.vue';
+import ModalsPillarFour from '@/components/modals/PillarFour.vue';
+import ModalsPillarFive from '@/components/modals/PillarFive.vue';
+
+const modalActive = ref(false);
+const modalContent = ref();
+
+const toggleModal = (content: string | null) => {
+  modalContent.value = content ? modals.find((modal) => modal.key === content)?.content : {};
+  modalActive.value = !modalActive.value;
+};
+
+const modals = [
+  { key: 'PillarOne', content: ModalsPillarOne },
+  { key: 'PillarTwo', content: ModalsPillarTwo },
+  { key: 'PillarTree', content: ModalsPillarTree },
+  { key: 'PillarFour', content: ModalsPillarFour },
+  { key: 'PillarFive', content: ModalsPillarFive },
+];
+
+const nextIsVisible = ref(false);
+const prevIsVisible = ref(false);
+let element: HTMLDivElement | null = null;
+
+onMounted(() => {
+  element = document.querySelector("[data-slide-recent]") as HTMLDivElement;
+  if (element) {
+    initScroll();
+  }
+});
+
+function initScroll(): void {
+  if (!element) return;
+  const isAtStart = element.scrollLeft <= 5; 
+  const isAtEnd = element.scrollLeft >= element.scrollWidth - element.offsetWidth - 5; 
+  prevIsVisible.value = !isAtStart;
+  nextIsVisible.value = !isAtEnd;
+}
+
+function scrollToLeft(): void {
+  if (!element) return;
+  element.scrollLeft -= element.clientWidth;
+}
+
+function scrollToRight(): void {
+  if (!element) return;
+  element.scrollLeft += element.clientWidth;
+}
 </script>

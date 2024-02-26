@@ -5,7 +5,7 @@
   </div>
   <section class="p-36 max-lg:p-12 max-lg:pt-28 max-sm:p-3 flex max-sm:flex-col gap-8">
         <div class="w-8/12  max-sm:w-full flex-col">
-          <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">Últimas Noticias</p>
+          <p class="font-bold text-primary mb-4 border-b border-gray-200 dark:text-white">{{$t('blog_lasted')}}</p>
             <div class="w-full max-sm:w-full">
               <SectionsBlogPostBiodiversity class="border border-gray-200 shadow-md rounded-md p-2" />
             </div>
@@ -29,6 +29,7 @@
   <ScrollTop />
 </template>
 <script setup lang="ts">
+const { t, locale } = useI18n();
 const route = useRoute();
 useHead({
     title: 'Mantente al Día con las Últimas Novedades sobre Créditos de Carbono',

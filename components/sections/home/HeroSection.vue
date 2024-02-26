@@ -7,7 +7,7 @@
       preload="none"
       class="absolute z-0 w-auto min-w-full min-h-full max-w-none"
       poster="/images/hero_nideport_poster.webp"
-      loading="lazy"
+      
       >
       <source
         :src="`${urlImg}/video/hero-nideport.mp4`"
@@ -22,7 +22,7 @@
       preload="none"
       class="absolute z-0 w-auto min-w-full min-h-full max-w-none"
       poster="/images/hero_nideport_poster.webp"
-      loading="lazy"
+      
       >
       <source
         :src="`${urlImg}/video/hero-nideport-min.mp4`"
