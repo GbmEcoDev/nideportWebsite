@@ -65,21 +65,7 @@
             <div class="mr-4  flex justify-start"><Logo color="dark" class="lg:block w-36 mb-2" :class="{ 'xs:hidden': isOpen }"/></div>
             <div class="ml-2 flex justify-end"> 
             <NuxtLink :to="localePath({ name: 'index' })" class="z-1000" ><UButton color="white" variant="solid" icon="i-heroicons-home-20-solid" class="mx-1"/></NuxtLink>
-            <UPopover :popper="{ placement: 'bottom-start' }" class="rounded-md">
-              <UButton color="white" label="" icon="i-heroicons-square-3-stack-3d-20-solid" />
-              <template #panel>
-                <div class="p-4">
-                  <UCheckbox v-model="selected" name="limites" :label="$t('map_app_upop_item1')" :update:model-value="layerVisibility(selected )" />
-                  <UCheckbox v-model="selectedFajas" name="fajas" :label="$t('map_app_upop_item2')" :update:model-value="fajasVisibility(selectedFajas )" />
-                  <UCheckbox v-model="selectedAreasArest" name="areasDegradadas" :label="$t('map_app_upop_item3')" :update:model-value="areasArestisibility(selectedAreasArest )" />
-                  <UCheckbox v-model="selectedDegradadas" name="areasDegradadas" :label="$t('map_app_upop_item4')" :update:model-value="degradadasVisibility(selectedDegradadas )" />
-                  <UCheckbox v-model="selectedFotos" name="fotos" :label="$t('map_app_upop_item5')" :update:model-value="fotosVisibility(selectedFotos )" />
-                  <!-- <UCheckbox v-model="selectedPois" name="pois" label="Puntos destacados" :update:model-value="poisVisibility(selectedPois )" /> -->
-                  <UCheckbox v-model="selectedCaminos" name="caminos" :label="$t('map_app_upop_item6')" :update:model-value="caminosVisibility(selectedCaminos )" />
-                  <UCheckbox v-model="selectedHidro" name="hidrografia" :label="$t('map_app_upop_item7')" :update:model-value="hidrografiaVisibility(selectedHidro )" />
-                  <UCheckbox v-model="selectedFueraProy" name="hidrografia" :label="$t('map_app_upop_item8')" :update:model-value="fueraProyVisibility(selectedFueraProy )" /></div>
-              </template>
-            </UPopover>
+            
             <UButton color="white" variant="solid" icon="i-heroicons-x-mark-20-solid" class="mx-1" @click="isOpen = false, isOpenDet = false, isOpenDetArea = false, isOpenDetFaja = false"  ref="btnActivePanel" />
             </div>
           </div>
@@ -145,6 +131,36 @@
               </template>
             </UTabs>
           </div>
+          <div class="relative mx-1">
+            <!-- <UPopover :popper="{ placement: 'top-start' }" v-model:open="open" class="rounded-md">
+              <UButton color="white" label="" icon="i-heroicons-square-3-stack-3d-20-solid" />
+              <template #panel>
+                <div class="p-4">
+                  <UCheckbox v-model="selected" name="limites" :label="$t('map_app_upop_item1')" :update:model-value="layerVisibility(selected )" />
+                  <UCheckbox v-model="selectedFajas" name="fajas" :label="$t('map_app_upop_item2')" :update:model-value="fajasVisibility(selectedFajas )" />
+                  <UCheckbox v-model="selectedAreasArest" name="areasDegradadas" :label="$t('map_app_upop_item3')" :update:model-value="areasArestisibility(selectedAreasArest )" />
+                  <UCheckbox v-model="selectedDegradadas" name="areasDegradadas" :label="$t('map_app_upop_item4')" :update:model-value="degradadasVisibility(selectedDegradadas )" />
+                  <UCheckbox v-model="selectedFotos" name="fotos" :label="$t('map_app_upop_item5')" :update:model-value="fotosVisibility(selectedFotos )" />
+                  <UCheckbox v-model="selectedCaminos" name="caminos" :label="$t('map_app_upop_item6')" :update:model-value="caminosVisibility(selectedCaminos )" />
+                  <UCheckbox v-model="selectedHidro" name="hidrografia" :label="$t('map_app_upop_item7')" :update:model-value="hidrografiaVisibility(selectedHidro )" />
+                  <UCheckbox v-model="selectedFueraProy" name="hidrografia" :label="$t('map_app_upop_item8')" :update:model-value="fueraProyVisibility(selectedFueraProy )" /></div>
+              </template>
+            </UPopover> -->
+            <div class="border border-gray-700 w-full rounded-md p-2">
+              <UAccordion :items="itemsLayers" >
+                  <template #layer-featured >
+                    <UCheckbox class="mx-4" v-model="selected" name="limites" :label="$t('map_app_upop_item1')" :update:model-value="layerVisibility(selected )" />
+                    <UCheckbox class="mx-4" v-model="selectedFajas" name="fajas" :label="$t('map_app_upop_item2')" :update:model-value="fajasVisibility(selectedFajas )" />
+                    <UCheckbox class="mx-4" v-model="selectedAreasArest" name="areasDegradadas" :label="$t('map_app_upop_item3')" :update:model-value="areasArestisibility(selectedAreasArest )" />
+                    <UCheckbox class="mx-4" v-model="selectedDegradadas" name="areasDegradadas" :label="$t('map_app_upop_item4')" :update:model-value="degradadasVisibility(selectedDegradadas )" />
+                    <UCheckbox class="mx-4" v-model="selectedFotos" name="fotos" :label="$t('map_app_upop_item5')" :update:model-value="fotosVisibility(selectedFotos )" />
+                    <UCheckbox class="mx-4" v-model="selectedCaminos" name="caminos" :label="$t('map_app_upop_item6')" :update:model-value="caminosVisibility(selectedCaminos )" />
+                    <UCheckbox class="mx-4" v-model="selectedHidro" name="hidrografia" :label="$t('map_app_upop_item7')" :update:model-value="hidrografiaVisibility(selectedHidro )" />
+                    <UCheckbox class="mx-4" v-model="selectedFueraProy" name="hidrografia" :label="$t('map_app_upop_item8')" :update:model-value="fueraProyVisibility(selectedFueraProy )" />
+                  </template>
+              </UAccordion>
+            </div>
+          </div>
         </div>
    </div>
   </template>
@@ -163,6 +179,7 @@
   const selectedCaminos = ref(true)
   //const selectedPois = ref(false)
   const selectedHidro = ref(false)
+
 
   const { t, locale, setLocale } = useI18n()
   const localePath = useLocalePath()
@@ -275,6 +292,14 @@ const itemscat = [{
 }*/
 ]
 
+const itemsLayers = [{
+  label:  t('map_app_acc3_item1'),
+  icon: 'i-heroicons-square-3-stack-3d-20-solid',
+  defaultOpen:true,
+  slot: 'layer-featured'
+}
+]
+
 const items = [{
   key: 'discover',
   label: t('map_app_tab_item1'),
@@ -291,10 +316,13 @@ const recibirId = (ID: any) => {
   selectedDetID.value = ID;
 };
 
-const resetMapa = () => {
+ const resetMapa = () => {
   resetedMap.value = true;
-  console.log(resetedMap.value,'centeredmap');
-};
+}; 
+/*const resetMapa = () => {
+    if(zoom.value != 11) { zoom.value=11; } else{ }
+};*/
+
 
 const recibirAreaId = (ID: any) => {
   selectedAreaID.value = ID;
@@ -302,7 +330,6 @@ const recibirAreaId = (ID: any) => {
 
 const recibirFajaId = (ID: any) => {
   selectedFajaID.value = ID;
-  console.log("envio id de faja ",ID);
 };
 
 const handlePropsDetalle = (ID:any) => {

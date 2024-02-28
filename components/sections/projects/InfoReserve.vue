@@ -1,5 +1,5 @@
 <template>
-    <section class="px-12 max-sm:px-3 scroll-snap-align-start">
+    <div class="w-full m-0">
     <AtomsContainer>
         <AtomsTitleH2 :texte="$t('project_info_title1')" alignTxt="center" colorTxt="secondary" weightTxt="bold" class="mb-20"/>
 
@@ -60,18 +60,18 @@
       </Carousel>
      
     </AtomsContainer>
-    <AtomsContainer class="mt-16">
-        <AtomsTitleH2 :texte="$t('project_info_title2')" alignTxt="center" colorTxt="primary" weightTxt="normal"/>
+    <div class="mt-16 w-screen bg-emerald-50 p-24">
+       <!--  <AtomsTitleH2 :texte="$t('project_info_title2')" alignTxt="center" colorTxt="primary" weightTxt="normal"/> -->
         <div class="w-full flex justify-center">
-            <div class="flex justify-center  gap-10 py-10 px-60 sm:px-10 w-11/12 max-sm:w-full max-sm:flex-col max-sm:px-2">
+            <div class="flex justify-center items-center px-60 sm:px-10 w-11/12 max-sm:w-full max-sm:flex-col max-sm:px-2">
                 <!-- <AtomsLinkBtn href="#" variant="primary">{{$t('project_info_btn_01')}}</AtomsLinkBtn> -->
-                <AtomsLinkBtn href="https://registry.verra.org/app/projectDetail/VCS/3630" variant="primary">{{$t('project_info_btn_02')}}</AtomsLinkBtn>
+                <p class="text-lg font-bold text-gray-600 mr-2">{{ $t('project_info_title2') }} </p>
+                <a href="https://registry.verra.org/app/projectDetail/VCS/3630" target="_blank" class="text-lg font-bold text-primary">{{$t('project_info_btn_02')}}</a>
                <!--  <AtomsLinkBtn href="#" variant="primary">{{$t('project_info_btn_03')}}</AtomsLinkBtn> -->
             </div>
         </div>
-    </AtomsContainer>
-    
-    </section>
+    </div>
+    </div>
   </template>
   
   <script setup lang="ts">

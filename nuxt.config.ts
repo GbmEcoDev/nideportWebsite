@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+
   /* ssr: false,
   spaLoadingTemplate: true, */
 
@@ -6,7 +7,6 @@ export default defineNuxtConfig({
     compressPublicAssets: true,
     prerender:{failOnError:false}
    },
-/**/
 
   generate:{
       exclude: [
@@ -27,6 +27,8 @@ export default defineNuxtConfig({
         /^\/en\/tags\/.*$/,
         /^\/tags\/.*$/,
         /^\/categories\/.*$/,
+        '/robots.txt',
+        'sitemap.xml'
       ],
     },
 
@@ -130,6 +132,7 @@ export default defineNuxtConfig({
           CONTACTMAILFROM: process.env.CONTACTMAILFROM,
           SMTPTOKEN: process.env.SMTP_SERVER_SECURITY_TOKEN,
           gtmContainerId: process.env.NUXT_PUBLIC_GTM_CONTAINER_ID,
+          adsContainerId: process.env.NUXT_PUBLIC_ADS_CONTAINER_ID,
       }
   },
 

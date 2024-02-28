@@ -23,6 +23,8 @@
         thirdy: "#007A77",
         fourty: "#02A327",
         fivety: "#016A81",
+        sixty: "#0F5F60",
+        cta: "#08C168",
         "body-color": "#462C64",
         "gray-color": "",
         green: {

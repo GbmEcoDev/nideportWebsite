@@ -1,15 +1,15 @@
 <template>
-    <h2 class="text-base text-center md:text-3xl max-sm:text-2xl dark:text-white font-bold">
+    <h2 class="text-base text-center md:text-3xl max-sm:text-2xl dark:text-white font-bold text-secondary" :class="`${onColor}`">
         {{ texte }}
     </h2>
 </template>
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
-const { texte } = defineProps<{texte:string}>()
-</script>
-<style scoped>
-h2{
-    color :#055735;
+const { texte, color = "" } = defineProps<{texte:string, color?:string}>()
+let onColor: string = "";
+if (color != "")
+{
+    onColor= color;
 }
-</style>
+</script>

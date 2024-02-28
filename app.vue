@@ -1,18 +1,17 @@
 <template>
   <NuxtLayout>
-    <Loading v-if="loading" />
     <NuxtPage />
   </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-import Loading from './components/Loading.vue';
+/*import Loading from './components/Loading.vue';
 import { ref } from 'vue';
-let loading = ref(true);
+ let loading = ref(true);
 
 setTimeout(() => {
   loading.value = false;
-}, 1000); 
+}, 1000);  */
  
 useSeoMeta({
   ogUrl: 'https://www.nideport.com',

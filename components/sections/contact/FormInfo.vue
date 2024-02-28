@@ -49,7 +49,7 @@
         </div>
   
         <div class="flex items-center justify-center">
-          <button @click="sendEmail" class="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <button @click="sendEmail" class="bg-cta hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             {{$t('contact_form_button')}}
           </button>
 

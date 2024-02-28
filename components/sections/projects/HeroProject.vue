@@ -36,6 +36,7 @@ const localePath = useLocalePath()
 </script>
 <style scoped>
 .hero{
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.80) 31.25%, rgba(0, 0, 0, 0.00) 100%);
+    /*background: linear-gradient(90deg, rgba(0, 0, 0, 0.80) 30%, rgba(0, 0, 0, 0.00) 100%);*/
+    background:  rgba(0, 0, 0, 0.40);
 }
 </style>

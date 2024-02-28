@@ -404,25 +404,6 @@ onMounted(() => {
 });
 
 // Acciones a realizar cuando se desea resetear el centro y zoom del map
-/* const resetMapTo = async () => {
-  if (resetedMap.value == true){ 
-    resetedMap.value == false;
-    console.log('reposiciono y falseo',props.resetMap);
-    center.value = [-26.52536, -53.91];
-    zoom.value = 11;
-    }else{}
-  }
-
-watch( 
-  () => props.resetMap, 
-  (newValue, oldValue) =>  {
-    resetedMap.value = newValue;
-    console.log('reposiciono mapa',props.resetMap);
-    if (props.resetMap == true){
-      resetMapTo();
-    }else{}
-}, { immediate: true });
- */
  const needsRepositioning = computed(() => {
   return props.resetMap || resetedMap.value;
 });
@@ -483,7 +464,6 @@ watch(
  const navigateFajaTo = async (idFaja) => {
  
   if(featureByFaja[idFaja]){
-    console.log(">>>>>>>>>>>>",featureByFaja[idFaja])
   bounds.value = featureByFaja[idFaja].getBounds().pad(.5);
   zoom.value=18;
   }
@@ -494,7 +474,6 @@ watch(
   (newValue, oldValue) =>  {
     idFajaShow.value = newValue;
     navigateFajaTo(props.fajaId);
-    console.log(props.fajaId,'faja en mapatech');
     if (newValue && featureByFaja[newValue]) {
       const feature = featureByFaja[newValue].feature;
       if (feature.properties.Name) {

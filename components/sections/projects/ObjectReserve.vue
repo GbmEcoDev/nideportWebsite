@@ -1,8 +1,8 @@
 <template>
-    <section class="bg-gradient-to-b from-[rgb(1,106,129)] to-[rgb(15,95,57)] p-24 max-sm:px-1 scroll-snap-align-start dark:from-[rgba(1,106,129,0.16)]">
+    <section class="bg-gradient-to-b from-[#4AADA2] to-[#007454] p-24 max-sm:px-1 scroll-snap-align-start dark:from-[rgba(1,106,129,0.16)]">
         <AtomsContainer>
-            <AtomsTitleH2 :texte="$t('project_object_title1')" alignTxt="center" colorTxt="white" weightTxt="normal"/>
-             <div class="mb-6"><p class="text-white text-base pt-10 text-center">
+            <AtomsTitleH2 :texte="$t('project_object_title1')" alignTxt="left" colorTxt="white" weightTxt="normal"/>
+             <div class="mb-6 w-4/6"><p class="text-white text-base pt-3 text-left">
               {{$t('project_object_phrase1')}}
             </p></div> 
             <Carousel :items-to-show="carouselItemsToShow1" :wrap-around="true" :starting-from="1" :snap-align="'start'" :navigation="true">
@@ -21,8 +21,8 @@
             </Carousel>
         </AtomsContainer>
         <AtomsContainer class="mt-16">
-            <AtomsTitleH2 :texte="$t('project_object_title2')" alignTxt="center" colorTxt="white" weightTxt="normal"/>
-            <div class="mb-6"><p class="text-white text-base pt-10 text-center">
+            <AtomsTitleH2 :texte="$t('project_object_title2')" alignTxt="left" colorTxt="white" weightTxt="normal"/>
+            <div class="mb-6 w-4/6"><p class="text-white text-base pt-3 text-left">
               {{$t('project_object_phrase2')}}</p></div>
             <Carousel :items-to-show="carouselItemsToShow2" :wrap-around="true" :starting-from="1" :snap-align="'start'">
                 <Slid key="5"  class="p-2 overflow-hidden">
@@ -40,8 +40,8 @@
             </Carousel>
         </AtomsContainer>
         <AtomsContainer class="mt-16">
-            <AtomsTitleH2 :texte="$t('project_object_title3')" alignTxt="center" colorTxt="white" weightTxt="normal"/>
-            <div class="mb-6"><p class="text-white text-base pt-10 text-center">
+            <AtomsTitleH2 :texte="$t('project_object_title3')" alignTxt="left" colorTxt="white" weightTxt="normal"/>
+            <div class="mb-6 w-4/6"><p class="text-white text-base pt-3 text-left">
               {{$t('project_object_phrase3')}}</p></div>
             <Carousel :items-to-show="carouselItemsToShow3" :wrap-around="true" :starting-from="1" :snap-align="'start'">
                 <Slide key="9" class="p-2 overflow-hidden">

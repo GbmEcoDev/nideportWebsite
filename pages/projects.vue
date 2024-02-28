@@ -16,11 +16,12 @@ useHead({
 
 <template>
   <SectionsProjectsHeroProject/>
+  <SectionsProjectsDataReserve class="section_space"/>
   <SectionsProjectsGs1  class="pb-150 pt-50"/>
   <SectionsHomeMapReserve class="section_space"/>
-  <SectionsProjectsDataReserve class="section_space"/>
+  
   <SectionsProjectsInfoReserve class="section_space"/> 
-  <SectionsProjectsObjectReserve class="section_space"/>
+  <SectionsProjectsObjectReserve />
   <SectionsProjectsOdsReserve />
   <ScrollTop />
 </template>

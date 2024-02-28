@@ -1,7 +1,7 @@
 <template>
     <div class="contador">
         <div class="color_fondo" :style="{ height: colorHeight }"></div>
-        <div class="numero xs:text-4xl xs:leading-9 sm:text-3xl sm:leading-9 lg:text-6xl">{{ cantidad.toLocaleString() }} {{$t('home_pillar_ha')}} </div>
+        <div class="numero xs:text-4xl xs:leading-9 sm:text-3xl sm:leading-9 lg:text-[64px]">{{ cantidad.toLocaleString() }} {{$t('home_pillar_ha')}} </div>
     </div>
 </template>
 
@@ -41,8 +41,8 @@ onMounted(() => {
   height: 100%;
   width: 100%;
   text-align: center;
-  font-weight: bold;
-  font-family: sans-serif;
+  font-weight: 700;
+  font-family: "Nunito";
   color: #1c9577;
   position: absolute;
   transform: rotate(-180deg);

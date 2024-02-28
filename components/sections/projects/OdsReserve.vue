@@ -2,7 +2,7 @@
     <section class="p-[80px] max-sm:px-1 scroll-snap-align-start">
     <AtomsContainer>
         <div class="flex flex-col items-center w-full">
-            <NuxtImg src="/images/logo-ods.svg" alt="" class=" text-center w-[100px] pb-10"/>
+            <!-- <NuxtImg src="/images/logo-ods.svg" alt="" class=" text-center w-[100px] pb-10"/> -->
             <AtomsTitleH2 :texte="$t('project_ods_title')" alignTxt="center" colorTxt="secondary" weightTxt="normal"/>
 
         <div class="flex flex-wrap justify-center max-sm:justify-center gap-3 mt-20 mb-50">

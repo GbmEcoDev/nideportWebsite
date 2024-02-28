@@ -26,7 +26,7 @@
     "home_pillar_c5_title": "Security",
     "home_pillar_c5_phrase": "We ensure daily protection of the project area, fortified by the acquisition of rapid attack equipment designed for early-stage fire control.",
     "home_pillar_c5_alt": "Security",
-    "home_map_title":"Our first project Native Life - Paranaense Rainforest",
+    "home_map_title":"Explore our restoration process in the Paranaense Rainforest",
     "home_map_button":"Go to map",
     "home_partner_title":"Trusted by",
     "home_info_c1_title": "Acquire carbon credits",
@@ -44,6 +44,10 @@
     "about_c2" : "Strong social focus",
     "about_c3" : "Biodiversity conservation",
     "about_c4" : "Preservation of natural capital",
+    "about_c5" : "Perpetuity strategy",
+    "about_c6" : "Climate by technology",
+    "about_c7" : "Global awareness campaign",
+    "about_c8" : "Security powered by technology",
     "about_phrase2" : "Through reforestation, forest enrichment, biodiversity enhancement and empowerment of local communities, we restore ecosystem services for present and future generations.",
     "about_btn" : "Join now",
     "about_team_title":"Our team",
@@ -137,6 +141,8 @@
     "map_app_acc2_item4": "Stage 4 - 2029/2032",
     "map_app_acc2_item5": "Stage 5 - 2033/2045 Degraded areas",
     "map_app_acc2_item6": "Off-project area",
+
+    "map_app_acc3_item1": "Layers",
 
     "map_app_acc2_content1":"Descripción área con ha aproximadas.",
     "map_app_acc2_content2":"Descripción fuera de proyecto dado que...",

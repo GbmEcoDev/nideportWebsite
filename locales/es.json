@@ -27,7 +27,7 @@
     "home_pillar_c5_title":"Seguridad",
     "home_pillar_c5_phrase":"Garantizamos la protección diaria del área del proyecto y hemos adquirido equipos de ataque rápido para el control temprano de incendios.",
     "home_pillar_c5_alt":"Seguridad",
-    "home_map_title":"Nuestro primer proyecto Selva Paranaense - Vida Nativa",
+    "home_map_title":"Explora nuestro proceso de restauración en la Selva Paranaense",
     "home_map_button":"Ir al mapa",
     "home_partner_title":"Nos acompañan",
     "home_info_c1_title":"Adquirir créditos de carbono",
@@ -45,6 +45,10 @@
     "about_c2" : "Fuerte enfoque social",
     "about_c3" : "Conservación de la biodiversidad",
     "about_c4" : "Preservación del capital natural",
+    "about_c5" : "Estrategia de perpetuidad",
+    "about_c6" : "Clima por tecnología",
+    "about_c7" : "Campaña de concienciación global",
+    "about_c8" : "Seguridad impulsada por la tecnología",
     "about_phrase2":"A través de la reforestación, el enriquecimiento de los bosques, el fortalecimiento de la biodiversidad y empoderamiento de las comunidades locales, restauramos los servicios ecosistémicos para las generaciones presentes y futuras.",
     "about_btn" : "Únete ahora",
     "about_team_title":"Nuestro Equipo",
@@ -139,6 +143,8 @@
     "map_app_acc2_item4":"Etapa 4 - 2029/2032",
     "map_app_acc2_item5":"Etapa 5 - 2033/2045 Áreas degradadas",
     "map_app_acc2_item6":"Zona fuera de proyecto",
+
+    "map_app_acc3_item1": "Layers",
     
     "map_app_acc2_content1":"Descripción área con ha aproximadas.",
     "map_app_acc2_content2":"Descripción fuera de proyecto dado que...",
