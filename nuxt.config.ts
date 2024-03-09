@@ -2,7 +2,6 @@ export default defineNuxtConfig({
 
   /* ssr: false,
   spaLoadingTemplate: true, */
-
   nitro:{
     compressPublicAssets: true,
     prerender:{failOnError:false}
@@ -120,7 +119,6 @@ export default defineNuxtConfig({
     ],
     defaultLocale: "es",
   },
-
   runtimeConfig: {
       public: {
           wpEventos : process.env.WP_EVENT,

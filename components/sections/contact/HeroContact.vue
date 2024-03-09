@@ -11,7 +11,7 @@
             <div class="">
                 <div class="text-left text-white md:px-12">
                  <!--  <AtomsTitleH1 :texte="$t('contact_title')" data-aos="fade-left"></AtomsTitleH1> -->
-                  <div class="flex items-center sm:justify-center xs:justify-center lg:justify-start w-10/12 mt-4 max-sm:w-full" data-aos="fade-up">
+                  <div class="flex items-center sm:justify-center xs:justify-center lg:justify-start w-9/12 mt-4 max-sm:w-full" data-aos="fade-up">
                     <p class="text-[2.25rem] max-sm:text-base lg:text-left xs:text-center sm:text-center">{{$t('contact_subtitle')}}</p>
                   </div>
                 </div>

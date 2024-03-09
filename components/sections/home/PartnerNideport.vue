@@ -2,7 +2,7 @@
     <section class="pt-32 md:pt-32 relative bg-white dark:bg-transparent scroll-snap-align-start overflow-y-hidden w-full">
         <AtomsTitleH2 alignTxt="center" colorTxt="primary" weightTxt="normal" :texte="$t('home_partner_title')" />
           <div class="flex-col items-center justify-center mt-8 mb-24">
-            <div class="flex flex-wrap pt-8 md:pt-8 pb-2 md:pb-2 items-center justify-center">
+            <div class="flex flex-wrap pt-8 md:pt-8 pb-2 md:pb-2 items-center justify-center lg:px-36 xl:px-36 md:px-24">
                 <template v-for="partner in partners" :key="partner.alt">
                     <div class="flex justify-center max-sm:items-center border-red-700 mx-2" data-aos="fade-up">
                       <NuxtLink :to="partner.url" target="_blank" rel="noopener">

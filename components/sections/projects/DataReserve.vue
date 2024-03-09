@@ -20,7 +20,7 @@
                           <NuxtImg :src="`${urlImg}/images/objetive-1.svg`" :alt="$t('project_data_c1_title')" class="w-24 pb-5 mx-auto xs:pb-1 sm:pb-1"/>
                       </div>
                       <AtomsTitleH2 :texte="$t('project_data_c1_title')" alignTxt="center" sizeTxt="text-[20px]" colorTxt="secondary" weightTxt="bold" />
-                      <p class="text-md text-center py-3 text-gray-500 dark:text-white xs:mx-3 sm:mx-3">{{$t('project_data_c1_parag')}}</p>
+                      <p class="text-md text-center py-3 text-gray-500 dark:text-white mx-6 xs:mx-3 sm:mx-3">{{$t('project_data_c1_parag')}}</p>
                   </div>
               </div>
 
@@ -38,7 +38,7 @@
                           <NuxtImg :src="`${urlImg}/images/objetive-2.svg`" :alt="$t('project_data_c2_title')" class="w-24 pb-5 mx-auto xs:pb-1 sm:pb-1"/>
                       </div>
                       <AtomsTitleH2 :texte="$t('project_data_c2_title')" alignTxt="center" sizeTxt="text-[20px]"  colorTxt="secondary" weightTxt="bold" />
-                      <p class="text-md text-center py-3 text-gray-500 dark:text-white xs:mx-3 sm:mx-3">{{$t('project_data_c2_parag')}}</p>
+                      <p class="text-md text-center py-3 text-gray-500 dark:text-white xl:px-14 lg:px-14  mx-14 xs:mx-3 sm:mx-3">{{$t('project_data_c2_parag')}}</p>
                   </div>
               </div>
 
@@ -56,7 +56,7 @@
                           <NuxtImg :src="`${urlImg}/images/objetive-3.svg`" :alt="$t('project_data_c3_title')" class="w-24 pb-5 mx-auto xs:pb-1 sm:pb-1"/>
                       </div>
                       <AtomsTitleH2 :texte="$t('project_data_c3_title')" alignTxt="center" sizeTxt="text-[20px]"  colorTxt="secondary" weightTxt="bold" />
-                      <p class="text-md text-center py-3 text-gray-500 dark:text-white">{{$t('project_data_c3_parag')}}</p>
+                      <p class="text-md text-center py-3 text-gray-500 dark:text-white mx-6 xs:mx-3 sm:mx-3">{{$t('project_data_c3_parag')}}</p>
                   </div>
               </div>
         </div>

@@ -432,19 +432,37 @@ watch(() => props.resetMap, (newValue) => {
   }
 });
 
-
+const resetearSeleccion = async () => {
+  // Iteramos sobre todos los elementos de featureByArea
+  for (const key in featureByArea) {
+    if (featureByArea[key] && featureByArea[key].setStyle) {
+    featureByArea[key].setStyle({
+      stroke: true,
+      color: '#ffCC00',
+      weight: 1,
+      opacity: 0.3
+    });
+  }
+}
+};
 // Acciones a realizar cuando cambia el ID de area
 const navigateTo = async (idArea) => {
- 
-  if(featureByArea[idArea]){
-   bounds.value = featureByArea[idArea].getBounds().pad(.5);
-   zoom.value=18;
-  }
-  }
+  
+  bounds.value = featureByArea[idArea].getBounds().pad(.5);
+  zoom.value=18;
+  
+      featureByArea[idArea].setStyle({
+        stroke: true,
+        color: '#50CBBF',
+        weight: 5,
+        opacity: .9
+      });
+    };
 
 watch( 
   () => props.areaId, 
   (newValue, oldValue) =>  {
+    resetearSeleccion();
     idAreaShow.value = newValue;
     navigateTo(props.areaId);
 
@@ -452,6 +470,7 @@ watch(
       const feature = featureByArea[newValue].feature;
       if (feature.properties.Name) {
         if (isMobile) {
+
           featureByArea[newValue]
             .bindPopup(
               'Nombre: ' + feature.properties.Name + '<br> Etapa: ' + feature.properties.etapa,
@@ -459,6 +478,7 @@ watch(
             )
             .openPopup();
         } else {
+
           //abrimos panel con datos del area
            featureByArea[newValue].on("click", () =>
             selectItemArea(openPanelArea, feature.properties.ID)
@@ -469,19 +489,40 @@ watch(
     
 }, { immediate: true }); 
 
-
+const resetearSeleccionFaja = async () => {
+  
+  for (const f in featureByFaja) {
+    console.log("resetfaja",f);
+    // Quitamos el estilo 
+    if (featureByFaja[f] && featureByFaja[f].setStyle) {
+    featureByFaja[f].setStyle({
+      stroke: true,
+      color: '#ffCC00',
+      weight: 1,
+      opacity: 0.3
+    });
+  }
+  }
+};
  // Acciones a realizar cuando cambia el ID de area
  const navigateFajaTo = async (idFaja) => {
  
   if(featureByFaja[idFaja]){
   bounds.value = featureByFaja[idFaja].getBounds().pad(.5);
   zoom.value=18;
+  featureByFaja[idFaja].setStyle({
+        stroke: true,
+        color: '#50CBBF',
+        weight: 5,
+        opacity: .9
+      });
   }
   }
   
 watch( 
   () => props.fajaId, 
   (newValue, oldValue) =>  {
+    resetearSeleccionFaja();
     idFajaShow.value = newValue;
     navigateFajaTo(props.fajaId);
     if (newValue && featureByFaja[newValue]) {
@@ -529,6 +570,7 @@ watch(
       const feature = featureByName[newValue].feature;
       if (feature.properties.foto) {
         if (isMobile) {
+
           featureByName[newValue]
             .bindPopup(
               `<img src="${urlImg}/images/rgs1_nov_23/${feature.properties.foto}" style="border-radius: 14px; border: 2px solid gray; max-width: auto" /><br/>Nombre: ${feature.properties.Name}<br/>Fecha: ${feature.properties.Date}`,
@@ -626,4 +668,7 @@ defineExpose( { map , featureByName, featureByArea, featureByFaja , navigateTo, 
   .popUpClass{
     width: fit-content;
   }
+  .focused {
+  border: 2px solid red;
+}
 </style>
