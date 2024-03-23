@@ -71,10 +71,10 @@
             </div>
           </div>
             <div class="p-1 flex-1">
-              <UTabs :items="items" @change="onChange">
+              <UTabs :items="items" @change="onChange" >
               <template #item="{ item }">
                 <UCard>
-                  <div v-if="item.key === 'discover'" class="space-y-1">
+                  <div v-if="item.key === 'discover'" class="space-y-1 text-sm">
                     <p class="text-sm border-b mb-2">{{ item.content }}</p>
                    <UAccordion :items="itemscat" 
                     color="black" 
@@ -310,7 +310,14 @@ const items = [{
   label: t('map_app_tab_item2'),
   disabled: false,
   content: t('map_app_tab_title2')
-}]
+}, {
+  key:'commu',
+  label: t('map_app_tab_item3'),
+  disabled: false,
+  content: t('map_app_tab_title3')
+}
+
+]
 
 // Función para recibir el ID y actualizar el estado
 const recibirId = (ID: any) => {

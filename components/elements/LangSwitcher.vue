@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import ElementsIconsEngland from '@/components/elements/icons/England.vue';
-import  ElementsIconsSpain from '@/components/elements/icons/Spain.vue';
 const { locales, locale, setLocale } = useI18n();
-
 const isOpen = ref(false);
 
 const toggleDropdown = () => {
@@ -14,12 +11,15 @@ const changeLanguage = (locale:any) => {
     setLocale(locale);
     isOpen.value = false; // Cerrar el menú después de seleccionar un idioma
 };
+const props = defineProps(['color']);
 </script>
 
 <template>
     <div class="relative py-0">
         <button alt="select language" aria-label="select language"
-            class="outline-none bg-transparent px-2.5 py-2 rounded-full text-gray-200 hover:text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            class="outline-none bg-transparent px-2.5 py-2 rounded-full  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            :class="color === 'secondary' ? 'text-secondary hover:text-gray-800' : 'text-gray-200'"
+
             @click="toggleDropdown">
             <span v-if="locale === 'es'">
                 ES

@@ -3,8 +3,8 @@ export default defineNuxtConfig({
   /* ssr: false,
   spaLoadingTemplate: true, */
   nitro:{
-    compressPublicAssets: true,
-    prerender:{failOnError:false}
+    compressPublicAssets: true/*,
+    prerender:{failOnError:false}*/
    },
 
   generate:{
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
     image:{
       quality:80,
     }
-  }], '@nuxt/devtools', '@nuxtjs/i18n', '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui', '@nuxtjs/device'],
+  }], '@nuxt/devtools', '@nuxtjs/i18n', '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui', '@nuxtjs/device','@formkit/auto-animate/nuxt'],
 
   colorMode: {
     preference: 'light', // default value of $colorMode.preference

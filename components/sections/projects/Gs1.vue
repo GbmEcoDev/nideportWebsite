@@ -47,7 +47,8 @@ const { t, locale } = useI18n();
 const language = locale.value.toUpperCase();
 const urlImg = config.public.url_base;
 const isModalOpen = ref(false);
-const videoYT = language==="ES" ?  "P0jU46x3MoE" : "vSZC_hVBzr0";
+const videoYT = language==="ES" ?  "VsiUfVd2FRU" : "VsiUfVd2FRU";
+//const videoYT = language==="ES" ?  "P0jU46x3MoE" : "vSZC_hVBzr0";
 
 const videoSrc = ref('');
 const openModal = () => {

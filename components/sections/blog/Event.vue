@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full relative rounded-2xl overflow-hidden h-64 mt-6 mb-6 max-lg:h-96 max-sm:h-60 max-sm:overflow-visible max-lg:overflow-visible">
+    <!--<div class="w-full relative rounded-2xl overflow-hidden h-64 mt-6 mb-6 max-lg:h-96 max-sm:h-60 max-sm:overflow-visible max-lg:overflow-visible">
         <NuxtImg format="webp" :src="`${urlImg}/images/event-img.jpg`" alt="Cover image" width="1060" class="w-full object-cover rounded-2 h-full" />
         <div
             class="absolute py-4 px-3 md:py-3 md:px-4 top-0 h-full justify-between inset-x-0 bg-gradient-to-r from-[#007A77] bg-opacity-90 ">
@@ -13,8 +13,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <ListEvento/><!--  -->
+    </div>  -->
+    <ListEvento/>
 </template>
 
 <script setup lang="ts">

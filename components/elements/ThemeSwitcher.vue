@@ -4,11 +4,13 @@ function changeTheme(event: MouseEvent) {
     event.preventDefault()
     isOpen.value = !isOpen.value
 }
+const props = defineProps(['color']);
 </script>
 <template>
     <div class="relative py-2">
         <button alt="change color mode" aria-label="Change Color Mode"
-            class="outline-none bg-transparent p-2.5 rounded-full text-gray-200  hover:text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            class="outline-none bg-transparent p-2.5 rounded-full  dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            :class="color === 'secondary' ? 'text-secondary hover:text-gray-800' : 'text-gray-200'"
             @click="(event) => {
                 changeTheme(event)
             }">

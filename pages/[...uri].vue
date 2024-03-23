@@ -41,7 +41,8 @@
           </div>
           
           <article class="mt-4 space-y-2 text-gray-600 dark:text-slate-300 border-b border-b-gray-200 mb-3" v-html="data.content"></article>
-          <UBadge variant="outline" v-if="hashtags" v-for="(tag, index) in hashtags" :key="index" class="m-2">{{tag}}</UBadge>
+          <!-- <UBadge variant="outline" v-if="hashtags" v-for="(tag, index) in hashtags" :key="index" class="m-2">{{tag}}</UBadge> -->
+          <UBadge variant="outline" v-for="tag in data.tags?.nodes" :key="tag.id" class="m-2">{{tag.name}}</UBadge>
           <GalleryPost v-if="images.length > 0" :images="images"/>
           <SectionsBlogRelationPost :categoryRel="formatCategories(data.categories)"/>
         </main>
@@ -73,6 +74,11 @@
               date
               content
               categories {
+                nodes {
+                  name
+                }
+              }
+              tags {
                 nodes {
                   name
                 }
@@ -141,10 +147,11 @@ const handleScroll = () => {
 
 // Función para extraer imágenes del contenido del post
 const extractImages = (content) => {
-  const imageRegex = /<div class="wp-block-image">.*?<img[^>]+src=['"]([^'"]+)['"][^>]*>.*?<\/div>/gs;
-  const hashtagRegex = /#[^\s#]+/g;
+  const imageRegex = /.*?<img[^>]+src=['"]([^'"]+)['"][^>]*>.*?/gs;
+  //const hashtagRegex = /.*?<pre>([\s\S]*?)<\/pre>.*?/g;
+  //const hashtagRegex = /<pre>([\s\S]*?)<\/pre>/g;
   const images = [];
-  const hashtags = [];
+  //const hashtags = [];
   let match;
   // Extraer imagenes. ojo formato buscado en wp, modificar lo requerido en wp
   while ((match = imageRegex.exec(content)) !== null) {
@@ -152,16 +159,16 @@ const extractImages = (content) => {
     images.push(src);
   }
   // Extraer palabras con #. Atencion en wp tienen que ponerle <pre>
-  const hashtagMatches = content.match(hashtagRegex);
+  /*const hashtagMatches = content.match(hashtagRegex);
   if (hashtagMatches) {
     hashtags.push(...hashtagMatches);
-  }
-  return {images, hashtags};
+  }*/
+  return {images};
 };
 
 // Construye el array de objetos con la información de las imágenes
 //console.log(data.value.content,"content")
-const  { images, hashtags }  = extractImages(data.value.content);
+const  { images }  = extractImages(data.value.content);
 //console.log(images,"imgs");
 
 </script>

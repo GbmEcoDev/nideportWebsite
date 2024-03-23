@@ -379,17 +379,22 @@ const optionsHidro = {
 
 const fetchData = async () => {
   const config = useRuntimeConfig();
+/*  const baseUrl = config.public.url_base.startsWith('www.')
+    ? config.public.url_base
+    : `http://www.${config.public.url_base.slice(7)}`; // Eliminar 'https://' si es necesario
+
+*/
   const fetchGeoJson = async (url) => {
     const response = await fetch(url);
     const data = await response.json();
     return data;
   };
 
+//  limites.value = await fetchGeoJson(`${baseUrl}/capas/limites.geojson`);
   limites.value = await fetchGeoJson(config.public.url_base + '/capas/limites.geojson');
-//  cuadriculas.value = await fetchGeoJson(config.public.url_base + '/capas/cuadriculas.geojson');
   fajas.value = await fetchGeoJson(config.public.url_base + '/capas/reforestacion_fajas.geojson');
   fotos.value = await fetchGeoJson(config.public.url_base + '/capas/fotos.geojson');
-  //alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
+  alertas.value = await fetchGeoJson('https://script.google.com/macros/s/AKfycbydNCzG37SZ88WEZIoikFGoZTqVNA02CHLbuZtxTO_S3mj-6jJS7he3v3q38-lZ5ghO/exec');
   //areasDegradadas.value = await fetchGeoJson(config.public.url_base + '/capas/areas_degradadas.geojson');
   areasArestaurar.value = await fetchGeoJson(config.public.url_base + '/capas/areas_arestaurar24_32.geojson');
   //pois.value = await fetchGeoJson(config.public.url_base + '/capas/pois.geojson');

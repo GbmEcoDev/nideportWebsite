@@ -6,9 +6,9 @@
                   <NuxtImg v-if="post.sourceUrl" :src="post.sourceUrl" alt="Cover image" width="1060" class="w-full aspect-ratio-square object-cover rounded-lg" />
                 </div>
                 <div class="flex-col w-9/12 pl-1 max-sm:h-30">
-                  <p class="text-primary text-xs dark:text-white">{{ new Date(post.date).toLocaleDateString() }} - {{ post.categories }}</p> 
+                  <p class="text-primary text-xs dark:text-white">{{ post.categories }} - <span class="text-gray-600">{{ new Date(post.date).toLocaleDateString() }}</span></p> 
                   <h2 class="font-bold text-lg  dark:text-white leading-5 mb-1">{{ post.title }}</h2>
-                  <p class="text-gray-700 text-lg dark:text-white leading-5">{{ cleanAndTruncate(post.excerpt) }}</p>
+                  <p class="text-gray-700 text-sm dark:text-white leading-5">{{ cleanAndTruncate(post.excerpt) }}</p>
                 </div>
             </div>
         </div>

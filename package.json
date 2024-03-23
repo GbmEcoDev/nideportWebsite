@@ -34,6 +34,7 @@
     "vue3-carousel-nuxt": "^1.1.0"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.8.1",
     "@nuxt/http": "^0.6.4",
     "@nuxt/image": "^1.1.0",
     "@nuxt/ui": "^2.12.0",
