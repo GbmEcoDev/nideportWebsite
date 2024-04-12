@@ -4,7 +4,7 @@
             <AtomsTitleH2 alignTxt="center" colorTxt="white" weightTxt="normal" :texte="$t('about_team_title')" class="pb-12" />
         </AtomsContainer>
         <AtomsContainer>
-            <div class="grid grid-cols-2 items-stretch sm:grid-cols-3 lg:grid-cols-5 gap-x-3 gap-y-10 sm:gap-x-5 sm:gap-y-8">
+            <div class="grid grid-cols-2 items-stretch sm:grid-cols-4 lg:grid-cols-5 gap-x-3 gap-y-10 sm:gap-x-5 sm:gap-y-8">
 
                 <!-- <CardsTeam name="Juan" 
                     href="#" 
@@ -22,10 +22,11 @@
 </template>
 
 <script setup lang="ts">
+const { locale } = useI18n();
 const teamData = ref([
   {
     name: 'Juan Nuñez',
-    position: 'CEO',
+    position:  locale.value === 'es' ? 'CEO' : 'C3O',
     coverImage: '/images/team/Juan_Nunez.png'
   },
   {
@@ -174,21 +175,5 @@ const teamData = ref([
     coverImage: '/images/team/Hernan_Aycaguer.png'
   },
 
-
-
-
-
- 
-
-/*   ,
-  {
-    name: 'Tomas Raul Vicente',
-    position: 'CFO',
-    coverImage: '/images/team/TVR.png'
-  } */
 ]);
 </script>
-
-<style scoped>
-
-</style>

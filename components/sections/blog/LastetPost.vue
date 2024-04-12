@@ -86,6 +86,7 @@ try {
     data = null;
   }
 
+  
   function transformPost(node) {
     return {
       id: node?.id || '',
