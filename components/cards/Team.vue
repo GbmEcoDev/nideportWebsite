@@ -1,15 +1,17 @@
 <template>
-    <div class="lg:p-1 relative h-auto flex flex-col rounded-[20px] scale-100 hover:scale-105 bg-gradient-to-b from-[rgba(255,255,255,0.2)] to-[rgb(255,255,255,0.2)]">
-      <div class="relative h-max min-h-max flex items-center">
-        <NuxtImg format="webp" :src="`${urlImg}${coverImage}`" :alt="name" width="120" class=" mt-6 aspect-ratio-square mx-auto lg:w-32 lg:h-32 xs:w-24 xs:h-24 sm:w-24 sm:h-24 md:w-24 md:h-24 max-lg:h-full max-lg:w-full rounded-full object-cover"/>
-        <!-- <span class="absolute bottom-2 right-0 max-sm:right-0 px-2 rounded-full text-sm text-white ">
+    <div class="lg:p-1 relative h-auto flex flex-col rounded-[20px] scale-100 hover:scale-105 bg-gradient-to-b from-[rgba(255,255,255,0.1)] to-[rgb(255,255,255,0.2)]">
+      <div class="relative h-max min-h-max flex items-center px-3 ">
+        <NuxtImg format="webp" :src="`${urlImg}${coverImage}`" :alt="name" width="60" 
+        class=" mt-6 aspect-ratio-square mx-auto w-[60px] h-[60px] lg:w-32 lg:h-32 rounded-full object-cover "/>
+        <!--  xs:max-w-16 xs:max-h-16 sm:w-14 sm:h-14 md:w-24 md:h-24 max-lg:h-full max-lg:w-full 
+          <span class="absolute bottom-2 right-0 max-sm:right-0 px-2 rounded-full text-sm text-white ">
             <NuxtLink target="_blank" :to="`${ linkedin }`" class="transition hover:!scale-110 ">
               <NuxtImg :src="`${urlImg}/images/icon/LN-blue.svg`" class="icons"/>
             </NuxtLink>
         </span> -->
       </div>
       <div class="lg:px-2 pt-2 lg:pb-4 xl:px-4 md:pt-4  h-full flex flex-col justify-between">
-        <div class="h-full">
+        <div class="h-full px-2">
           <h2 class="font-bold text-base md:text-lg lg:text-xl line-clamp-2 md:line-clamp-3 text-center text-white dark:text-white">
             {{ name }}
           </h2>

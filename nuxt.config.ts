@@ -1,6 +1,5 @@
 export default defineNuxtConfig({
-
-    ssr: true,
+ ssr: true,
  /*spaLoadingTemplate: true, */
   nitro:{
     compressPublicAssets: true,
@@ -40,19 +39,9 @@ export default defineNuxtConfig({
     image:{
       quality:80,
     }
-  }], '@nuxt/devtools', '@nuxtjs/i18n', '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui', '@nuxtjs/device'],
+  }], '@nuxt/devtools', '@nuxtjs/i18n', '@nuxt/content', 'vue3-carousel-nuxt', 'nuxt-swiper', 'nuxt3-leaflet', '@nuxt/ui', '@nuxtjs/device','@pinia/nuxt'],
 
-  colorMode: {
-    preference: 'light', // default value of $colorMode.preference
-    fallback: 'light', // fallback value if not system preference found
-    hid: 'nuxt-color-mode-script',
-    globalName: '__NUXT_COLOR_MODE__',
-    componentName: 'ColorScheme',
-    classPrefix: '',
-    //classSuffix: '-mode',
-    classSuffix: '',
-    storageKey: 'nuxt-color-mode'
-  },
+
 
   //buildModules: ['@nuxt/image'],
   postcss: {
@@ -123,6 +112,7 @@ export default defineNuxtConfig({
       public: {
           wpEventos : process.env.WP_EVENT,
           wpPosteos : process.env.WP_POSTS,
+          wpTags : process.env.WP_TAGS,
           wpFindings : process.env.WP_FIND,
           wpRestora: process.env.WP_RESTO,
           wordpressUrl: process.env.WP_POST,

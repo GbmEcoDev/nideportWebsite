@@ -29,7 +29,7 @@
   const config = useRuntimeConfig();
   const language = locale.value.toUpperCase();
 
-
+  let lastModified = null;
   let data, error, pending;
 try {
   ({ data, error, pending } = await useFetch(config.public.wordpressUrl, {
@@ -58,17 +58,18 @@ try {
                   locale
                 }
                 categories(first:100) {
-                nodes {
-                  name
+                  nodes {
+                    name
+                  }
                 }
-              }
               }
             }
           }
         }
       `,
       variables: {
-        language: language
+        language: language,
+        lastModified: lastModified
         //category: selectedCategory.value
       }
     },

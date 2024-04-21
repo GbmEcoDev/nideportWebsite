@@ -19,23 +19,34 @@
       post: Record<string, any>;
   }>();
 
-  function formatCategories(categories: { nodes: { name: string }[] }) {
+ /* function formatCategories(categories: { nodes: { name: string }[] }) {
     if (categories && categories.nodes && categories.nodes.length > 0) {
       return categories.nodes.map(category => category.name).join(', ');
     }
     return '';
   }
 
-  function cleanAndTruncate(text: string) {
+   function cleanAndTruncate(text: string) {
     // Limpiar HTML y recortar a 200 caracteres
-    const cleanText = text.replace(/<[^>]+>/g, ''); // Elimina todas las etiquetas HTML
+    const cleanText = text.replace(/<[^>]+?>/g, ''); // Elimina todas las etiquetas HTML
     const truncatedText = cleanText.length > 100 ? `${cleanText.substring(0, 200)}...` : cleanText;
+    return truncatedText;
+  } */
+  function cleanAndTruncate(text: string): string {
+    // Limpiar HTML y recortar a 200 caracteres
+    const cleanText = text.replace(/<[^>]+?>/g, ''); 
+    // Decodificar entidades HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(cleanText, 'text/html');
+    const decodedText = doc.body.textContent || '';
+    // Recortar y devolver texto
+    const truncatedText = decodedText.length > 200 ? `${decodedText.substring(0, 200)}...` : decodedText;
     return truncatedText;
   }
  </script>
   <style scoped>
   .aspect-ratio-square {
-    aspect-ratio: 1 / 1; /* Establece la relación de aspecto cuadrada */
+    aspect-ratio: 1 / 1;
   }
  </style>
  

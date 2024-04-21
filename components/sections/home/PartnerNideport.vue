@@ -24,8 +24,8 @@
     { logo: '/images/partners/logo-embarca.png', alt: 'Embarca', url:'https://www.embarca.tech/' },
     { logo: '/images/partners/alma-logo.png', alt: 'Alma', url:'https://almavest.com/' },
     { logo: '/images/partners/logo-drapercygnus.svg', alt: 'Draper Cygnus', url:'https:///drapercygnus.vc/' },
-    { logo: '/images/partners/logo-mesa.png', alt: 'Mesa Carbono', url:'https://mesacarbono.org.ar/' },
-    { logo: '/images/partners/logo-ecosecurities.png', alt: 'EcoSecurities', url:'https://www.ecosecurities.com/' },
+    { logo: '/images/partners/logo-mesa-min.png', alt: 'Mesa Carbono', url:'https://mesacarbono.org.ar/' },
+    { logo: '/images/partners/logo-ecosecurities.webp', alt: 'EcoSecurities', url:'https://www.ecosecurities.com/' },
     { logo: '/images/partners/logo-climatech.png', alt: 'Climatech', url:'https://www.climatech.ar/' },
     { logo: '/images/partners/logo-amcham.png', alt: 'AmCham', url:'https://amcham.com.ar/' },
   ]);

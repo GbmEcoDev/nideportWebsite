@@ -29,27 +29,27 @@
                     <div data-slide-recent @scroll="initScroll()" class="flex items-stretch gap-5 overflow-hidden overflow-x-auto invisible-scroll h-full max-sm:w-full max-sm:snap-x">
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center"  >
-                              <CardsNidePillar :title="$t('home_pillar_c1_title')" cover-image="/images/pilar-restauracion.webp"
+                              <CardsNidePillar :title="$t('home_pillar_c1_title')" cover-image="/images/pilar-restauracion-min.webp"
                               :description="$t('home_pillar_c1_phrase')" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" ><!-- @click="() => toggleModal('PillarTwo')" -->
-                             <CardsNidePillar :title="$t('home_pillar_c2_title')" cover-image="/images/pilar-biodiversidad.webp"
+                             <CardsNidePillar :title="$t('home_pillar_c2_title')" cover-image="/images/pilar-biodiversidad-min.webp"
                              :description="$t('home_pillar_c2_phrase')" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center">
-                                <CardsNidePillar :title="$t('home_pillar_c3_title')" cover-image="/images/pilar-comunidad.webp"
+                                <CardsNidePillar :title="$t('home_pillar_c3_title')" cover-image="/images/pilar-comunidad-min.webp"
                                 :description="$t('home_pillar_c3_phrase')" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center" >
-                                <CardsNidePillar :title="$t('home_pillar_c4_title')" cover-image="/images/pilar-tecnologia.webp"
+                                <CardsNidePillar :title="$t('home_pillar_c4_title')" cover-image="/images/pilar-tecnologia-min.webp"
                                 :description="$t('home_pillar_c4_phrase')" />
                             </div>
                             <div data-aos="fade-up"
                                 class="w-9/12 min-w-[91.666667%] xs:w-80 xs:min-w-[20rem] md:w-2/3 md:min-w-[66.66666%] lg:w-2/4 lg:min-w-[33%] h-full hover:rotate-1 max-sm:snap-center">
-                                <CardsNidePillar :title="$t('home_pillar_c5_title')" cover-image="/images/pilar-seguridad.webp"
+                                <CardsNidePillar :title="$t('home_pillar_c5_title')" cover-image="/images/pilar-seguridad-min.webp"
                                 :description="$t('home_pillar_c5_phrase')" />
                             </div>
                     </div>

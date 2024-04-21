@@ -1,6 +1,6 @@
 <template>
     <div class="relative overflow-hidden bg-cover bg-no-repeat h-[44rem] z-0">
-      <video v-if="isDesktop"
+    <video v-if="isDesktop"
       autoplay
       loop
       muted
@@ -29,8 +29,8 @@
         type="video/mp4"
       />
       Your browser does not support the video tag.
-    </video>
-  <!-- <NuxtImg v-else :src="`${urlImg}/images/hero-home-min.webp`" width="1060" class="w-full object-cover rounded-2 h-full" alt="Panoramic Forest"/>   -->
+    </video> 
+   <NuxtImg :src="`${urlImg}/images/hero-home-min.webp`" width="1060" class="w-full object-cover rounded-2 h-full" alt="Panoramic Forest"/>  <!-- -->
     <div class="absolute top-0 right-0 bottom-0 left-0 h-full w-full overflow-hidden hero bg-fixed">
           <AtomsContainer>
             <div class="flex h-full items-center justify-center">
