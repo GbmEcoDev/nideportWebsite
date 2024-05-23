@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+
  ssr: true,
  /*spaLoadingTemplate: true, */
   nitro:{
@@ -109,6 +110,7 @@ export default defineNuxtConfig({
       public: {
           wpEventos : process.env.WP_EVENT,
           wpPosteos : process.env.WP_POSTS,
+          wpCategories : process.env.WP_CATS,
           wpTags : process.env.WP_TAGS,
           wpFindings : process.env.WP_FIND,
           wpRestora: process.env.WP_RESTO,

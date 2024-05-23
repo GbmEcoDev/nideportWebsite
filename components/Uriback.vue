@@ -1,14 +1,18 @@
 <template>
-    <div class="relative bg-cover bg-no-repeat h-[36rem] z-1" 
-        style="background-position: center center;"
+    <div class="relative bg-cover bg-no-repeat h-[44rem] z-1" 
+        style="background-position: top center;"
         :style="{ backgroundImage: `url('${data.featuredImage?.node?.sourceUrl}')` }" 
-        >
-      <div class="absolute top-0 w-full h-full bg-slate-900/[.4]" ></div>
-      <!-- <div class="absolute bottom-0 w-full h-[24em] " :class="bglinear"></div> -->
+        :class="{
+                'transition opacity-20': scrollY > 0,
+                'transition opacity-100 ': scrollY === 0
+                }"
+        ><!-- style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.60) 10%, rgba(0, 0, 0, 0.00) 100%);" -->
+      <div class="absolute top-0 w-full h-full  bg-gradient-to-b from-gray-900" ></div><!-- style="background:linear-gradient(0deg, rgba(255, 255, 255, 1) 65%, rgba(255, 255, 255, 0.00) 100%);" -->
+      <div class="absolute bottom-0 w-full h-[24em] " :class="bglinear"></div>
     </div>
-   <div class="relative mt-[2em] z-2 flex justify-center" >
+   <div class="relative mt-[-18em] z-2" >
     
-      <div class="lg:w-[1024px] lg:mx-24 md:w-[1024px] md:mx-24">
+      <AtomsContainer>
       <div class="my-4 px-40 max-sm:px-2">
         <NuxtLink to="/" class="text-blue-500 hover:underline">Inicio</NuxtLink>
         <span class="mx-2  text-gray-600 dark:text-slate-300">/</span>
@@ -17,7 +21,7 @@
         <span class=" text-gray-600 dark:text-slate-300">{{ data.title }}</span>
       </div>
         <main class="container mx-auto mt-6 px-40 rounded-lg max-sm:px-2">
-          <AtomsTitleH2b colorTxt="secondary" sizeTxt="text-3xl md:text-6xl lg:text-6xl" alignTxt="left" weightTxt="bold" :texte="`${data.title}`" ></AtomsTitleH2b>
+          <AtomsTitleH2 colorTxt="secondary" sizeTxt="md:text-6xl max-sm:text-5xl" alignTxt="left" weightTxt="bold" :texte="`${data.title}`" ></AtomsTitleH2>
           <div class="flex items-center justify-between text-xs mt-4 pt-3 pb-3 border-t text-gray-600 border-b border-b-gray-200 dark:text-slate-300 border-t-gray-500">
             <div class="w-1/2">
               <span>{{ new Date(data.date).toLocaleDateString() }}</span>
@@ -42,7 +46,7 @@
           <GalleryPost v-if="images.length > 0" :images="images"/>
           <SectionsBlogRelationPost :categoryRel="formatCategories(data.categories)"/>
         </main>
-      </div>
+      </AtomsContainer>
   </div>
     <ScrollTop />
   </template>

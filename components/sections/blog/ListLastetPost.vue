@@ -1,13 +1,14 @@
-<template>
+ <template>
   <div v-if="error">{{ error }}</div>
-  <div v-else>
-    <ul v-if="posts.length">
-      <li v-for="post in filteredPosts" :key="post.id">
+  <div v-else class="flex flex-col items-center">
+    <div v-if="filteredPosts.length">
+      <!-- <li v-for="post in filteredPosts" :key="post.id">
         <h2>{{ post.title.rendered }}</h2>
-      </li>
-    </ul>
-    <p v-else>No posts found.</p>
-    <button v-if="hasMorePages" @click="fetchData">Load more</button>
+      </li> -->
+      <SectionsBlogPostGralSlug v-for="post in filteredPosts" :key="post.slug" :post="post"></SectionsBlogPostGralSlug>
+    </div>
+    <p v-else></p>
+    <button v-if="hasMorePages" @click="fetchData" class="bg-cta w-36 hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-8">{{ btnmore }}</button>
   </div>
 </template>
 
@@ -21,7 +22,8 @@ const posts = ref([])
 const error = ref(null)
 const { locale } = useI18n()
 const language = locale.value
-const perPage = 10;
+const btnmore = language === "es" ? "Cargar más" : "Load More"
+const perPage = 5; // Cambio a 10 posts por página
 let currentPage = 1;
 
 const fetchData = async () => {
@@ -29,13 +31,19 @@ const fetchData = async () => {
     const response = await axios.get(config.public.wpPosteos, {
       params: {
         'per_page': perPage,
-        'acf.lang.slug': language, // Filtrar por idioma del usuario
+        'acf.lang.slug': language,
         'page': currentPage
       }
     })
     if (response.status === 200) {
-      posts.value = [...posts.value, ...response.data]; // Agregar nuevos posts a la lista existente
-      currentPage++; // Incrementar la página para la próxima carga
+      if (currentPage === 1) {
+        posts.value = response.data; // Inicializar con los primeros posts
+      } else {
+        posts.value = [...posts.value, ...response.data]; // Agregar más posts
+      }
+      currentPage++;
+      // Verificar si hay más posts disponibles
+      hasMorePages.value = response.data.length === perPage;
     } else {
       error.value = 'Error al obtener los posts: ' + response.statusText
     }
@@ -56,15 +64,13 @@ watch(
   () => router.currentRoute.value.path,
   () => {
     currentPage = 1; // Reiniciar la página cuando se cambia la ruta
+    posts.value = []; // Vaciar los posts
     fetchData();
   }
 )
 
 // Comprobar si hay más páginas disponibles
 const hasMorePages = ref(true);
-watch(posts, () => {
-  hasMorePages.value = posts.value.length % perPage === 0;
-})
 
 fetchData() // Fetch data initially
 </script>

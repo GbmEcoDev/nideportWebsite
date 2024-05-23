@@ -94,10 +94,10 @@ article figure.alignright.size-full.is-resized img{
     aspect-ratio: 1 / 1;
     
 }
-article p {
+/*article p {
     text-align: justify;
 }
-/* Firefox */
+ Firefox */
 * {
     scrollbar-width: thin;
     scrollbar-color: #007A77 #393B3C;

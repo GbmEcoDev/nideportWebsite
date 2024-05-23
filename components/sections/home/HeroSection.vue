@@ -1,10 +1,23 @@
 <template>
+<!--  <div class="h-screen w-full relative overflow-hidden">
+    <VideoBackground
+      src="/video/hero_nideport.mp4"
+      autoplay
+      muted
+      loop
+      poster="/images/hero_nideport_poste_min.webp"
+    >
+      <div class=" absolute top-1/2 text-black w-full h-full flex justify-center items-center"> 
+        <h1>hola</h1>
+      </div>
+    </VideoBackground>
+  </div> -->
     <div class="relative overflow-hidden bg-cover bg-no-repeat h-[44rem] z-0">
     <video v-if="isDesktop"
       autoplay
       loop
       muted
-      preload="none"
+
       class="absolute z-0 w-auto min-w-full min-h-full max-w-none"
       poster="/images/hero_nideport_poster.webp"
       

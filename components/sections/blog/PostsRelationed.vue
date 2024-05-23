@@ -11,7 +11,7 @@
         </div>
     </NuxtLink> -->
     <NuxtLink :to='post.uri'>
-        <div class="items-center dark:text-white text-secondary p-2 transition-all hover:-translate-y-1 hover:scale-105 pb-3">
+        <div class="items-center dark:text-white text-secondary transition-all border border-white hover:border hover:border-[#0FAFAA] rounded-[10px] m-2 p-1">
             <div class="flex gap-3">
                 <div class="w-2/12 overflow-hidden">
                   <NuxtImg  v-if="post.sourceUrl" :src="post.sourceUrl" alt="Cover image" width="1060" class="w-full aspect-ratio-square object-cover rounded-lg" />

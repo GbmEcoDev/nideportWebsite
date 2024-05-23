@@ -69,7 +69,7 @@ const teamData = ref([
   },
 
  {
-    name: 'Cesar Kleiner',
+    name: 'Cesar Kleisner',
     position: locale.value === 'es' ? 'Responsable de Legales' : 'Head of the legal area',
     coverImage: '/images/team/Cesar_Kleiner.png'
   }, 
