@@ -9,14 +9,14 @@
     
       <div class="lg:w-[1024px] lg:mx-24 md:w-[1024px] md:mx-24 w-full mx-3">
       <div class="my-4 px-40 max-sm:px-2">
-        <NuxtLink to="/" class="text-blue-500 hover:underline">Inicio</NuxtLink>
+        <NuxtLink to="/" class="text-blue-500 hover:underline">{{$t('blog_breadcrumbs_home')}}</NuxtLink>
         <span class="mx-2  text-gray-600 dark:text-slate-300">/</span>
-        <NuxtLink to="/blog" class="text-blue-500 hover:underline">Noticias</NuxtLink>
+        <NuxtLink to="/blog" class="text-blue-500 hover:underline">{{$t('blog_breadcrumbs_blog')}}</NuxtLink>
         <span class="mx-2  text-gray-600 dark:text-slate-300">/</span>
         <span class=" text-gray-600 dark:text-slate-300">{{ data.title }}</span>
       </div>
         <main class="container mx-auto mt-6 px-40 rounded-lg max-sm:px-2">
-          <AtomsTitleH2b colorTxt="secondary" sizeTxt="text-[16px] md:text-[42px] lg:text-[42px]" alignTxt="left" weightTxt="bold" :texte="`${data.title}`" ></AtomsTitleH2b>
+          <AtomsTitleH2b colorTxt="secondary" sizeTxt="text-[24px] md:text-[42px] lg:text-[42px]" alignTxt="left" weightTxt="bold" :texte="`${data.title}`" ></AtomsTitleH2b>
           <div class="flex items-center justify-between text-xs mt-4 pt-3 pb-3 border-t text-gray-600 border-b border-b-gray-200 dark:text-slate-300 border-t-gray-500">
             <div class="w-1/2">
               <span>{{ new Date(data.date).toLocaleDateString() }}</span>
