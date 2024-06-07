@@ -24,8 +24,8 @@
     </div>
 
     <div v-if="isModalOpen" class="fixed top-0 bottom-0 left-0 right-0 inset-0 z-[1070] bg-black bg-opacity-95 flex items-center justify-center" @click="closeModal">
-      <div class="relative flex items-center justify-center w-full h-1/2 md:w-auto md:h-full lg:w-auto lg:h-full" @click.stop>
-        <NuxtImg :src="`${selectedImage}`" alt="Selected Image" class="h-auto w-auto z-[1080]" />
+      <div class="relative flex items-center justify-center w-full h-1/2 md:w-auto md:h-full lg:w-auto lg:h-full p-4" @click.stop>
+        <NuxtImg :src="`${selectedImage}`" alt="Selected Image" class="h-full w-auto z-[1080]" />
       </div>
       <div class="absolute z-[1100] top-[8px] right-[8px] flex justify-center">
           <button @click="closeModal" class="text-white hover:text-gray-100 bg-transparent border rounded-full p-1" aria-label="Cerrar Modal">

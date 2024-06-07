@@ -2,7 +2,7 @@
   <SectionsAboutHeroAbout />
   <SectionsAboutNideport  class="pb-50 pt-50"/>
   <SectionsAboutOurTeams />
-  <SectionsAboutJoinOurTeam />
+<!--   <SectionsAboutJoinOurTeam /> -->
   <GalleryPicture :images="imageList"/>
   <ScrollTop />
 </template>

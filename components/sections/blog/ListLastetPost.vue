@@ -60,19 +60,20 @@ watch(posts, () => {
 watch(
   () => router.currentRoute.value.path,
   () => {
-    currentPage = 1; // Reiniciar la página cuando se cambia la ruta
+    currentPage = 1; // Reiniciar la página
     //posts.value = []; // Vaciar los posts
     fetchData();
   }
 )
 
-// Comprobar si hay más páginas disponibles
+
 const hasMorePages = ref(true);
 
 const navigateToPost = (slug) => {
-  console.log("slug",slug);
-  router.push(`/${slug}`); // Assuming your post route pattern is `/post/:slug`
+ // router.push(`/${slug}`); 
+  const localePrefix = language === 'en' ? '/en' : '';
+  router.push(`${localePrefix}/${slug}`);
 }
 
-fetchData() // Fetch data initially
+fetchData() 
 </script>

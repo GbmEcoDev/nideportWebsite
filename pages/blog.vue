@@ -2,7 +2,7 @@
   <div class="mb-8 w-full">
     <SectionsBlogHeroBlog/>
     <AtomsContainer>
-       <SectionsBlogFeactures/>
+       <SectionsBlogFeacturesPost/>
     </AtomsContainer>
   </div>
   <AtomsContainer>

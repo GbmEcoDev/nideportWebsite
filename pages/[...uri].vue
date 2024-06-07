@@ -10,9 +10,9 @@
     
       <div class="lg:w-[1024px] lg:mx-24 md:w-[1024px] md:mx-24 w-full mx-3">
       <div class="my-4 px-40 max-sm:px-2">
-        <NuxtLink to="/" class="text-blue-500 hover:underline">{{$t('blog_breadcrumbs_home')}}</NuxtLink>
+        <NuxtLink :to="`${localePrefixPath}/`" class="text-blue-500 hover:underline">{{$t('blog_breadcrumbs_home')}}</NuxtLink>
         <span class="mx-2  text-gray-600 dark:text-slate-300">/</span>
-        <NuxtLink to="/blog" class="text-blue-500 hover:underline">{{$t('blog_breadcrumbs_blog')}}</NuxtLink>
+        <NuxtLink :to="`${localePrefixPath}/blog`" class="text-blue-500 hover:underline">{{$t('blog_breadcrumbs_blog')}}</NuxtLink>
         <span class="mx-2  text-gray-600 dark:text-slate-300">/</span>
         <span class=" text-gray-600 dark:text-slate-300">{{ data.title }}</span>
       </div>
@@ -56,7 +56,10 @@
   const config = useRuntimeConfig();
   const color = useColorMode();
   const bglinear = color.value === 'light' ? 'bg-gradient-to-t from-white via-white' : 'bg-gradient-to-t from-gray-900 ';
-
+  const { locale } = useI18n()
+  const language = locale.value
+  const localePrefixPath = language === 'en' ? '/en' : '';
+  
   const { data, pending, error } = await useFetch(config.public.wordpressUrl, {
     method: 'get',
     query: {
