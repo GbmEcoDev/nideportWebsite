@@ -2,10 +2,10 @@
 export default defineNuxtPlugin(nuxtApp => {
 	nuxtApp.hooks.hook('vue:setup', () => {
 		const {
-			public: { gtmContainerId, adsContainerId, gaTrackingId },
+			public: { adsContainerId, gaTrackingId },
 		} = useRuntimeConfig()
 			//tag analiti
-		if (gtmContainerId) {
+	/* 	if (gtmContainerId) {
 			useHead({
 				script: [
 					{
@@ -20,7 +20,7 @@ export default defineNuxtPlugin(nuxtApp => {
 					},
 				],
 			})
-		}
+		} */
 			//tag ads
 			if (adsContainerId) {
 				useHead({

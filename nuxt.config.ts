@@ -1,10 +1,8 @@
 import axios from 'axios';
-// create a function to fetch the routes from the API
 const getPostRoutes = async () => {
   const response = await axios.get(
     'https://blog.nideport.com/wp-json/wp/v2/posts'
   );
-  // return the array of routes
   return response?.data?.map((post:any) => `/${post.slug}`);
 };
 
@@ -12,33 +10,29 @@ export default defineNuxtConfig({
   ssr: true,
   hooks: {
     async 'nitro:config'(nitroConfig) {
-      // fetch the routes from our function above
       const slugs = await getPostRoutes();
-      // add the routes to the nitro config
       nitroConfig.prerender?.routes?.push(...slugs);
     },
   },
-
   nitro: {
-    compressPublicAssets: true,
+    compressPublicAssets: {
+      brotli: true
+    },
     prerender: {
       failOnError: true
     }
   },
-
   generate: {
     exclude: [
       'robots.txt',
       'sitemap.xml'
     ],
   },
-
   routeRules: {
     '/': { prerender: true },
     '/blog': { isr: 3600 },
     '/blog/**': { isr: true }
   },
-
   css: [
     '@/assets/css/main.css',
   ],
@@ -48,7 +42,7 @@ export default defineNuxtConfig({
   modules: [
     ['@nuxt/image', {
       image: {
-        quality: 80,
+        quality: 75,
       }
     }], 
     '@nuxt/devtools', 
@@ -61,21 +55,19 @@ export default defineNuxtConfig({
     '@nuxtjs/device',
     '@pinia/nuxt'
   ],
-
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {}, 
     },
   },
-
   i18n: {
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
-      redirectOn: 'root',  // recommended
+      redirectOn: 'root',
     },
-    customRoutes: 'config',   // config or disable custom route with page components
+    customRoutes: 'config',
     pages: {
       index: {
         en: '/', 
@@ -106,7 +98,6 @@ export default defineNuxtConfig({
         es: '/tecno'     
       }
     },
-
     lazy: true,
     langDir: "locales",
     strategy: "prefix_except_default",
@@ -140,7 +131,7 @@ export default defineNuxtConfig({
       CONTACTMAILTO: process.env.CONTACTMAILTO,
       CONTACTMAILFROM: process.env.CONTACTMAILFROM,
       SMTPTOKEN: process.env.SMTP_SERVER_SECURITY_TOKEN,
-      gtmContainerId: process.env.NUXT_PUBLIC_GTM_CONTAINER_ID,
+      /* gtmContainerId: process.env.NUXT_PUBLIC_GTM_CONTAINER_ID, */
       adsContainerId: process.env.NUXT_PUBLIC_ADS_CONTAINER_ID,
       gaTrackingId: process.env.NUXT_PUBLIC_GA_CONTAINER_ID,
     }

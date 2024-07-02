@@ -5,7 +5,7 @@
     @mouseover="isHovered = true"
     @mouseleave="isHovered = false"
     >
-        <NuxtImg format="webp" :src="`${urlImg}${coverImage}`" :alt="title" width="1060" class="w-full aspect-square object-cover rounded-2xl h-full" />
+        <NuxtImg format="webp" :src="`${urlImg}${coverImage}`" :alt="title" width="780" class="w-full aspect-square object-cover rounded-2xl h-full" />
         <div :class="{
         'h-28 bg-gradient-to-t from-[#000000] bg-opacity-40': !isHovered,
         'h-full bg-gradient-to-t from-[#0F5F60e9] to-[#0f5f60e9]': isHovered

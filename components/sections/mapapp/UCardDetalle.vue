@@ -13,8 +13,8 @@
             <div class="flex gap-2">
                 <div class="lg:w-full xs:w-full">
                     <NuxtImg :src="`${config.public.url_base}/images/rgs1_nov_23/${ photoDetails.foto }`" class="w-full aspect-ratio-square object-cover" />
-                    <p>{{ photoDetails.Date }}</p>
-                    <p>{{ photoDetails.descripcion }}</p>
+                    <p class="text-white">{{ photoDetails.Date }}</p>
+                    <p class="text-white">{{ photoDetails.descripcion }}</p>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@
   const closePanel = ref(true);
 
   //const idToShow = ref(props.fotoId);
-  console.log(props.fotoId,"lo que mando view");
+  //console.log(props.fotoId,"lo que mando view");
   onMounted(async () => {
     try {
       const { data } = await axios.get(`${config.public.url_base}/capas/fotos.geojson`);

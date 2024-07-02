@@ -1,8 +1,5 @@
 <script setup lang="ts">
-
 const route = useRoute();
-
-
 useHead({
     title: 'Explora Nuestros Proyectos de Créditos de Carbono en Acción',
     meta: [
@@ -13,13 +10,11 @@ useHead({
     ],
   });
 </script>
-
 <template>
   <SectionsProjectsHeroProject/>
   <SectionsProjectsDataReserve class="section_space"/>
   <SectionsProjectsGs1  class="pb-150 pt-50"/>
   <SectionsHomeMapReserve class="section_space"/>
-  
   <SectionsProjectsInfoReserve class="section_space"/> 
   <SectionsProjectsObjectReserve />
   <SectionsProjectsOdsReserve />

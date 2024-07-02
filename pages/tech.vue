@@ -27,12 +27,12 @@
         <NuxtLink :to="localePath({ name: 'index' })" class=" relative z-1000" ><Logo color="dark"/></NuxtLink>
       </div>
       <!--abrir panel-->
-      <div class="absolute z-55 top-1/2 left-[-2px]" :class="{ 'left-[-310px]': isOpen }">
-            <button @click="isOpen = true" class="bg-gray-900 w-8 h-10 flex justify-end items-center p-2 text-xl font-bold"><i class="i-heroicons-chevron-right-20-solid"></i></button>
+      <div class="absolute z-1055 top-1/2 left-[-2px]" :class="{ 'left-[-310px]': isOpen }">
+            <button @click="isOpen = true" class="bg-gray-900 w-8 h-10 text-white flex justify-end items-center p-2 text-xl font-bold"><i class="i-heroicons-chevron-right-20-solid"></i></button>
       </div>
       <!--cerrar panel-->
-      <div class="absolute z-55 top-1/2 left-[-310px] transition-all duration-100 ease-in-out delay-350" :class="{ 'left-[310px]': isOpen }">
-            <UButton color="white" variant="solid" icon="i-heroicons-chevron-left-20-solid" size="xl" @click="isOpen=false, isOpenDet=false, isOpenDetArea=false, isOpenDetFaja=false" ref="btnActivePanel" />
+      <div class="absolute z-1055 top-1/2 left-[-310px] transition-all duration-100 ease-in-out delay-350" :class="{ 'left-[310px]': isOpen }">
+            <UButton color="black" variant="solid" icon="i-heroicons-chevron-left-20-solid" size="xl" @click="isOpen=false, isOpenDet=false, isOpenDetArea=false, isOpenDetFaja=false" ref="btnActivePanel" />
      </div>
         
         <SectionsMapappUCardDetalleFaja class="absolute lg:w-[350px] lg:h-screen lg:top-0 lg:right-0 bg-slate-900/10
@@ -55,8 +55,8 @@
               <UTabs :items="items" @change="onChange" class="z-3000" >
               <template #item="{ item }">
                 <UCard>
-                  <div v-if="item.key === 'discover'" class="space-y-1 text-sm">
-                    <p class="text-sm border-b mb-2">{{ item.content }}</p>
+                  <div v-if="item.key === 'discover'" class="space-y-1 text-sm" id="acco-dis">
+                    <p class="text-sm text-white border-b border-gray-900 mb-2">{{ item.content }}</p>
                    <UAccordion :items="itemscat" 
                     color="black" 
                     variant="soft"
@@ -83,7 +83,7 @@
                     </UAccordion>
                   </div>
                   <div v-else-if="item.key === 'planner'" class="space-y-1" id="acco-area">
-                    <p class="text-sm border-b mb-2"> {{ item.content }}</p>
+                    <p class="text-sm text-white border-b mb-2"> {{ item.content }}</p>
                      <UAccordion
                         :items="itemsa"
                         color="black" 
@@ -119,7 +119,7 @@
           <div class="relative mx-1">
             <div class="border border-gray-700 w-full rounded-md p-2">
               <UAccordion :items="itemsLayers" 
-                color="black" 
+                color="teal" 
                 variant="soft"
                 >
                   <template #layer-featured >
@@ -447,7 +447,9 @@ const handleOpenDetPanelFaja = (value:any) => {
   transform: translateX(100%);
   transition: transform 0.3s ease-out;
 }
-
+#acco-dis ::v-deep(button:nth-child(1)) {
+  color: rgba(255,255,255,1);
+}
 #acco-area ::v-deep(button:nth-child(1)) {
   color: rgba(112,176,85,1);
 }
