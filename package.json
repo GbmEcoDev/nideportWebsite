@@ -44,6 +44,7 @@
     "axios": "^1.6.0",
     "compression": "^1.7.4",
     "element-plus": "^2.4.3",
+    "emailjs-com": "^3.2.0",
     "h3": "^1.13.0",
     "nuxt-mail": "^4.0.3",
     "nuxt-precompress": "^0.5.9",

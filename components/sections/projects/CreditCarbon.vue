@@ -70,12 +70,12 @@
 
           <!-- Botones de acción -->
           <div class="flex flex-col sm:flex-row gap-4 mt-8">
-            <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-bold transition">
+            <NuxtLink :to="localePath({ name: 'contact' })" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-bold transition text-center">
               {{ $t('projects_credit_buy_carbon_credits') }}
-            </button>
-            <button class="border border-green-500 text-green-500 hover:bg-green-50 px-6 py-3 rounded-lg font-bold transition">
+            </NuxtLink>
+            <a href="https://registry.verra.org/app/projectDetail/VCS/3630" target="_blank" rel="noopener noreferrer" class="border border-green-500 text-green-500 hover:bg-green-50 px-6 py-3 rounded-lg font-bold transition text-center">
               {{ $t('projects_credit_view_project_on_verra') }}
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -88,6 +88,7 @@ import { useI18n } from 'vue-i18n';
 const config = useRuntimeConfig();
 const urlImg = config.public.url_base;
 const { t, locale } = useI18n();
+const localePath = useLocalePath();
 // const language = locale.value.toUpperCase(); // <- Eliminar o mover a un 'computed' si es necesario
 
 // Nota: Asegúrate de tener las traducciones en tus archivos de i18n:

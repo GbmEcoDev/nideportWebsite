@@ -118,26 +118,26 @@ onMounted(() => {
   };
 
   observer = new IntersectionObserver((entries) => {
-    console.log('--- Callback del Observer ---');
+   // console.log('--- Callback del Observer ---');
     if (isProgrammaticScroll.value) return;
 
     // Filtra las secciones que están actualmente en la vista
     const visibleSections = entries.filter(entry => entry.isIntersecting);
     
     // Log para ver qué secciones están intersectando
-    console.log('Secciones visibles detectadas:', visibleSections.map(e => e.target.id));
+    //console.log('Secciones visibles detectadas:', visibleSections.map(e => e.target.id));
 
     if (visibleSections.length > 0) {
       // De las secciones visibles, elige la última (la que está más abajo en la página pero visible en la parte superior del viewport)
       const currentSection = visibleSections[visibleSections.length - 1];
       
       // Log para ver el ID de la sección que se va a activar
-      console.log('ID de la sección a activar:', currentSection.target.id);
+      //console.log('ID de la sección a activar:', currentSection.target.id);
       
       activeLink.value = `#${currentSection.target.id}`;
       
       // Log para confirmar el nuevo valor de activeLink
-      console.log('activeLink actualizado a:', activeLink.value);
+      //console.log('activeLink actualizado a:', activeLink.value);
     }
   }, { rootMargin: '-150px 0px -50% 0px' }); // Ajustamos el rootMargin para detectar mejor la sección "actual"
 
