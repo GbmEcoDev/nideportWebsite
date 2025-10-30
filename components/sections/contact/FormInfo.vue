@@ -4,7 +4,7 @@
       <AtomsTitleH4 :texte="$t('contact_form_title')"></AtomsTitleH4>
       <p class="text-left text-base font-bold text-secondary my-4 ">{{$t('contact_form_legend')}}</p>
     </div>
-    <div class="mx-32 mt-8 max-sm:mx-1">
+    <form @submit.prevent="sendForm" action="https://formspree.io/f/xnnodkko" method="POST" class="mx-32 mt-8 max-sm:mx-1">
    
         <div class="mb-8">
           <label for="nombre" class="block text-secondary text-sm">{{$t('contact_form_label1')}}</label>
@@ -49,13 +49,13 @@
         </div>
   
         <div class="flex items-center justify-center">
-          <button @click="sendEmail" class="bg-cta hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <button type="submit" class="bg-cta hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             {{$t('contact_form_button')}}
           </button>
 
         </div>
 
-    </div>
+    </form>
     
   </AtomsContainer>
   <div id="myModal" class="modal">
@@ -89,56 +89,57 @@ const checkOneChecked = computed(() => terminos.value || notificaciones.value);
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-
-const sendEmail = () => {
+const sendForm = async () => {
   
   const validateEmail = (email) => {
     return emailRegex.test(email);
   };
+
   if (!nombre.value) { alert('Debe ingresar un nombre');return; }
   if (!empresa.value) { alert('Debe ingresar una empresa');return; }
   if (!telefono.value) { alert('Debe ingresar un telefono');return; }
   if (!email.value) { alert('Debe ingresar un email');return; }
   if (!validateEmail(email.value)) { alert('El email no es válido'); return; }
   if (!checkOneChecked.value) { alert('Debe seleccionar una opción');return; }
-  
-  Email.send({
-    SecureToken: config.public.SMTPTOKEN,
-    To: config.public.CONTACTMAILTO,
-    From: config.public.CONTACTMAILFROM,
-    Subject: "Contacto desde Nideport website",
-    Body: `
-      Nombre: ${nombre.value}<br>
-      Empresa: ${empresa.value}<br>
-      Teléfono: ${telefono.value}<br>
-      Correo electrónico: ${email.value}<br>
-      Solicita información para adquirir creditos: ${terminos.value ? 'Sí' : 'No'}<br>
-      Solicita información sobre el manejo de tierras: ${notificaciones.value ? 'Sí' : 'No'}
-    `
-  //}).then(message => alert(message));
-  }).then(message => {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "block";
 
-    const span = document.getElementsByClassName("close")[0];
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
+  try {
+    const formData = new FormData();
+    formData.append('nombre', nombre.value);
+    formData.append('empresa', empresa.value);
+    formData.append('telefono', telefono.value);
+    formData.append('email', email.value);
+    formData.append('Solicita información para adquirir creditos', terminos.value ? 'Sí' : 'No');
+    formData.append('Solicita información sobre el manejo de tierras', notificaciones.value ? 'Sí' : 'No');
 
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
+    const response = await fetch("https://formspree.io/f/xnnodkko", {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
       }
-    }
+    });
 
-    //reseteo input
-    nombre.value=""; 
-    empresa.value=""; 
-    telefono.value=""; 
-    email.value="";
-    terminos.value=false;
-    notificaciones.value=false;
-});
+    if (response.ok) {
+      // El formulario se envió correctamente, mostramos el modal
+      const modal = document.getElementById("myModal");
+      modal.style.display = "block";
+
+      // Lógica para cerrar el modal
+      const span = document.getElementsByClassName("close")[0];
+      span.onclick = () => { modal.style.display = "none"; };
+      window.onclick = (event) => { if (event.target == modal) { modal.style.display = "none"; } };
+
+      // Limpiamos el formulario
+      nombre.value = ""; empresa.value = ""; telefono.value = ""; email.value = "";
+      terminos.value = false; notificaciones.value = false;
+    } else {
+      // Hubo un error con Formspree
+      alert('Hubo un error al enviar el formulario. Por favor, intente de nuevo.');
+    }
+  } catch (error) {
+    console.error('Error al enviar el formulario:', error);
+    alert('Hubo un problema de conexión. Por favor, verifique su red e intente de nuevo.');
+  }
 }
 </script>
 <style scoped>
