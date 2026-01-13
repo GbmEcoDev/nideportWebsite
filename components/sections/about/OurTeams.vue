@@ -30,8 +30,8 @@ const teamData = ref([
     coverImage: '/images/team/Juan_Nunez.png'
   },
   {
-    name: 'Tomas Raul Vicente',
-    position: locale.value === 'es' ? 'CFO - Director de Finanzas' : 'CFO - Chief Financial Officer',
+    name: 'Tomas Gutierrez',
+    position: locale.value === 'es' ? 'Co-founder and CFO @ Nideport' : 'Co-founder and CFO @ Nideport',
     coverImage: '/images/team/TRV.png'
   },
   {
@@ -41,7 +41,7 @@ const teamData = ref([
   },
   {
     name: 'Tomas Arata',
-    position: locale.value === 'es' ? 'CPO - Director de Producto' : 'CPO - Chief Product Officer',
+    position: locale.value === 'es' ? 'Presidente y CPO de Nideport' : 'Nideport\'s President and CPO',
     coverImage: '/images/team/Tomas_Arata.png'
   },
   {
@@ -52,7 +52,7 @@ const teamData = ref([
 
   {
     name: 'Marcelo Taboada',
-    position: locale.value === 'es' ? 'Presidente Nideport/ Responsable de Certificación' : 'Nideport\'s President / Responsible for Certification',
+    position: locale.value === 'es' ? 'CFO - Director de Finanzas' : 'CFO - Chief Financial Officer',
     coverImage: '/images/team/Marcelo_Taboada.png'
   },
 /*   {
@@ -79,7 +79,7 @@ const teamData = ref([
   {
     name: 'Victoria Gardella',
     position: locale.value === 'es' ? 'Responsable de Marketing' : 'Head of the Marketing Area',
-    coverImage: '/images/team/Victoria_Gardella.png'
+    coverImage: '/images/team/VictoriaGardella.png'
   },
 /*   {
     name: 'Javier Ureta',
@@ -118,7 +118,7 @@ const teamData = ref([
   },
   {
     name: 'Maicon Villalba',
-    position: locale.value === 'es' ? 'Gestión de Relaciones Comunitarias' : 'Responsible for Community Relations Management',
+    position: locale.value === 'es' ? 'Enlace Comunitario en Terreno' : 'Community Liaison in the Field',
     coverImage: '/images/team/Maicon_Villalba.png'
   },
 /*   {
@@ -128,7 +128,7 @@ const teamData = ref([
   }, */
   {
     name: 'Gerardo Barreto',
-    position: locale.value === 'es' ? 'Capataz de GS1' : 'GS1 Foreman' ,
+    position: locale.value === 'es' ? 'Operaciones en Terreno' : 'Field Operations', 
     coverImage: '/images/team/Gerardo_Barreto.png'
   },
   {

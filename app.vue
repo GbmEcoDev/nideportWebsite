@@ -2,6 +2,9 @@
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
+  <ClientOnly>
+    <CookieConsent />
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">

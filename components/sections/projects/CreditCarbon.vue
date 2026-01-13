@@ -67,7 +67,26 @@
               </div>
             </div>
           </div>
-
+          <!-- rating A -->
+          <div class="bg-[#ffffff] rounded-lg border border-[#3b8e8c] shadow-md mt-6">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-4">
+              <div class="w-full sm:w-auto text-center sm:text-left mb-4 sm:mb-0">
+                <h4 class="text-secondary text-lg font-bold">
+                  {{ $t('projects_credit_rating') }} <span class="text-green-500"> {{ $t('projects_credit_rating_type') }}</span>
+                </h4>
+                <p class="text-secondary mt-1">
+                  {{ $t('projects_credit_rating_descr') }}
+                </p>
+              </div>
+              <div class="w-full sm:w-auto flex justify-center sm:justify-end">
+                <div class="flex flex-row items-center justify-center gap-6">
+                  <img src="/images/sylvera-logo.png" alt="Sylvera" class="h-6" />
+                  <img src="/images/nideport-logo.png" alt="Nideport" class="h-5" />
+                </div>
+                <!-- <img src="/images/rating-a-badge.png" alt="Sylvera" class="h-16" /> -->
+              </div>
+            </div>
+          </div>
           <!-- Botones de acción -->
           <div class="flex flex-col sm:flex-row gap-4 mt-8">
             <NuxtLink :to="localePath({ name: 'contact' })" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-bold transition text-center">

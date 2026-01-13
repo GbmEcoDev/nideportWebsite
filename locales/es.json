@@ -63,6 +63,8 @@
     "home_press_c5_title":"Esta startup financia la regeneración de la selva misionera.",
     "home_press_c6_title":"Usan blockchain para salvar a los bosques nativos",
 
+       "home_press_26_c1_title":"Bonos de carbono, otra industria sin humo que comienza a traer dólares",
+
     "about_title" : "Sobre nosotros",
     "about_phrase1" : "Nideport es una empresa desarrolladora de proyectos de créditos de carbono, dedicada a la restauración ecológica y conservación de la biodiversidad con un enfoque social.",
     "about_c1" : "Restauración de bosques autóctonos",
@@ -131,7 +133,7 @@
     "projects_credit_view_project_on_verra":"Ver proyecto en Verra",
     
     "projects_credit_data1":"Créditos certificados",
-    "projects_credit_data1value":"234.324,2",
+    "projects_credit_data1value":"137,742",
     "projects_credit_data2":"Desarrollador",
     "projects_credit_data2value":"Nideport",
     "projects_credit_data3":"Ubicación",
@@ -155,7 +157,10 @@
     "projects_credit_data6_f_subvalue":"VM0005",
 
      "projects_credit_btn_cta":"Adquirí tus creditos de carbono",
-    
+
+    "projects_credit_rating":"SELVA PARANAENSE VIDA NATIVA ",
+    "projects_credit_rating_type":"OBTIENE RATING A",
+    "projects_credit_rating_descr":"Entre el 1% de los mejores proyectos de carbono IFM del mundo y único proyecto argentino con calificación A",
 
     "project_thematicAxes_box1":"56 especies autóctonas",
     "project_thematicAxes_box2":"10 en peligro de extinción",
@@ -261,5 +266,93 @@
     "categories": {
         "title": "Tématicas",
         "all": "Todos"
+    },
+    "cookie": {
+        "banner": {
+            "text": "Utilizamos cookies para mejorar tu experiencia. Al aceptar, nos permites usar cookies para analítica y marketing.",
+            "readMore": "Leer más",
+            "reject": "Rechazar",
+            "acceptAll": "Aceptar Todas"
+        }
+    },
+    "privacy": {
+        "metaTitle": "Política de Privacidad - Nideport",
+        "metaDescription": "Conoce cómo Nideport protege tus datos personales y utiliza cookies en su sitio web.",
+        "title": "Política de Privacidad",
+        "lastUpdated": "Última actualización: 1 de enero de 2026",
+        "responsibleLabel": "Responsable:",
+        "responsible": "Nideport S.A.",
+        "websiteLabel": "Sitio web:",
+        "contactLabel": "Contacto:",
+        "contactEmail": "'info[at]nideport.com'",
+
+        "sections": {
+            "whoWeAre": {
+                "title": "¿Quiénes somos?",
+                "content": "Somos Nideport, una empresa dedicada a la restauración de ecosistemas, la conservación de la biodiversidad y el desarrollo sostenible con comunidades locales en la Selva Paranaense (Misiones, Argentina). Nuestro enfoque integra tecnología, acción social y regeneración ambiental para generar impacto ecológico, social y económico."
+            },
+            "dataCollected": {
+                "title": "¿Qué datos recopilamos?",
+                "content": "a) Datos que nos proporcionas directamente\n- Nombre, correo electrónico, empresa y mensaje, si utilizas nuestro formulario de contacto o te comunicas con nosotros.\n- Tu correo electrónico también podrá ser utilizado para enviar newsletters o comunicaciones comerciales sobre nuestros proyectos, siempre que nos brindes tu consentimiento explícito para ello.\n- Información de pago (solo en caso de adquirir créditos de carbono), gestionada por proveedores externos certificados. Nunca almacenamos datos sensibles como tarjetas en nuestros servidores.\n\nb) Datos recopilados automáticamente\nAl visitar nuestro sitio web, recopilamos mediante cookies y tecnologías similares:\n- Direcciones IP anonimizadas, tratadas de forma agregada con fines estadísticos\n- Tipo de navegador, sistema operativo y dispositivo\n- Páginas visitadas, tiempo de permanencia y comportamiento en el sitio\n- Preferencias de idioma y ubicación general"
+            },
+            "purposes": {
+                "title": "¿Con qué finalidad usamos tus datos?",
+                "content": "- Responder a consultas sobre nuestros proyectos de restauración o créditos de carbono.\n- Mejorar la experiencia de usuario en nuestro sitio web.\n- Analizar el uso del sitio (con tu consentimiento).\n- Mostrar publicidad relevante o realizar remarketing (solo si aceptás cookies de marketing).\n\nNideport no realiza decisiones automatizadas ni perfilados que produzcan efectos jurídicos o significativos sobre los usuarios."
+            },
+            "cookies": {
+                "title": "Uso de cookies y tecnologías de rastreo",
+                "content": "Utilizamos distintos tipos de cookies:",
+                "table": {
+                "category": "Categoría",
+                "purpose": "Finalidad",
+                "tools": "Herramientas usadas",
+                "rows": {
+                    "technical": "Técnicas",
+                    "technicalPurpose": "Funcionamiento básico del sitio",
+                    "technicalTools": "Cookies propias",
+                    "analytics": "Analíticas",
+                    "analyticsPurpose": "Medir tráfico y optimizar contenido",
+                    "analyticsTools": "Google Analytics, Google Tag Manager",
+                    "marketing": "Marketing",
+                    "marketingPurpose": "Publicidad personalizada y optimización UX",
+                    "marketingTools": "Google Ads, Hotjar, Google Tag Manager"
+                }
+                }
+            },
+            "legalBasis": {
+                "title": "Bases legales del tratamiento",
+                "content": "- Consentimiento: para cookies de analítica y marketing, y envío de información comercial.\n- Interés legítimo: para el funcionamiento técnico del sitio y análisis interno anónimo.\n- Ejecución de contrato: si te comunicas para adquirir servicios."
+            },
+            "dataRecipients": {
+                "title": "¿Con quién compartimos tus datos?",
+                "content": "No vendemos tus datos. Solo los compartimos con:\n- Proveedores de servicios: Google (Analytics, Ads, Tag Manager), Hotjar y plataformas de hosting seguras.\n- Autoridades competentes, si estamos obligados legalmente.\n\nTodos nuestros proveedores cumplen con estándares internacionales de protección de datos."
+            },
+            "internationalTransfers": {
+                "title": "Transferencias internacionales",
+                "content": "Algunos proveedores (como Google y Hotjar) procesan datos en servidores fuera de Argentina (por ejemplo, en EE.UU.). Estas transferencias se realizan bajo mecanismos de protección reconocidos, como las Cláusulas Contractuales Tipo (SCCs)."
+            },
+            "yourRights": {
+                "title": "Tus derechos",
+                "content": "Como titular de los datos, tenés derecho a:\n- Acceder, rectificar o solicitar la supresión (eliminación) de tus datos.\n- Oponerte o limitar su tratamiento.\n- Retirar tu consentimiento en cualquier momento.\n- Presentar una reclamación ante la Unidad Reguladora y de Control de Datos Personales (URCDP) de Uruguay.\n\nEl tratamiento de tus datos personales se rige por lo dispuesto en la Ley Nº 18.331 de Protección de Datos Personales y Acción de Habeas Data, su Decreto Reglamentario Nº 414/009 y demás normas complementarias dictadas por la URCDP.\n\nPodés ejercer estos derechos escribiéndonos a: info[at]nideport.com."
+            },
+            "security": {
+                "title": "Seguridad de la Información",
+                "content": "Adoptamos medidas técnicas y organizativas adecuadas para proteger tus datos contra el acceso no autorizado, la alteración, la divulgación o la destrucción. Estas prácticas incluyen el cifrado de datos en tránsito (SSL/TLS), el control de acceso a nuestros sistemas y la capacitación periódica de nuestro personal en materia de protección de datos."
+            },
+            "dataRetention": {
+                "title": "Plazo de conservación",
+                "content": "Tus datos se conservan mientras sea necesario para las finalidades descritas o mientras mantengas relación con nosotros. Luego se eliminan o anonimizan de forma segura.\n\nLos datos utilizados para certificación, trazabilidad ambiental o integridad de proyectos de carbono se procesan de forma agregada, técnica y no identificable, y no constituyen datos personales."
+            },
+            "updates": {
+                "title": "Actualizaciones",
+                "content": "Podemos actualizar esta política. La versión vigente siempre estará disponible en esta página con una nueva fecha de Última actualización."
+            },
+            "contact": {
+                "title": "Contacto",
+                "content": "¿Tenés dudas o deseás gestionar tus preferencias de privacidad?\nEscribinos a: info[at]nideport.com\nO usá nuestro formulario de contacto."
+            }
+        },
+        "note": "Esta política aplica únicamente al sitio web https://www.nideport.com, no a sitios externos."
     }
+    
 }

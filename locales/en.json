@@ -63,6 +63,8 @@
     "home_press_c5_title":"Esta startup financia la regeneración de la selva misionera.",
     "home_press_c6_title":"Usan blockchain para salvar a los bosques nativos",
 
+    "home_press_26_c1_title":"Carbon bonds, another smokeless industry that begins to bring dollars",
+
     "about_title" : "About us",
     "about_phrase1" : "Nideport is a developer of carbon credit projects, dedicated to ecological restoration and biodiversity conservation with a social approach.",
     "about_c1" : "Native forest restoration",
@@ -131,7 +133,7 @@
     "projects_credit_view_project_on_verra":"View project on Verra",
 
     "projects_credit_data1":"Credits certification",
-    "projects_credit_data1value":"234.324,2",
+    "projects_credit_data1value":"137,742",
     "projects_credit_data2":"Development",
     "projects_credit_data2value":"Nideport",
     "projects_credit_data3":"Location",
@@ -155,6 +157,10 @@
     "projects_credit_data6_f_subvalue":"VM0005",
 
     "projects_credit_btn_cta":"Acquire your carbon credits",
+
+    "projects_credit_rating":"PARANA RAINFOREST NATIVE LIFE ",
+    "projects_credit_rating_type":"RECEIVES A RATING",
+    "projects_credit_rating_descr":"Among the top 1% of IFM carbon projects worldwide and the only Argentine project with an A rating",
 
     "project_thematicAxes_box1": "56 native species",
     "project_thematicAxes_box2": "10 endangered species",
@@ -260,5 +266,93 @@
     "categories": {
         "title": "Thematic",
         "all": "All"
+    },
+    "cookie": {
+        "banner": {
+            "text": "We use cookies to improve your experience. By accepting, you allow us to use cookies for analytics and marketing.",
+            "readMore": "Read more",
+            "reject": "Decline",
+            "acceptAll": "Accept All"
+        }
+    },
+    "privacy": {
+    "metaTitle": "Privacy Policy - Nideport",
+    "metaDescription": "Learn how Nideport protects your personal data and uses cookies on its website.",
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: January 1, 2026",
+    "responsibleLabel": "Data Controller:",
+    "responsible": "Nideport S.A.",
+    "websiteLabel": "Website:",
+    "contactLabel": "Contact:",
+    "contactEmail": "info[at]nideport.com",
+
+    "sections": {
+      "whoWeAre": {
+        "title": "Who we are",
+        "content": "We are Nideport, a company dedicated to ecosystem restoration, biodiversity conservation, and sustainable development with local communities in the Atlantic Forest of Misiones, Argentina. Our approach integrates technology, social action, and environmental regeneration to create ecological, social, and economic impact."
+      },
+      "dataCollected": {
+        "title": "What data do we collect?",
+        "content": "a) Data you provide directly\n- Name, email, company, and message, if you use our contact form or reach out to us.\n- Your email may also be used to send newsletters or commercial communications about our projects, only if you provide explicit consent.\n- Payment information (only if purchasing carbon credits), managed by certified third-party providers. We never store sensitive data such as credit cards on our servers.\n\nb) Automatically collected data\nWhen visiting our website, we collect via cookies and similar technologies:\n- Anonymized IP addresses, processed in aggregate for statistical purposes\n- Browser type, operating system, and device\n- Pages visited, session duration, and on-site behavior\n- Language preferences and general location"
+      },
+      "purposes": {
+        "title": "How do we use your data?",
+        "content": "- Respond to inquiries about our restoration projects or carbon credits.\n- Improve user experience on our website.\n- Analyze site usage (with your consent).\n- Display relevant advertising or conduct remarketing (only if you accept marketing cookies).\n\nNideport does not carry out automated decision-making or profiling that produces legal or significant effects on users."
+      },
+      "cookies": {
+        "title": "Use of cookies and tracking technologies",
+        "content": "We use different types of cookies:",
+        "table": {
+          "category": "Category",
+          "purpose": "Purpose",
+          "tools": "Tools used",
+          "rows": {
+            "technical": "Technical",
+            "technicalPurpose": "Basic website functionality",
+            "technicalTools": "Own cookies",
+            "analytics": "Analytics",
+            "analyticsPurpose": "Measure traffic and optimize content",
+            "analyticsTools": "Google Analytics, Google Tag Manager",
+            "marketing": "Marketing",
+            "marketingPurpose": "Personalized advertising and UX optimization",
+            "marketingTools": "Google Ads, Hotjar, Google Tag Manager"
+          }
+        }
+      },
+      "legalBasis": {
+        "title": "Legal basis for processing",
+        "content": "- Consent: for analytics and marketing cookies, and commercial communications.\n- Legitimate interest: for technical website operation and anonymous internal analysis.\n- Contract performance: if you contact us to acquire services."
+      },
+      "dataRecipients": {
+        "title": "Who do we share your data with?",
+        "content": "We do not sell your data. We only share it with:\n- Service providers: Google (Analytics, Ads, Tag Manager), Hotjar, and secure hosting platforms.\n- Competent authorities, if legally required.\n\nAll our providers comply with international data protection standards."
+      },
+      "internationalTransfers": {
+        "title": "International transfers",
+        "content": "Some providers (such as Google and Hotjar) process data on servers located outside Argentina (e.g., in the U.S.). These transfers are carried out under recognized safeguards, such as the Standard Contractual Clauses (SCCs)."
+      },
+      "yourRights": {
+        "title": "Your rights",
+        "content": "As a data subject, you have the right to:\n- Access, rectify, or request the erasure (deletion) of your data.\n- Object to or restrict its processing.\n- Withdraw your consent at any time.\n- Lodge a complaint with Uruguay's Personal Data Regulatory and Control Unit (URCDP).\n\nYour personal data is governed by Uruguay's Law No. 18.331 on Personal Data Protection and Habeas Data, its Regulatory Decree No. 414/009, and complementary regulations issued by the URCDP.\n\nYou may exercise these rights by writing to: info[at]nideport.com."
+      },
+      "security": {
+        "title": "Information Security",
+        "content": "We implement appropriate technical and organizational measures to protect your data against unauthorized access, alteration, disclosure, or destruction. These include data encryption in transit (SSL/TLS), access controls to our systems, and regular staff training on data protection."
+      },
+      "dataRetention": {
+        "title": "Retention period",
+        "content": "Your data is retained only as long as necessary for the stated purposes or while you maintain a relationship with us. It is then securely deleted or anonymized.\n\nData used for certification, environmental traceability, or carbon project integrity is processed in an aggregated, technical, and non-identifiable manner and does not constitute personal data."
+      },
+      "updates": {
+        "title": "Updates",
+        "content": "We may update this policy. The current version will always be available on this page with a new \"Last updated\" date."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "Do you have questions or wish to manage your privacy preferences?\nPlease write to: info[at]nideport.com\nOr use our contact form."
+      }
+    },
+    "note": "This policy applies solely to the website https://www.nideport.com and not to external sites."
+  }
 }
-}
+

@@ -9,9 +9,6 @@ export default defineNuxtConfig({
       failOnError: true,
     },
   },
-  generate: {
-    exclude: ["robots.txt", "sitemap.xml"],
-  },
 
   hooks: {
     async "prerender:routes"(ctx) {
@@ -38,6 +35,25 @@ export default defineNuxtConfig({
         }
       }
     },
+    'vite:extendConfig'(config: any, { isClient }: any) {
+      // Configurar el plugin unplugin-vue-i18n para permitir HTML
+      if (config.plugins) {
+        const i18nPlugin = config.plugins.find((p: any) => 
+          p && (p.name === 'unplugin-vue-i18n' || p.name?.includes('i18n'))
+        )
+        if (i18nPlugin && typeof i18nPlugin === 'object') {
+          // Si el plugin tiene opciones, configurarlas
+          if (!i18nPlugin.vite) {
+            i18nPlugin.vite = {}
+          }
+          if (!i18nPlugin.vite.compilation) {
+            i18nPlugin.vite.compilation = {}
+          }
+          i18nPlugin.vite.compilation.strictMessage = false
+          i18nPlugin.vite.compilation.warnHtmlMessage = false
+        }
+      }
+    }
   },
 
   css: [
@@ -53,7 +69,13 @@ export default defineNuxtConfig({
       }
     }], 
     '@nuxt/devtools', 
-    '@nuxtjs/i18n', 
+    ['@nuxtjs/i18n', {
+      compilation: {
+        strictMessage: false,
+        warnHtmlMessage: false,
+        jit: false,
+      }
+    }], 
     '@nuxt/content', 
     'vue3-carousel-nuxt', 
     'nuxt-swiper', 
@@ -61,7 +83,29 @@ export default defineNuxtConfig({
     '@nuxt/ui', 
     '@nuxtjs/device',
     '@pinia/nuxt',
+    '@nuxtjs/sitemap'
   ],
+  site: {
+    url: process.env.BASE_URL || 'https://www.nideport.com',
+  },
+  sitemap: {
+    gzip: true,
+    routes: async () => {
+      try {
+        // queryContent está disponible como auto-import en Nuxt
+        const articles = await queryContent().only(['_path', 'updatedAt', 'date']).find();
+
+        // Mapea los artículos a las URLs del sitemap
+        return articles.map((article) => ({
+          url: article._path,
+          lastmod: article.updatedAt || article.date,
+        }));
+      } catch (error) {
+        console.warn('Error al generar rutas del sitemap desde contenido:', error);
+        return [];
+      }
+    },
+  },
   content: {
     locales: ['es', 'en'],
 
@@ -91,11 +135,15 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/': { prerender: true },
-/**/     '/blog': { isr: 3600 },
+    '/blog': { isr: 3600 },
     '/blog/**': { isr: true },
     '/en/blog/**': { isr: true }, 
   },
   i18n: {
+    compilation: {
+      strictMessage: false,
+      jit: false,
+    },
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
@@ -160,13 +208,13 @@ export default defineNuxtConfig({
     SMTPTOKEN: process.env.SMTP_SERVER_SECURITY_TOKEN,
     // Las claves públicas también se declaran aquí */
     public: {
-       url_base: process.env.BASE_URL,
+       url_base: process.env.BASE_URL || 'https://www.nideport.com',
       CONTACTMAILTO: process.env.CONTACTMAILTO,
       CONTACTMAILFROM: process.env.CONTACTMAILFROM,
       SMTPTOKEN: process.env.SMTP_SERVER_SECURITY_TOKEN,
       /* gtmContainerId: process.env.NUXT_PUBLIC_GTM_CONTAINER_ID, */
       adsContainerId: process.env.NUXT_PUBLIC_ADS_CONTAINER_ID,
-      gaTrackingId: process.env.NUXT_PUBLIC_GA_CONTAINER_ID,
+      gaContainerId: process.env.NUXT_PUBLIC_GA_CONTAINER_ID,
       hotjarId: process.env.CODE_HOTJAR_ID,
 
     }
@@ -176,5 +224,17 @@ export default defineNuxtConfig({
     timeline: {
       enabled: true
     }
-  } 
+  },
+  vite: {
+    build: {
+      cssCodeSplit: false
+    },
+    vue: {
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => false
+        }
+      }
+    }
+  }
 });

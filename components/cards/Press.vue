@@ -6,7 +6,7 @@
         <div class="relative h-[140px]">
             <p class="w-full text-left px-3 text-xs text-gray-500 leading-7">{{datePress}}</p>
             <p class="text-left font-bold text-md px-3 mb-8 title">{{title}}</p>
-            <a class="text-left font-medium absolute -bottom-4 left-3" :href="`${urlPress}`">{{$t('home_press_btn_more')}}</a>
+            <a class="text-left font-medium absolute -bottom-4 left-3" :href="`${urlPress}`" :target="`${target}`">{{$t('home_press_btn_more')}}</a>
         </div>
     </div>
 </template>
@@ -20,7 +20,8 @@ const { title,datePress, coverImage, description, urlPress } = defineProps<{
     datePress:string,
     description: string,
     coverImage: string,
-    urlPress:string
+    urlPress:string,
+    target:string
 }>();
 
 const formattedDescription = computed(() => {

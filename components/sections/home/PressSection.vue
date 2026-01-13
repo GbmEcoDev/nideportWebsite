@@ -7,23 +7,25 @@
           <div class="carousel__item">
             <div class="flex-col justify- items-center w-full m-4">
                 <CardsPress 
-                :title="$t('home_press_c1_title')"
-                date-press="Septiembre, 2024" 
-                cover-image="/images/press/radiobuenosaires.png"
+                :title="$t('home_press_26_c1_title')"
+                date-press="Enero, 2026" 
+                cover-image="/images/press/clarin.png"
                 :description="$t('home_award_c1_phrase')" 
-                url-press="https://www.nideport.com/tomas-gonzalez-arata-en-radio-buenos-aires-am-1350/" />
+                url-press="https://www.clarin.com/economia/bonos-carbono-industria-humo-comienza-traer-dolares_0_8SBl8l0ZIB.html"
+                target="_blank" />
             </div>
           </div>
         </Slide>
         <Slide key="2">
           <div class="carousel__item">
-            <div class="flex-col items-center w-full m-4">
+            <div class="flex-col justify- items-center w-full m-4">
                 <CardsPress 
-                :title="$t('home_press_c2_title')" 
-                date-press="Septiembre, 2024"
-                cover-image="/images/press/lanacion.png" 
-                :description="$t('home_award_c2_phrase')" 
-                url-press="https://www.lanacion.com.ar/economia/negocios/la-empresa-que-convirtio-la-sustentabilidad-en-un-negocio-nid11092024/" />
+                :title="$t('home_press_c1_title')"
+                date-press="Septiembre, 2024" 
+                cover-image="/images/press/radiobuenosaires.png"
+                :description="$t('home_award_c1_phrase')" 
+                url-press="https://www.nideport.com/blog/tomas-gonzalez-arata-en-radio-buenos-aires-am-1350"
+                target="_blank" />
             </div>
           </div>
         </Slide>
@@ -31,11 +33,12 @@
           <div class="carousel__item">
             <div class="flex-col items-center w-full m-4">
                 <CardsPress 
-                :title="$t('home_press_c3_title')" 
+                :title="$t('home_press_c2_title')" 
                 date-press="Septiembre, 2024"
-                cover-image="/images/press/lagaceta.png"
-                :description="$t('home_award_c3_phrase')" 
-                url-press="https://www.lagaceta.com.ar/nota/1052365/sociedad/para-creadores-nideport-salvar-selva-misionera-buen-negocio.html" />
+                cover-image="/images/press/lanacion.png" 
+                :description="$t('home_award_c2_phrase')" 
+                url-press="https://www.lanacion.com.ar/economia/negocios/la-empresa-que-convirtio-la-sustentabilidad-en-un-negocio-nid11092024/"
+                target="_blank" />
             </div>
           </div>
         </Slide>
@@ -43,11 +46,12 @@
           <div class="carousel__item">
             <div class="flex-col items-center w-full m-4">
                 <CardsPress 
-                :title="$t('home_press_c4_title')" 
+                :title="$t('home_press_c3_title')" 
                 date-press="Septiembre, 2024"
-                cover-image="/images/press/comunicarse.png"
-                :description="$t('home_award_c4_phrase')" 
-                url-press="https://www.comunicarseweb.com/noticia/usan-blockchain-para-salvar-los-bosques-nativos" />
+                cover-image="/images/press/lagaceta.png"
+                :description="$t('home_award_c3_phrase')" 
+                url-press="https://www.lagaceta.com.ar/nota/1052365/sociedad/para-creadores-nideport-salvar-selva-misionera-buen-negocio.html"
+                target="_blank" />
             </div>
           </div>
         </Slide>
@@ -55,15 +59,29 @@
           <div class="carousel__item">
             <div class="flex-col items-center w-full m-4">
                 <CardsPress 
+                :title="$t('home_press_c4_title')" 
+                date-press="Septiembre, 2024"
+                cover-image="/images/press/comunicarse.png"
+                :description="$t('home_award_c4_phrase')" 
+                url-press="https://www.comunicarseweb.com/noticia/usan-blockchain-para-salvar-los-bosques-nativos"
+                target="_blank" />
+            </div>
+          </div>
+        </Slide>
+        <Slide key="6">
+          <div class="carousel__item">
+            <div class="flex-col items-center w-full m-4">
+                <CardsPress 
                 :title="$t('home_press_c5_title')" 
                 date-press="Septiembre, 2024"
                 cover-image="/images/press/milenium.png"
                 :description="$t('home_award_c5_phrase')" 
-                url-press="https://open.spotify.com/episode/7B1hpIz25UQTvHVSLv4KtK?si=nwh7rE0CRHOh0AZ72wGKdg&nd=1&dlsi=c8dd36745ab04a18" />
+                url-press="https://open.spotify.com/episode/7B1hpIz25UQTvHVSLv4KtK?si=nwh7rE0CRHOh0AZ72wGKdg&nd=1&dlsi=c8dd36745ab04a18"
+                target="_blank" />
             </div>
           </div>
         </Slide>  
-        <Slide key="6">
+        <Slide key="7">
           <div class="carousel__item">
             <div class="flex-col items-center w-full m-4">
                 <CardsPress 
@@ -71,7 +89,8 @@
                 date-press="Septiembre, 2024"
                 cover-image="/images/press/economiasust.png"
                 :description="$t('home_award_c5_phrase')" 
-                url-press="https://economiasustentable.com/noticias/esta-startup-financia-la-regeneracion-de-la-selva-misionera-ya-levanto-dolares-un-millon-de-inversores-privados" />
+                url-press="https://economiasustentable.com/noticias/esta-startup-financia-la-regeneracion-de-la-selva-misionera-ya-levanto-dolares-un-millon-de-inversores-privados"
+                target="_blank" />
             </div>
           </div>
         </Slide>  
